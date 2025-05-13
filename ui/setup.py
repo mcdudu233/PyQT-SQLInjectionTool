@@ -11,8 +11,8 @@ def ui_to_py(path: str):
     output_file = path + 'modules/ui_main.py'
 
     # 将 .ui 文件转换为 Python 代码
-    result = subprocess.run(['pyside6-uic', input_file, '-o', output_file], capture_output=True,
-                            text=True)
+    result = subprocess.run(['pyside6-uic', input_file, '-o', output_file, '--star-imports']
+                            , capture_output=True, text=True)
     if result.returncode != 0:
         print("界面文件转换失败：", end="")
         print(result.stderr)
@@ -26,5 +26,24 @@ def ui_to_py(path: str):
         file.write(data)
 
 
+def rc_to_py(path: str):
+    """
+    将 .qrc 文件转换为 Python 代码
+    :param path:
+    :return:
+    """
+    input_file = path + 'resources.qrc'
+    output_file = path + 'modules/resources_rc.py'
+
+    # 将 .ui 文件转换为 Python 代码
+    result = subprocess.run(['pyside6-rcc', input_file, '-o', output_file]
+                            , capture_output=True, text=True)
+    if result.returncode != 0:
+        print("资源文件转换失败：", end="")
+        print(result.stderr)
+        exit()
+
+
 if __name__ == '__main__':
+    rc_to_py('')
     ui_to_py('')

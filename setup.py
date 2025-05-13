@@ -1,6 +1,6 @@
 from cx_Freeze import setup, Executable
 
-from ui.setup import ui_to_py
+from ui.setup import ui_to_py, rc_to_py
 
 
 def py_to_exe():
@@ -25,7 +25,8 @@ def py_to_exe():
 
 
 if __name__ == '__main__':
-    # 先编译界面文件
+    # 先编译界面文件和资源文件
+    rc_to_py('ui/')
     ui_to_py('ui/')
 
     # 创建可执行文件
