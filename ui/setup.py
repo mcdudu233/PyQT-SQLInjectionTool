@@ -18,10 +18,12 @@ def ui_to_py(path: str):
         print(result.stderr)
         exit()
 
-    # 将 import resources_rc 改成 from . resources_rc import *
     with open(output_file, 'r') as file:
         data = file.read()
+    # 将 import resources_rc 改成 from . resources_rc import *
     data = data.replace('import resources_rc', 'from . resources_rc import *')
+    # 修复 BUG
+    data = data.replace('font1.setWeight(QFont.)', '')
     with open(output_file, 'w') as file:
         file.write(data)
 
