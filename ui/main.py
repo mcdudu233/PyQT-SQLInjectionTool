@@ -61,7 +61,7 @@ class MainWindow(QMainWindow):
 
         # APP NAME
         # ///////////////////////////////////////////////////////////////
-        title = "PyDracula - Modern GUI"
+        title = " "
         description = "网络安全课程设计"
         # APPLY TEXTS
         self.setWindowTitle(title)

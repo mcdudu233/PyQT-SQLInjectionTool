@@ -2213,7 +2213,7 @@ background-repeat: no-repeat;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>274</width>
+                                 <width>218</width>
                                  <height>218</height>
                                 </rect>
                                </property>
@@ -2769,7 +2769,7 @@ background-repeat: no-repeat;</string>
                         </rect>
                        </property>
                        <property name="sizePolicy">
-                        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
