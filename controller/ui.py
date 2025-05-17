@@ -56,7 +56,6 @@ def startBrowing(self): pass
 def showWebPage(self, url): pass
 
 
-# 数据中心
 # 文件操作
 # 路径名设置 lineedit path
 def setPath(self): pass

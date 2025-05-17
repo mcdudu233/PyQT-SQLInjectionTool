@@ -98,11 +98,11 @@ class MainWindow(QMainWindow):
 
         # 手动注入界面信号槽设置
         # 识别注入绑定
-        widgets.btn_startInjection.clicked.connect(self.startInjection)
-        widgets.btn_exportConfiguration.clicked.connect(self.exportConfiguration)
+        widgets.btn_startInjection.clicked.connect(startInjection)
+        widgets.btn_exportConfiguration.clicked.connect(exportConfiguration)
 
         # 自动输入界面信号槽
-        widgets.browse.clicked.connect(self.startBrowing)
+        widgets.browse.clicked.connect(startBrowing)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -159,38 +159,38 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        #SHOW AUTOINJECTION
+        # SHOW AUTOINJECTION
 
         if btnName == "btn_autoInjection":
             widgets.stackedWidget.setCurrentWidget(widgets.autoInjection)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        #SHOW MANUALINJECTION
+        # SHOW MANUALINJECTION
         if btnName == "btn_manualInjection":
             widgets.stackedWidget.setCurrentWidget(widgets.manualInjection)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        #SHOW LOGCENTER
+        # SHOW LOGCENTER
         if btnName == "btn_logCenter":
             widgets.stackedWidget.setCurrentWidget(widgets.logCenter)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        #SHOW DATACENTER
+        # SHOW DATACENTER
         if btnName == "btn_dataCenter":
             widgets.stackedWidget.setCurrentWidget(widgets.dataCenter)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        #SHOW COMMAND
+        # SHOW COMMAND
         if btnName == "btn_command":
             widgets.stackedWidget.setCurrentWidget(widgets.command)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        #SHOW LOGCENTER
+        # SHOW LOGCENTER
         if btnName == "btn_logCenter":
             widgets.stackedWidget.setCurrentWidget(widgets.logCenter)
             UIFunctions.resetStyle(self, btnName)
@@ -202,13 +202,13 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
 
-        #SHOW FILEOPERATION
+        # SHOW FILEOPERATION
         if btnName == "btn_fileOperation":
             widgets.stackedWidget.setCurrentWidget(widgets.fileOperation)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        #SHOW INJECTIONCENTER
+        # SHOW INJECTIONCENTER
         if btnName == "btn_injectionCenter":
             widgets.stackedWidget.setCurrentWidget(widgets.injectionCenter)
             UIFunctions.resetStyle(self, btnName)
