@@ -2435,7 +2435,7 @@ background-repeat: no-repeat;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>274</width>
+                                 <width>270</width>
                                  <height>218</height>
                                 </rect>
                                </property>
@@ -2997,55 +2997,40 @@ background-repeat: no-repeat;</string>
                       <widget class="QWidget" name="widget" native="true">
                        <property name="geometry">
                         <rect>
-                         <x>110</x>
+                         <x>120</x>
                          <y>70</y>
-                         <width>591</width>
+                         <width>551</width>
                          <height>331</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_5">
-                        <item row="0" column="0">
-                         <widget class="QLineEdit" name="address">
+                        <item row="3" column="4" colspan="2">
+                         <widget class="QPushButton" name="exportConfiguration">
                           <property name="minimumSize">
                            <size>
-                            <width>0</width>
+                            <width>150</width>
                             <height>30</height>
                            </size>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
                           </property>
-                          <property name="text">
-                           <string>地址</string>
-                          </property>
-                          <property name="placeholderText">
-                           <string>Type here</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="2">
-                         <widget class="QLineEdit" name="overtime">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>30</height>
-                           </size>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                           <string notr="true">background-color: rgb(52, 59, 72);</string>
                           </property>
                           <property name="text">
-                           <string>超时时间</string>
+                           <string>导出配置</string>
                           </property>
-                          <property name="placeholderText">
-                           <string>Type here</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="3" colspan="2">
-                         <widget class="QLabel" name="label_3">
-                          <property name="text">
-                           <string>注入类型：</string>
+                          <property name="icon">
+                           <iconset theme="QIcon::ThemeIcon::GoDown"/>
                           </property>
                          </widget>
                         </item>
@@ -3091,6 +3076,32 @@ background-repeat: no-repeat;</string>
                           </item>
                          </widget>
                         </item>
+                        <item row="2" column="0">
+                         <widget class="QLineEdit" name="retry">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="text">
+                           <string>重试</string>
+                          </property>
+                          <property name="placeholderText">
+                           <string>Type here</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="3" colspan="2">
+                         <widget class="QLabel" name="label_3">
+                          <property name="text">
+                           <string>注入类型：</string>
+                          </property>
+                         </widget>
+                        </item>
                         <item row="1" column="0">
                          <widget class="QLineEdit" name="address_2">
                           <property name="minimumSize">
@@ -3110,26 +3121,14 @@ background-repeat: no-repeat;</string>
                           </property>
                          </widget>
                         </item>
-                        <item row="1" column="2">
-                         <widget class="QLineEdit" name="portID">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
+                        <item row="2" column="3">
+                         <widget class="QLabel" name="label_10">
                           <property name="text">
-                           <string>端口</string>
-                          </property>
-                          <property name="placeholderText">
-                           <string>Type here</string>
+                           <string>数据库：</string>
                           </property>
                          </widget>
                         </item>
-                        <item row="1" column="3">
+                        <item row="1" column="5">
                          <widget class="QCheckBox" name="checkBox_3">
                           <property name="autoFillBackground">
                            <bool>false</bool>
@@ -3142,33 +3141,7 @@ background-repeat: no-repeat;</string>
                           </property>
                          </widget>
                         </item>
-                        <item row="1" column="5">
-                         <widget class="QLineEdit" name="retry">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="text">
-                           <string>重试</string>
-                          </property>
-                          <property name="placeholderText">
-                           <string>Type here</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="0">
-                         <widget class="QLabel" name="label_9">
-                          <property name="text">
-                           <string>编码：</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="1" colspan="2">
+                        <item row="2" column="2">
                          <widget class="QComboBox" name="coding">
                           <property name="font">
                            <font>
@@ -3200,10 +3173,78 @@ background-repeat: no-repeat;</string>
                           </item>
                          </widget>
                         </item>
-                        <item row="2" column="3" colspan="2">
-                         <widget class="QLabel" name="label_10">
+                        <item row="2" column="1">
+                         <widget class="QLabel" name="label_9">
                           <property name="text">
-                           <string>数据库：</string>
+                           <string>编码：</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="0">
+                         <widget class="QPushButton" name="startInjection">
+                          <property name="minimumSize">
+                           <size>
+                            <width>150</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(52, 59, 72);</string>
+                          </property>
+                          <property name="text">
+                           <string>识别注入</string>
+                          </property>
+                          <property name="icon">
+                           <iconset theme="QIcon::ThemeIcon::EditSelectAll"/>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="0">
+                         <widget class="QLineEdit" name="address">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="text">
+                           <string>地址</string>
+                          </property>
+                          <property name="placeholderText">
+                           <string>Type here</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1" colspan="2">
+                         <widget class="QLineEdit" name="overtime">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="text">
+                           <string>超时时间</string>
+                          </property>
+                          <property name="placeholderText">
+                           <string>Type here</string>
                           </property>
                          </widget>
                         </item>
@@ -3244,63 +3285,22 @@ background-repeat: no-repeat;</string>
                           </item>
                          </widget>
                         </item>
-                        <item row="3" column="0" colspan="2">
-                         <widget class="QPushButton" name="pushButton_5">
+                        <item row="1" column="1" colspan="2">
+                         <widget class="QLineEdit" name="portID">
                           <property name="minimumSize">
                            <size>
-                            <width>150</width>
+                            <width>0</width>
                             <height>30</height>
                            </size>
                           </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
                           <property name="styleSheet">
-                           <string notr="true">background-color: rgb(52, 59, 72);</string>
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
                           <property name="text">
-                           <string>识别注入</string>
+                           <string>端口</string>
                           </property>
-                          <property name="icon">
-                           <iconset theme="QIcon::ThemeIcon::EditSelectAll"/>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="3" column="4" colspan="2">
-                         <widget class="QPushButton" name="pushButton_6">
-                          <property name="minimumSize">
-                           <size>
-                            <width>150</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(52, 59, 72);</string>
-                          </property>
-                          <property name="text">
-                           <string>导出配置</string>
-                          </property>
-                          <property name="icon">
-                           <iconset theme="QIcon::ThemeIcon::GoDown"/>
+                          <property name="placeholderText">
+                           <string>Type here</string>
                           </property>
                          </widget>
                         </item>
@@ -3456,43 +3456,6 @@ background-repeat: no-repeat;</string>
                       </widget>
                      </widget>
                      <widget class="QWidget" name="injectionCenter">
-                      <widget class="QPushButton" name="pushButton_2">
-                       <property name="geometry">
-                        <rect>
-                         <x>570</x>
-                         <y>40</y>
-                         <width>150</width>
-                         <height>30</height>
-                        </rect>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>150</width>
-                         <height>30</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>10</pointsize>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
-                       </property>
-                       <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(52, 59, 72);</string>
-                       </property>
-                       <property name="text">
-                        <string>打开</string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="resources.qrc">
-                         <normaloff>:/icons/images/icons/cil-folder-open.png</normaloff>:/icons/images/icons/cil-folder-open.png</iconset>
-                       </property>
-                      </widget>
                       <widget class="QLabel" name="label_8">
                        <property name="geometry">
                         <rect>
