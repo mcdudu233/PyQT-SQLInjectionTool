@@ -85,8 +85,16 @@ class MainWindow(QMainWindow):
         # LEFT MENUS
         widgets.btn_home.clicked.connect(self.buttonClick)
         widgets.btn_widgets.clicked.connect(self.buttonClick)
-        widgets.btn_new.clicked.connect(self.buttonClick)
         widgets.btn_save.clicked.connect(self.buttonClick)
+        widgets.btn_exit.clicked.connect(self.buttonClick)
+        widgets.btn_manualInjection.clicked.connect(self.buttonClick)
+        widgets.btn_autoInjection.clicked.connect(self.buttonClick)
+        widgets.btn_dataCenter.clicked.connect(self.buttonClick)
+        widgets.btn_command.clicked.connect(self.buttonClick)
+        widgets.btn_logCenter.clicked.connect(self.buttonClick)
+        widgets.btn_fileOperation.clicked.connect(self.buttonClick)
+        widgets.btn_injectionCenter.clicked.connect(self.buttonClick)
+
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -143,11 +151,60 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
+        #SHOW AUTOINJECTION
+
+        if btnName == "btn_autoInjection":
+            widgets.stackedWidget.setCurrentWidget(widgets.autoInjection)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
+        #SHOW MANUALINJECTION
+        if btnName == "btn_manualInjection":
+            widgets.stackedWidget.setCurrentWidget(widgets.manualInjection)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
+        #SHOW LOGCENTER
+        if btnName == "btn_logCenter":
+            widgets.stackedWidget.setCurrentWidget(widgets.logCenter)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
+        #SHOW DATACENTER
+        if btnName == "btn_dataCenter":
+            widgets.stackedWidget.setCurrentWidget(widgets.dataCenter)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
+        #SHOW COMMAND
+        if btnName == "btn_command":
+            widgets.stackedWidget.setCurrentWidget(widgets.command)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
+        #SHOW LOGCENTER
+        if btnName == "btn_logCenter":
+            widgets.stackedWidget.setCurrentWidget(widgets.logCenter)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
         # SHOW NEW PAGE
         if btnName == "btn_new":
             widgets.stackedWidget.setCurrentWidget(widgets.new_page)  # SET PAGE
             UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
+
+        #SHOW FILEOPERATION
+        if btnName == "btn_fileOperation":
+            widgets.stackedWidget.setCurrentWidget(widgets.fileOperation)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
+        #SHOW INJECTIONCENTER
+        if btnName == "btn_injectionCenter":
+            widgets.stackedWidget.setCurrentWidget(widgets.injectionCenter)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
         if btnName == "btn_save":
             print("Save BTN clicked!")
