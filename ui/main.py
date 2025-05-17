@@ -95,6 +95,13 @@ class MainWindow(QMainWindow):
         widgets.btn_fileOperation.clicked.connect(self.buttonClick)
         widgets.btn_injectionCenter.clicked.connect(self.buttonClick)
 
+        # 手动注入界面信号槽设置
+        # 识别注入绑定
+        widgets.btn_startInjection.clicked.connect(self.startInjection)
+        widgets.btn_exportConfiguration.clicked.connect(self.exportConfiguration)
+
+        # 自动输入界面信号槽
+        widgets.browse.clicked.connect(self.startBrowing)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -264,10 +271,6 @@ class MainWindow(QMainWindow):
     #到处配置 button btn_exportConfiguration
     def exportConfiguration(self):pass
 
-    #手动注入界面信号槽设置
-    #识别注入绑定
-    widgets.btn_startInjection.clicked.connect(startInjection)
-    widgets.btn_exportConfigurton.clicked.connect(exportConfiguration)
 
     #自动注入界面组件调用接口
     #URL设置 lineedit url
@@ -277,8 +280,7 @@ class MainWindow(QMainWindow):
     #显示网页 QWebEngineView webPage
     def showWebPage(self,url):pass
 
-    #自动输入界面信号槽
-    widgets.browse.clicked.connect(startBrowing)
+
 
     #数据中心
 
