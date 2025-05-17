@@ -98,7 +98,7 @@ class MainWindow(QMainWindow):
         # 手动注入界面信号槽设置
         # 识别注入绑定
         widgets.btn_startInjection.clicked.connect(self.startInjection)
-        widgets.btn_exportConfigurton.clicked.connect(self.exportConfiguration)
+        widgets.btn_exportConfiguration.clicked.connect(self.exportConfiguration)
 
         # 自动输入界面信号槽
         widgets.browse.clicked.connect(self.startBrowing)
