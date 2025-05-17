@@ -55,4 +55,28 @@ def startBrowing(self): pass
 # 显示网页 QWebEngineView webPage
 def showWebPage(self, url): pass
 
+
 # 数据中心
+# 文件操作
+# 路径名设置 lineedit path
+def setPath(self): pass
+
+
+# def 文件编码设置 comboBox coding
+def setCoding(self): pass
+
+
+# 文件操作设置 conmobox fileOpreation
+def setFileOperation(self): pass
+
+
+# 开始 button btn_stratFileOperation
+def startFileOperation(self): pass
+
+
+# 停止  button btn_stopFileOperation
+def stopFileOperation(self): pass
+
+
+# 显示操作结果
+def showFIleOperation(self): pass
