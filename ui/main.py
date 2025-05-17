@@ -79,14 +79,13 @@ class MainWindow(QMainWindow):
 
         # QTableWidget PARAMETERS
         # ///////////////////////////////////////////////////////////////
-        widgets.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        #widgets.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         # BUTTONS CLICK
         # ///////////////////////////////////////////////////////////////
 
         # LEFT MENUS
         widgets.btn_home.clicked.connect(self.buttonClick)
-        widgets.btn_widgets.clicked.connect(self.buttonClick)
         widgets.btn_save.clicked.connect(self.buttonClick)
         widgets.btn_exit.clicked.connect(self.buttonClick)
         widgets.btn_manualInjection.clicked.connect(self.buttonClick)
@@ -94,7 +93,7 @@ class MainWindow(QMainWindow):
         widgets.btn_command.clicked.connect(self.buttonClick)
         widgets.btn_logCenter.clicked.connect(self.buttonClick)
         widgets.btn_fileOperation.clicked.connect(self.buttonClick)
-        widgets.btn_injectionCenter.clicked.connect(self.buttonClick)
+
 
         # 手动注入界面信号槽设置
         # 识别注入绑定
@@ -164,13 +163,6 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW WIDGETS PAGE
-        if btnName == "btn_widgets":
-            widgets.stackedWidget.setCurrentWidget(widgets.widgets)
-            UIFunctions.resetStyle(self, btnName)
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
-
-
         # SHOW MANUALINJECTION
         if btnName == "btn_manualInjection":
             widgets.stackedWidget.setCurrentWidget(widgets.manualInjection)
@@ -213,11 +205,7 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW INJECTIONCENTER
-        if btnName == "btn_injectionCenter":
-            widgets.stackedWidget.setCurrentWidget(widgets.injectionCenter)
-            UIFunctions.resetStyle(self, btnName)
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+
 
         if btnName == "btn_save":
             print("Save BTN clicked!")

@@ -114,3 +114,10 @@ def stopCommand(self): pass
 
 #命令展示 plainTextview commandResults
 def showCommmad(self): pass#
+
+#日志中心界面组件调用接口
+#日志展示 textBrowser
+def showLog(self): pass
+
+#数据包发包记录 tableWidget packetSendingRecord
+def showPacketSendingRecord(self): pass
