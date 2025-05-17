@@ -2131,7 +2131,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>2</number>
+                      <number>5</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2435,7 +2435,7 @@ background-repeat: no-repeat;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>270</width>
+                                 <width>274</width>
                                  <height>218</height>
                                 </rect>
                                </property>
@@ -3005,7 +3005,7 @@ background-repeat: no-repeat;</string>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_5">
                         <item row="3" column="4" colspan="2">
-                         <widget class="QPushButton" name="exportConfiguration">
+                         <widget class="QPushButton" name="btn_exportConfiguration">
                           <property name="minimumSize">
                            <size>
                             <width>150</width>
@@ -3181,7 +3181,7 @@ background-repeat: no-repeat;</string>
                          </widget>
                         </item>
                         <item row="3" column="0">
-                         <widget class="QPushButton" name="startInjection">
+                         <widget class="QPushButton" name="btn_startInjection">
                           <property name="minimumSize">
                            <size>
                             <width>150</width>
@@ -3384,7 +3384,7 @@ background-repeat: no-repeat;</string>
                         <string>Type here</string>
                        </property>
                       </widget>
-                      <widget class="QWebEngineView" name="webEngineView">
+                      <widget class="QWebEngineView" name="webPage">
                        <property name="geometry">
                         <rect>
                          <x>20</x>
@@ -3469,13 +3469,38 @@ background-repeat: no-repeat;</string>
                         <string>注入中心</string>
                        </property>
                       </widget>
+                      <widget class="QLineEdit" name="path_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>10</x>
+                         <y>50</y>
+                         <width>306</width>
+                         <height>30</height>
+                        </rect>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(33, 37, 43);</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="placeholderText">
+                        <string>Type here</string>
+                       </property>
+                      </widget>
                      </widget>
                      <widget class="QWidget" name="fileOperation">
                       <widget class="QLabel" name="label_4">
                        <property name="geometry">
                         <rect>
-                         <x>220</x>
-                         <y>130</y>
+                         <x>30</x>
+                         <y>20</y>
                          <width>54</width>
                          <height>16</height>
                         </rect>
@@ -3484,19 +3509,261 @@ background-repeat: no-repeat;</string>
                         <string>文件操作</string>
                        </property>
                       </widget>
+                      <widget class="QGroupBox" name="groupBox_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>10</x>
+                         <y>50</y>
+                         <width>731</width>
+                         <height>111</height>
+                        </rect>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_6">
+                        <item row="0" column="0">
+                         <widget class="QLineEdit" name="path">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="text">
+                           <string>路径</string>
+                          </property>
+                          <property name="placeholderText">
+                           <string>Type here</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QLabel" name="label_11">
+                          <property name="text">
+                           <string>文件编码：</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="2">
+                         <widget class="QComboBox" name="fileOperationType_2">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="autoFillBackground">
+                           <bool>false</bool>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>16</width>
+                            <height>16</height>
+                           </size>
+                          </property>
+                          <property name="frame">
+                           <bool>true</bool>
+                          </property>
+                          <item>
+                           <property name="text">
+                            <string>GBK</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </item>
+                         </widget>
+                        </item>
+                        <item row="0" column="3">
+                         <widget class="QComboBox" name="fileOperationType">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="autoFillBackground">
+                           <bool>false</bool>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>16</width>
+                            <height>16</height>
+                           </size>
+                          </property>
+                          <property name="frame">
+                           <bool>true</bool>
+                          </property>
+                          <item>
+                           <property name="text">
+                            <string>MySQL Union写文件</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>MySQL Load_File 读文件</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>SQLServer FileSystemObject写文件</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>SQLServer Sp_MakeWebTask写文件</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>SQLServer利用备份数据库写文件</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>SQLServer FileSystemObject读文件</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </item>
+                         </widget>
+                        </item>
+                        <item row="1" column="0" colspan="2">
+                         <widget class="QPushButton" name="btn_stratFileOperation">
+                          <property name="minimumSize">
+                           <size>
+                            <width>150</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(52, 59, 72);</string>
+                          </property>
+                          <property name="text">
+                           <string>开始</string>
+                          </property>
+                          <property name="icon">
+                           <iconset theme="QIcon::ThemeIcon::EditSelectAll"/>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="2" colspan="2">
+                         <widget class="QPushButton" name="btn_stopFileOperation">
+                          <property name="minimumSize">
+                           <size>
+                            <width>150</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(52, 59, 72);</string>
+                          </property>
+                          <property name="text">
+                           <string>停止</string>
+                          </property>
+                          <property name="icon">
+                           <iconset theme="QIcon::ThemeIcon::EditSelectAll"/>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                      <widget class="QTextBrowser" name="fileOpreationResults">
+                       <property name="geometry">
+                        <rect>
+                         <x>10</x>
+                         <y>190</y>
+                         <width>731</width>
+                         <height>221</height>
+                        </rect>
+                       </property>
+                      </widget>
                      </widget>
                      <widget class="QWidget" name="command">
                       <widget class="QLabel" name="label_5">
                        <property name="geometry">
                         <rect>
-                         <x>330</x>
-                         <y>130</y>
-                         <width>54</width>
-                         <height>16</height>
+                         <x>30</x>
+                         <y>20</y>
+                         <width>71</width>
+                         <height>21</height>
                         </rect>
                        </property>
                        <property name="text">
-                        <string>m命令执行</string>
+                        <string>命令执行</string>
                        </property>
                       </widget>
                      </widget>
@@ -3504,10 +3771,10 @@ background-repeat: no-repeat;</string>
                       <widget class="QLabel" name="label_6">
                        <property name="geometry">
                         <rect>
-                         <x>450</x>
-                         <y>180</y>
-                         <width>54</width>
-                         <height>16</height>
+                         <x>30</x>
+                         <y>20</y>
+                         <width>81</width>
+                         <height>31</height>
                         </rect>
                        </property>
                        <property name="text">
