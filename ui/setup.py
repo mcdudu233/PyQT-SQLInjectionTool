@@ -1,5 +1,14 @@
 import subprocess
 
+# 生成 Python 代码的命令
+# main.ui -> modules/ui_main.py
+# resources.qrc -> modules/resources_rc.py
+"""
+cd ui
+pyside6-uic main.ui -o modules/ui_main.py --star-imports
+pyside6-rcc resources.qrc -o modules/resources_rc.py
+"""
+
 
 def ui_to_py(path: str):
     """
