@@ -103,6 +103,10 @@ class MainWindow(QMainWindow):
         # 自动输入界面信号槽
         widgets.browse.clicked.connect(self.startBrowing)
 
+        #文件操作界面信号槽
+        widgets.btn_stratFileOperation(self.setFileOperation())
+        widgets.btn_stopFileOperation(self.setFileOperation())
+
         # EXTRA LEFT BOX
         def openCloseLeftBox():
             UIFunctions.toggleLeftBox(self, True)
@@ -282,7 +286,24 @@ class MainWindow(QMainWindow):
 
 
 
-    #数据中心
+    #文件操作
+    #路径名设置 lineedit path
+    def setPath(self):pass
+
+    #def 文件编码设置 comboBox coding
+    def setCoding(self):pass
+
+    #文件操作设置 conmobox fileOpreation
+    def setFileOperation(self):pass
+
+    #开始 button btn_stratFileOperation
+    def startFileOperation(self):pass
+
+    #停止  button btn_stopFileOperation
+    def stopFileOperation(self):pass
+
+    #显示操作结果
+    def showFIleOperation(self):pass
 
 
 
