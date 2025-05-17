@@ -79,3 +79,38 @@ def stopFileOperation(self): pass
 
 # 显示操作结果
 def showFIleOperation(self): pass
+
+#数据中心组件调用接口
+#数据库信息展示 plaintextview databaseInformation
+def showDatabaseInformation(self): pass
+
+#获取数据展示 plaintextview getData
+def showGettingData(self): pass
+
+#开始标志 lineedit beginning
+def setBeginnig(self): pass
+
+#条数设置 linedit number
+def setNumnber(self): pass
+
+#获取数据 btn_getData
+def gettingData(self): pass
+
+#导出数据 button btn_exportData
+def exportData(self): pass
+
+#停止获取数据 button stopGettingData
+def stopGettingData(self): pass
+
+#命令执行界面组件调用接口
+#命令设置 lineedit commandInput
+def setCommand(self): pass
+
+#开始命令 button btn_startCommand
+def startCommand(self):pass
+
+#停止命令 button btn_stopCommand
+def stopCommand(self): pass
+
+#命令展示 plainTextview commandResults
+def showCommmad(self): pass#

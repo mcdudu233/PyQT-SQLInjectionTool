@@ -18,6 +18,7 @@ import sys
 import os
 import platform
 
+
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from controller.ui import *
@@ -89,7 +90,6 @@ class MainWindow(QMainWindow):
         widgets.btn_save.clicked.connect(self.buttonClick)
         widgets.btn_exit.clicked.connect(self.buttonClick)
         widgets.btn_manualInjection.clicked.connect(self.buttonClick)
-        widgets.btn_autoInjection.clicked.connect(self.buttonClick)
         widgets.btn_dataCenter.clicked.connect(self.buttonClick)
         widgets.btn_command.clicked.connect(self.buttonClick)
         widgets.btn_logCenter.clicked.connect(self.buttonClick)
@@ -103,6 +103,17 @@ class MainWindow(QMainWindow):
 
         # 自动输入界面信号槽
         widgets.browse.clicked.connect(startBrowing)
+
+        #数据中心信号槽绑定
+        widgets.btn_getData.clicked.connect(gettingData)
+        widgets.btn_exportData.clicked.connect(exportData)
+        widgets.btn_stopGettingData.clicked.connect(stopGettingData)
+
+        #命令执行
+        widgets.btn_stopCommand.clicked.connect(stopCommand)
+        widgets.btn_startCommand.clicked.connect(startCommand)
+
+
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -149,7 +160,7 @@ class MainWindow(QMainWindow):
 
         # SHOW HOME PAGE
         if btnName == "btn_home":
-            widgets.stackedWidget.setCurrentWidget(widgets.home)
+            widgets.stackedWidget.setCurrentWidget(widgets.autoInjection)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
@@ -159,12 +170,6 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW AUTOINJECTION
-
-        if btnName == "btn_autoInjection":
-            widgets.stackedWidget.setCurrentWidget(widgets.autoInjection)
-            UIFunctions.resetStyle(self, btnName)
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
         # SHOW MANUALINJECTION
         if btnName == "btn_manualInjection":
