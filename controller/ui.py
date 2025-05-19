@@ -15,7 +15,7 @@ class UIWidgetsFunctions:
     def setURL(self): pass
 
     ### 启动浏览 button browse ###
-    def startBrowing(self):
+    def startBrowsing(self):
         url = self.ui.url.text()
         if not url.startswith(("http://", "https://")):
             url = "http://" + url
@@ -36,37 +36,32 @@ class UIWidgetsFunctions:
     ### 手动注入界面组件调用接口 ###
     ###########################
     ### 地址设置 lineedit address ###
-    def setAddress(self): pass
+    def setAutoUrl(self): pass
 
     ### 超时设置 lineedit overtime ###
-    def setOvertime(self): pass
+    def setInspectionInterval(self): pass
 
     ### 获取注入类型 comboBox injectionTyoe ###
     def setStyleSheetInjectionType(self): pass
 
-    ### 线程设置 lineedit thread ###
-    def setThread(self): pass
-
-    ### 端口设置 lineedit portID ###
-    def setPortID(self): pass
-
-    ### SSL是否选择 checkbox ssl ###
-    def ifSSL(self): pass
-
-    ### 编码设置 checkbox coding ###
-    def setCoding(self): pass
+    ### HTTPS是否选择 checkbox ssl ###
+    def ifHttps(self): pass
 
     ### 数据库类型设置 checkbox databaseType ###
     def setDatabase(self): pass
 
-    ### 重试次数设置 lineedit retry ###
-    def setRetryTimes(self): pass
-
     ### 识别注入 button btn_startInjection ###
     def startInjection(self): pass
 
-    ### 到处配置 button btn_exportConfiguration ###
-    def exportConfiguration(self): pass
+    ### 设置请求方式 ### combox requestMethod
+    def setRequestMethod(self):pass
+
+    ### 增加参数 ### button btn_addParam  lineedit paramInput  listwidget paramList
+    def addParamToList(self):pass
+
+    ### 删除参数 ### button btn_deleteParam
+    def deleteParamFromList(self):pass
+
 
     ### 文件操作 ###
     ### 路径名设置 lineedit path ###

@@ -90,8 +90,6 @@ class MainWindow(QMainWindow):
         def openCloseLeftBox():
             UIFunctions.toggleLeftBox(self, True)
 
-        widgets.toggleLeftBox.clicked.connect(openCloseLeftBox)
-        widgets.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
 
         def openCloseRightBox():
             UIFunctions.toggleRightBox(self, True)
@@ -107,19 +105,17 @@ class MainWindow(QMainWindow):
 
         ### 手动注入界面信号槽 ###
         widgets.btn_startInjection.clicked.connect(self.widgetsFunctions.startInjection)
-        widgets.btn_exportConfiguration.clicked.connect(self.widgetsFunctions.exportConfiguration)
-        widgets.address.textChanged.connect(self.widgetsFunctions.setAddress)
-        widgets.overtime.textChanged.connect(self.widgetsFunctions.setOvertime)
+        widgets.autoUrl.textChanged.connect(self.widgetsFunctions.setAutoUrl)
+        widgets.inspectionInterval.textChanged.connect(self.widgetsFunctions.setInspectionInterval)
         widgets.injectionType.currentIndexChanged.connect(self.widgetsFunctions.setStyleSheetInjectionType)
-        widgets.thread.textChanged.connect(self.widgetsFunctions.setThread)
-        widgets.portID.textChanged.connect(self.widgetsFunctions.setPortID)
-        widgets.ssl.stateChanged.connect(self.widgetsFunctions.ifSSL)
-        widgets.coding.currentIndexChanged.connect(self.widgetsFunctions.setCoding)
+        widgets.https.stateChanged.connect(self.widgetsFunctions.ifHttps)
         widgets.databaseType.currentIndexChanged.connect(self.widgetsFunctions.setDatabase)
-        widgets.retry.textChanged.connect(self.widgetsFunctions.setRetryTimes)
+        widgets.requestMethod.currentIndexChanged.connect(self.widgetsFunctions.setRequestMethod)
+        widgets.btn_addParam.clicked.connect(self.widgetsFunctions.addParamToList)
+        widgets.btn_deleteParam.clicked.connect(self.widgetsFunctions.deleteParamFromList)
 
         ### 自动输入界面信号槽 ###
-        widgets.browse.clicked.connect(self.widgetsFunctions.startBrowing)
+        widgets.browse.clicked.connect(self.widgetsFunctions.startBrowsing)
         widgets.detection.clicked.connect(self.widgetsFunctions.startDetection)
         widgets.url.textChanged.connect(self.widgetsFunctions.setURL)
         widgets.webPage.loadFinished.connect(self.widgetsFunctions.finishWebPage)
@@ -134,7 +130,7 @@ class MainWindow(QMainWindow):
         widgets.getData.textChanged.connect(self.widgetsFunctions.showGettingData)
         widgets.beginning.textChanged.connect(self.widgetsFunctions.setBeginnig)
         widgets.number.textChanged.connect(self.widgetsFunctions.setNumnber)
-        widgets.coding.currentIndexChanged.connect(self.widgetsFunctions.dataCodingType)
+        widgets.codingType.currentIndexChanged.connect(self.widgetsFunctions.dataCodingType)
 
         ### 命令执行界面信号槽 ###
         widgets.btn_stopCommand.clicked.connect(self.widgetsFunctions.stopCommand)
@@ -149,7 +145,7 @@ class MainWindow(QMainWindow):
         widgets.btn_stratFileOperation.clicked.connect(self.widgetsFunctions.startFileOperation)
         widgets.btn_stopFileOperation.clicked.connect(self.widgetsFunctions.stopFileOperation)
         widgets.path.textChanged.connect(self.widgetsFunctions.setPath)
-        widgets.fileOperationCoding.currentIndexChanged.connect(self.widgetsFunctions.setCoding)
+        widgets.fileOperationCoding.currentIndexChanged.connect(self.widgetsFunctions.setFileOprationCoding)
         widgets.fileOperationType.currentIndexChanged.connect(self.widgetsFunctions.setFileOperation)
 
         # 显示界面
