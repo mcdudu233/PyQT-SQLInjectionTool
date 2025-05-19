@@ -29,6 +29,9 @@ class UIWidgetsFunctions:
         # 强制刷新
         self.ui.webPage.repaint()
 
+    ### 开始检测 ###
+    def startDetection(self):pass
+
     ###########################
     ### 手动注入界面组件调用接口 ###
     ###########################

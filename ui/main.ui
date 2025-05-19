@@ -937,42 +937,6 @@ Button */
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btn_dataCenter">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>10</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::LayoutDirection::LeftToRight</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-3d.png)</string>
-                  </property>
-                  <property name="text">
-                   <string>数据中心</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QPushButton" name="btn_command">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -1001,10 +965,46 @@ Button */
                    <enum>Qt::LayoutDirection::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-map.png)</string>
+                   <string notr="true">background-image: url(:/icons/images/icons/cil-align-center.png)</string>
                   </property>
                   <property name="text">
-                   <string>命令操作</string>
+                   <string>命令执行</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btn_dataCenter">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>10</pointsize>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LayoutDirection::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image: url(:/icons/images/icons/cil-airplane-mode.png)</string>
+                  </property>
+                  <property name="text">
+                   <string>数据中心</string>
                   </property>
                  </widget>
                 </item>
@@ -1037,7 +1037,7 @@ Button */
                    <enum>Qt::LayoutDirection::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-cloudy.png)</string>
+                   <string notr="true">background-image: url(:/icons/images/icons/cil-cast.png)</string>
                   </property>
                   <property name="text">
                    <string>日志中心</string>
@@ -1073,46 +1073,10 @@ Button */
                    <enum>Qt::LayoutDirection::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-cast.png)</string>
+                   <string notr="true">background-image: url(:/icons/images/icons/cil-cart.png)</string>
                   </property>
                   <property name="text">
                    <string>文件操作</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btn_save">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>10</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::LayoutDirection::LeftToRight</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-save.png)</string>
-                  </property>
-                  <property name="text">
-                   <string>保存</string>
                   </property>
                  </widget>
                 </item>
@@ -1966,7 +1930,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>3</number>
+                      <number>5</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2083,10 +2047,10 @@ background-repeat: no-repeat;</string>
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
                           <property name="text">
-                           <string>重试</string>
+                           <string/>
                           </property>
                           <property name="placeholderText">
-                           <string>Type here</string>
+                           <string>重试</string>
                           </property>
                          </widget>
                         </item>
@@ -2109,10 +2073,10 @@ background-repeat: no-repeat;</string>
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
                           <property name="text">
-                           <string>线程</string>
+                           <string/>
                           </property>
                           <property name="placeholderText">
-                           <string>Type here</string>
+                           <string>线程</string>
                           </property>
                          </widget>
                         </item>
@@ -2217,10 +2181,10 @@ background-repeat: no-repeat;</string>
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
                           <property name="text">
-                           <string>地址</string>
+                           <string/>
                           </property>
                           <property name="placeholderText">
-                           <string>Type here</string>
+                           <string>地址</string>
                           </property>
                          </widget>
                         </item>
@@ -2236,10 +2200,10 @@ background-repeat: no-repeat;</string>
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
                           <property name="text">
-                           <string>超时时间</string>
+                           <string/>
                           </property>
                           <property name="placeholderText">
-                           <string>Type here</string>
+                           <string>超时时间</string>
                           </property>
                          </widget>
                         </item>
@@ -2292,10 +2256,10 @@ background-repeat: no-repeat;</string>
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
                           <property name="text">
-                           <string>端口</string>
+                           <string/>
                           </property>
                           <property name="placeholderText">
-                           <string>Type here</string>
+                           <string>线程</string>
                           </property>
                          </widget>
                         </item>
@@ -2440,10 +2404,10 @@ background-repeat: no-repeat;</string>
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
                           <property name="text">
-                           <string>开始</string>
+                           <string/>
                           </property>
                           <property name="placeholderText">
-                           <string>Type here</string>
+                           <string>开始</string>
                           </property>
                          </widget>
                         </item>
@@ -2459,10 +2423,10 @@ background-repeat: no-repeat;</string>
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
                           <property name="text">
-                           <string>条数</string>
+                           <string/>
                           </property>
                           <property name="placeholderText">
-                           <string>Type here</string>
+                           <string>条数</string>
                           </property>
                          </widget>
                         </item>
@@ -2618,106 +2582,59 @@ background-repeat: no-repeat;</string>
                       </widget>
                      </widget>
                      <widget class="QWidget" name="autoInjection">
-                      <widget class="QPushButton" name="browse">
-                       <property name="geometry">
-                        <rect>
-                         <x>670</x>
-                         <y>50</y>
-                         <width>150</width>
-                         <height>30</height>
-                        </rect>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>150</width>
-                         <height>30</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>10</pointsize>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
-                       </property>
-                       <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(52, 59, 72);</string>
-                       </property>
-                       <property name="text">
-                        <string>浏览</string>
-                       </property>
-                       <property name="icon">
-                        <iconset theme="QIcon::ThemeIcon::InputMouse"/>
-                       </property>
-                      </widget>
-                      <widget class="QLineEdit" name="url">
+                      <widget class="QWidget" name="widget_2" native="true">
                        <property name="geometry">
                         <rect>
                          <x>20</x>
-                         <y>50</y>
-                         <width>640</width>
-                         <height>30</height>
+                         <y>20</y>
+                         <width>401</width>
+                         <height>54</height>
                         </rect>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>30</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(33, 37, 43);</string>
-                       </property>
-                       <property name="text">
-                        <string>URL</string>
-                       </property>
-                       <property name="placeholderText">
-                        <string>Type here</string>
                        </property>
                       </widget>
-                      <widget class="QWebEngineView" name="webPage">
+                      <widget class="QWidget" name="gridLayoutWidget">
                        <property name="geometry">
                         <rect>
-                         <x>20</x>
-                         <y>140</y>
-                         <width>801</width>
-                         <height>301</height>
+                         <x>50</x>
+                         <y>30</y>
+                         <width>771</width>
+                         <height>401</height>
                         </rect>
                        </property>
-                       <property name="url">
-                        <url>
-                         <string>about:blank</string>
-                        </url>
-                       </property>
-                      </widget>
-                      <widget class="QFrame" name="frame_title_wid_4">
-                       <property name="geometry">
-                        <rect>
-                         <x>10</x>
-                         <y>90</y>
-                         <width>816</width>
-                         <height>35</height>
-                        </rect>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>35</height>
-                        </size>
-                       </property>
-                       <property name="frameShape">
-                        <enum>QFrame::Shape::StyledPanel</enum>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Shadow::Raised</enum>
-                       </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_26">
-                        <item>
-                         <widget class="QLabel" name="labelBoxBlenderInstalation_3">
+                       <layout class="QGridLayout" name="gridLayout">
+                        <property name="horizontalSpacing">
+                         <number>15</number>
+                        </property>
+                        <property name="verticalSpacing">
+                         <number>8</number>
+                        </property>
+                        <item row="0" column="0">
+                         <widget class="QLineEdit" name="url">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="placeholderText">
+                           <string>URL</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QPushButton" name="detection">
+                          <property name="minimumSize">
+                           <size>
+                            <width>150</width>
+                            <height>30</height>
+                           </size>
+                          </property>
                           <property name="font">
                            <font>
                             <family>Segoe UI</family>
@@ -2726,28 +2643,60 @@ background-repeat: no-repeat;</string>
                             <bold>false</bold>
                            </font>
                           </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
                           <property name="styleSheet">
-                           <string notr="true"/>
+                           <string notr="true">background-color: rgb(52, 59, 72);</string>
                           </property>
                           <property name="text">
-                           <string>网页显示：</string>
+                           <string>检测</string>
+                          </property>
+                          <property name="icon">
+                           <iconset theme="QIcon::ThemeIcon::InputMouse"/>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="2">
+                         <widget class="QPushButton" name="browse">
+                          <property name="minimumSize">
+                           <size>
+                            <width>150</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(52, 59, 72);</string>
+                          </property>
+                          <property name="text">
+                           <string>浏览</string>
+                          </property>
+                          <property name="icon">
+                           <iconset theme="QIcon::ThemeIcon::InputMouse"/>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="0" colspan="3">
+                         <widget class="QWebEngineView" name="webPage">
+                          <property name="url">
+                           <url>
+                            <string>about:blank</string>
+                           </url>
                           </property>
                          </widget>
                         </item>
                        </layout>
-                      </widget>
-                      <widget class="QLabel" name="label">
-                       <property name="geometry">
-                        <rect>
-                         <x>20</x>
-                         <y>10</y>
-                         <width>61</width>
-                         <height>21</height>
-                        </rect>
-                       </property>
-                       <property name="text">
-                        <string>自动注入：</string>
-                       </property>
                       </widget>
                      </widget>
                      <widget class="QWidget" name="fileOperation">
@@ -2786,10 +2735,10 @@ background-repeat: no-repeat;</string>
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
                           <property name="text">
-                           <string>路径</string>
+                           <string/>
                           </property>
                           <property name="placeholderText">
-                           <string>Type here</string>
+                           <string>路径</string>
                           </property>
                          </widget>
                         </item>
@@ -3052,10 +3001,10 @@ background-repeat: no-repeat;</string>
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
                           <property name="text">
-                           <string>命令</string>
+                           <string/>
                           </property>
                           <property name="placeholderText">
-                           <string>Type here</string>
+                           <string>命令</string>
                           </property>
                          </widget>
                         </item>
