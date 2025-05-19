@@ -1,4 +1,5 @@
 import subprocess
+from shutil import Error
 from threading import Thread
 
 import requests
@@ -79,55 +80,131 @@ class SQLMap:
                 return data.get("version")
             else:
                 self.logger.error(f"Failed to get version: {data.get('message')}")
-                return None
+                raise Exception("获取SQLMap版本失败！原因：{}！".format(data.get("message")))
         else:
             self.logger.error(f"Failed to get version: {response.status_code}")
-            return None
+            raise Exception("获取SQLMap版本失败！请求返回码：{}！".format(response.status_code))
 
     def create_task(self):
         """创建新任务"""
         response = requests.get(f"{self.base_url}/task/new")
-        response.raise_for_status()
-        data = response.json()
-        if data.get("success"):
-            return data["taskid"]
-        raise Exception("Failed to create task")
+        if response.status_code == 200:
+            data = response.json()
+            if data.get("success"):
+                return data.get("taskid")
+            else:
+                self.logger.error(f"创建任务失败: {data.get('message')}")
+                raise Exception("创建任务失败！原因：{}！".format(data.get("message")))
+        else:
+            self.logger.error(f"创建任务失败，状态码：{response.status_code}")
+            raise Exception("创建任务失败！请求返回码：{}！".format(response.status_code))
 
-    def start_scan(self, taskid, url):
+    def start_scan(self, taskid, url, **kwargs):
         """启动扫描"""
         response = requests.post(
             f"{self.base_url}/scan/{taskid}/start",
-            json={"url": url},
+            json={"url": url} | kwargs,
             headers={"Content-Type": "application/json"}
         )
-        response.raise_for_status()
-        return response.json()
+        if response.status_code == 200:
+            data = response.json()
+            if data.get("success"):
+                return data.get("engineid")
+            else:
+                self.logger.error(f"启动扫描失败: {data.get('message')}")
+                raise Exception("启动扫描失败！原因：{}！".format(data.get("message")))
+        else:
+            self.logger.error(f"启动扫描失败，状态码：{response.status_code}")
+            raise Exception("启动扫描失败！请求返回码：{}！".format(response.status_code))
+
+    def stop_scan(self, taskid):
+        """停止扫描"""
+        response = requests.get(f"{self.base_url}/scan/{taskid}/stop")
+        if response.status_code == 200:
+            data = response.json()
+            if data.get("success"): \
+                    return True
+            else:
+                self.logger.error(f"停止扫描失败: {data.get('message')}")
+                raise Exception("停止扫描失败！原因：{}！".format(data.get("message")))
+        else:
+            self.logger.error(f"停止扫描失败，状态码：{response.status_code}")
+            raise Exception("停止扫描失败！请求返回码：{}！".format(response.status_code))
 
     def get_scan_status(self, taskid):
-        """获取扫描状态"""
+        """
+        获取扫描状态
+        :status running terminated
+        :returncode None 0~999
+        :returns status returncode
+        """
         response = requests.get(f"{self.base_url}/scan/{taskid}/status")
-        response.raise_for_status()
-        return response.json()
+        if response.status_code == 200:
+            data = response.json()
+            if data.get("success"):
+                return data.get("status"), data.get("returncode")
+            else:
+                self.logger.error(f"获取状态失败: {data.get('message')}")
+                raise Exception("获取扫描状态失败！原因：{}！".format(data.get("message")))
+        else:
+            self.logger.error(f"获取状态失败，状态码：{response.status_code}")
+            raise Exception("获取扫描状态失败！请求返回码：{}！".format(response.status_code))
 
     def get_scan_data(self, taskid):
-        """获取扫描结果"""
+        """
+        获取扫描结果
+        :returns data error
+        """
         response = requests.get(f"{self.base_url}/scan/{taskid}/data")
-        response.raise_for_status()
-        return response.json()
+        if response.status_code == 200:
+            data = response.json()
+            if data.get("success"):
+                return data.get("data"), data.get("error")
+            else:
+                self.logger.error(f"获取数据失败: {data.get('message')}")
+                raise Exception("获取扫描数据失败！原因：{}！".format(data.get("message")))
+        else:
+            self.logger.error(f"获取数据失败，状态码：{response.status_code}")
+            raise Exception("获取扫描数据失败！请求返回码：{}！".format(response.status_code))
+
+    def get_scan_log(self, taskid):
+        """获取扫描日志"""
+        response = requests.get(f"{self.base_url}/scan/{taskid}/log")
+        if response.status_code == 200:
+            data = response.json()
+            if data.get("success"):
+                return data.get("log")
+            else:
+                self.logger.error(f"获取日志失败: {data.get('message')}")
+                raise Exception("获取扫描日志失败！原因：{}！".format(data.get("message")))
+        else:
+            self.logger.error(f"获取日志失败，状态码：{response.status_code}")
+            raise Exception("获取扫描日志失败！请求返回码：{}！".format(response.status_code))
 
     def delete_task(self, taskid):
         """删除任务"""
         response = requests.get(f"{self.base_url}/task/{taskid}/delete")
-        response.raise_for_status()
-        return response.json()
+        if response.status_code == 200:
+            data = response.json()
+            if data.get("success"):
+                return data.get("success")
+            else:
+                self.logger.error(f"删除任务失败: {data.get('message')}")
+                raise Exception("删除任务失败！原因：{}！".format(data.get("message")))
+        else:
+            self.logger.error(f"删除任务失败，状态码：{response.status_code}")
+            raise Exception("删除任务失败！请求返回码：{}！".format(response.status_code))
 
-    def poll_scan_completion(self, taskid, interval=5):
+    def poll_scan_completion(self, taskid, interval=0.1):
         """轮询扫描状态直到完成"""
         while True:
-            status = self.get_scan_status(taskid)
-            if status["status"] in ["terminated", "stopped"]:
-                return status
-            time.sleep(interval)
+            try:
+                status, _ = self.get_scan_status(taskid)
+                if status == "terminated":
+                    return status
+                time.sleep(interval)
+            except Exception as e:
+                raise Exception("轮询扫描状态时发生异常")
 
 
 # 使用示例
@@ -146,6 +223,7 @@ def test():
 
         # 启动扫描
         scan_start = sqlmap.start_scan(taskid, "http://testphp.vulnweb.com/artists.php?artist=1")
+        scan_start = sqlmap.start_scan(taskid, "http://testphp.vulnweb.com/artists.php?artist=1", getDbs=True)
         print(f"Scan started: {scan_start}")
 
         # 轮询扫描状态
@@ -154,11 +232,16 @@ def test():
         print(f"Final scan status: {final_status}")
 
         # 获取扫描结果
-        scan_data = sqlmap.get_scan_data(taskid)
-        print(f"Scan data: {scan_data}")
+        scan_data, _ = sqlmap.get_scan_data(taskid)
+        print(f"Scan data:")
+        for i in scan_data[0]:
+            print(i)
 
-    except requests.exceptions.RequestException as e:
-        print(f"HTTP error occurred: {str(e)}")
+        # 获取扫描日志
+        scan_log = sqlmap.get_scan_log(taskid)
+        print(f"Scan log:")
+        for i in scan_log:
+            print(i)
     except Exception as e:
         print(f"Error: {str(e)}")
     finally:
@@ -166,3 +249,4 @@ def test():
         if taskid:
             sqlmap.delete_task(taskid)
             print(f"Task {taskid} deleted")
+        pass
