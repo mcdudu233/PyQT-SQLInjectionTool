@@ -18,7 +18,6 @@ import sys
 import os
 import platform
 
-
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from controller.ui import *
@@ -50,109 +49,82 @@ class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
 
-        # SET AS GLOBAL WIDGETS
-        # ///////////////////////////////////////////////////////////////
+        # 加载界面UI文件
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         global widgets
         widgets = self.ui
 
-        # USE CUSTOM TITLE BAR | USE AS "False" FOR MAC OR LINUX
-        # ///////////////////////////////////////////////////////////////
+        # 加载自定义主题
+        useCustomTheme = False
+        themeFile = "ui\\themes\\py_dracula_light.qss"
+        if useCustomTheme:
+            UIFunctions.theme(self, themeFile, True)
+            AppFunctions.setThemeHack(self)
+
+        # 使用自定义工具栏 | MAC 和 LINUX 改为 False
         Settings.ENABLE_CUSTOM_TITLE_BAR = True
 
-        # APP NAME
-        # ///////////////////////////////////////////////////////////////
-        title = " "
-        description = "网络安全课程设计"
-        # APPLY TEXTS
+        # 程序名
+        title = "SQL自动注入工具"
+        description = "SQL自动注入工具"
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
 
-        # TOGGLE MENU
-        # ///////////////////////////////////////////////////////////////
-        widgets.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
-
-        # SET UI DEFINITIONS
-        # ///////////////////////////////////////////////////////////////
+        # 设置界面功能绑定
         UIFunctions.uiDefinitions(self)
 
-        # QTableWidget PARAMETERS
-        # ///////////////////////////////////////////////////////////////
-        #widgets.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        # 菜单按钮信号槽绑定
+        widgets.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
+        widgets.btn_home.clicked.connect(self.menuButtonClick)
+        widgets.btn_save.clicked.connect(self.menuButtonClick)
+        widgets.btn_exit.clicked.connect(self.menuButtonClick)
+        widgets.btn_manualInjection.clicked.connect(self.menuButtonClick)
+        widgets.btn_dataCenter.clicked.connect(self.menuButtonClick)
+        widgets.btn_command.clicked.connect(self.menuButtonClick)
+        widgets.btn_logCenter.clicked.connect(self.menuButtonClick)
+        widgets.btn_fileOperation.clicked.connect(self.menuButtonClick)
 
-        # BUTTONS CLICK
-        # ///////////////////////////////////////////////////////////////
-
-        # LEFT MENUS
-        widgets.btn_home.clicked.connect(self.buttonClick)
-        widgets.btn_save.clicked.connect(self.buttonClick)
-        widgets.btn_exit.clicked.connect(self.buttonClick)
-        widgets.btn_manualInjection.clicked.connect(self.buttonClick)
-        widgets.btn_dataCenter.clicked.connect(self.buttonClick)
-        widgets.btn_command.clicked.connect(self.buttonClick)
-        widgets.btn_logCenter.clicked.connect(self.buttonClick)
-        widgets.btn_fileOperation.clicked.connect(self.buttonClick)
-
-
-        # 手动注入界面信号槽设置
-        # 识别注入绑定
-        widgets.btn_startInjection.clicked.connect(startInjection)
-        widgets.btn_exportConfiguration.clicked.connect(exportConfiguration)
-
-        # 自动输入界面信号槽
-        widgets.browse.clicked.connect(startBrowing)
-
-        #数据中心信号槽绑定
-        widgets.btn_getData.clicked.connect(gettingData)
-        widgets.btn_exportData.clicked.connect(exportData)
-        widgets.btn_stopGettingData.clicked.connect(stopGettingData)
-
-        #命令执行
-        widgets.btn_stopCommand.clicked.connect(stopCommand)
-        widgets.btn_startCommand.clicked.connect(startCommand)
-
-
-
-        # EXTRA LEFT BOX
+        # 侧边栏
         def openCloseLeftBox():
             UIFunctions.toggleLeftBox(self, True)
 
         widgets.toggleLeftBox.clicked.connect(openCloseLeftBox)
         widgets.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
 
-        # EXTRA RIGHT BOX
         def openCloseRightBox():
             UIFunctions.toggleRightBox(self, True)
 
         widgets.settingsTopBtn.clicked.connect(openCloseRightBox)
 
-        # SHOW APP
-        # ///////////////////////////////////////////////////////////////
-        self.show()
-
-        # SET CUSTOM THEME
-        # ///////////////////////////////////////////////////////////////
-        useCustomTheme = False
-        themeFile = "themes\py_dracula_light.qss"
-
-        # SET THEME AND HACKS
-        if useCustomTheme:
-            # LOAD AND APPLY STYLE
-            UIFunctions.theme(self, themeFile, True)
-
-            # SET HACKS
-            AppFunctions.setThemeHack(self)
-
-        # SET HOME PAGE AND SELECT MENU
-        # ///////////////////////////////////////////////////////////////
+        # 设置主页
         widgets.stackedWidget.setCurrentWidget(widgets.home)
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
-    # BUTTONS CLICK
-    # Post here your functions for clicked buttons
-    # ///////////////////////////////////////////////////////////////
-    def buttonClick(self):
+        # 绑定其他页面控件
+        widgetsFunctions = UIWidgetsFunctions(self.ui)
+        # 手动注入界面信号槽设置
+        # 识别注入绑定
+        widgets.btn_startInjection.clicked.connect(widgetsFunctions.startInjection)
+        widgets.btn_exportConfiguration.clicked.connect(widgetsFunctions.exportConfiguration)
+
+        # 自动输入界面信号槽
+        widgets.browse.clicked.connect(widgetsFunctions.startBrowing)
+
+        # 数据中心信号槽绑定
+        widgets.btn_getData.clicked.connect(widgetsFunctions.gettingData)
+        widgets.btn_exportData.clicked.connect(widgetsFunctions.exportData)
+        widgets.btn_stopGettingData.clicked.connect(widgetsFunctions.stopGettingData)
+
+        # 命令执行
+        widgets.btn_stopCommand.clicked.connect(widgetsFunctions.stopCommand)
+        widgets.btn_startCommand.clicked.connect(widgetsFunctions.startCommand)
+
+        # 显示界面
+        self.show()
+
+    # 菜单栏被点击
+    def menuButtonClick(self):
         # GET BUTTON CLICKED
         btn = self.sender()
         btnName = btn.objectName()
@@ -205,22 +177,18 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-
-
         if btnName == "btn_save":
             print("Save BTN clicked!")
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
 
-    # RESIZE EVENTS
-    # ///////////////////////////////////////////////////////////////
+    # 尺寸改变事件
     def resizeEvent(self, event):
         # Update Size Grips
         UIFunctions.resize_grips(self)
 
-    # MOUSE CLICK EVENTS
-    # ///////////////////////////////////////////////////////////////
+    # 鼠标事件
     def mousePressEvent(self, event):
         # SET DRAG POS WINDOW
         self.dragPos = event.globalPos()
