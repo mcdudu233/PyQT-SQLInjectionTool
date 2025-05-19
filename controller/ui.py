@@ -26,6 +26,9 @@ class UIWidgetsFunctions:
     ### 显示网页 QWebEngineView webPage ###
     def showWebPage(self, url): pass
 
+    ### 开始检测 ###
+    def startDetection(self):pass
+
     ###########################
     ### 手动注入界面组件调用接口 ###
     ###########################

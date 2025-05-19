@@ -49,12 +49,14 @@ except Exception as e:
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
-
+        self.dragPos = None
         # 加载界面UI文件
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         global widgets
         widgets = self.ui
+
+
 
         # 加载自定义主题
         useCustomTheme = False
@@ -78,7 +80,6 @@ class MainWindow(QMainWindow):
         # 菜单按钮信号槽绑定
         widgets.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
         widgets.btn_home.clicked.connect(self.menuButtonClick)
-        widgets.btn_save.clicked.connect(self.menuButtonClick)
         widgets.btn_exit.clicked.connect(self.menuButtonClick)
         widgets.btn_manualInjection.clicked.connect(self.menuButtonClick)
         widgets.btn_dataCenter.clicked.connect(self.menuButtonClick)
@@ -121,8 +122,10 @@ class MainWindow(QMainWindow):
 
         ### 自动输入界面信号槽 ###
         widgets.browse.clicked.connect(self.widgetsFunctions.startBrowing)
+        widgets.detection.clicked.connect(self.widgetsFunctions.startDetection)
         widgets.url.textChanged.connect(self.widgetsFunctions.setURL)
         widgets.webPage.urlChanged.connect(self.widgetsFunctions.showWebPage)
+
 
 
         ### 数据中心界面信号槽 ###
@@ -208,8 +211,7 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        if btnName == "btn_save":
-            print("Save BTN clicked!")
+
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
@@ -229,6 +231,16 @@ class MainWindow(QMainWindow):
             print('Mouse click: LEFT CLICK')
         if event.buttons() == Qt.RightButton:
             print('Mouse click: RIGHT CLICK')
+
+    def mouseMoveEvent(self, event):
+        if event.buttons() == Qt.LeftButton and self.dragPos:
+            self.move(self.pos() + event.globalPos() - self.dragPos)
+            self.dragPos = event.globalPos()
+            event.accept()
+
+    def mouseReleaseEvent(self, event):
+        self.dragPos = None
+        event.accept()
 
 
 def main():
