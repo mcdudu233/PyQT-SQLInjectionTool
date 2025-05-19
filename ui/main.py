@@ -122,6 +122,7 @@ class MainWindow(QMainWindow):
         ### 自动输入界面信号槽 ###
         widgets.browse.clicked.connect(self.widgetsFunctions.startBrowing)
         widgets.url.textChanged.connect(self.widgetsFunctions.setURL)
+        widgets.webPage.urlChanged.connect(self.widgetsFunctions.showWebPage)
 
 
         ### 数据中心界面信号槽 ###
