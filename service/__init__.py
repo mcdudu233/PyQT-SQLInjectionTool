@@ -1,2 +1,2 @@
-import logger
-import sqlmapapi
+from .logger import *
+from .sqlmapapi import *
