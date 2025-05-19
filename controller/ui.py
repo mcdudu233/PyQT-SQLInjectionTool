@@ -129,7 +129,7 @@ class UIWidgetsFunctions:
     ###########################
     ### 日志中心界面组件调用接口 ###
     ###########################
-    ### 日志展示 textBrowser ###
+    ### 日志展示 plaintext log ###
     def showLog(self): pass
 
     ### 数据包发包记录 tableWidget packetSendingRecord ###
