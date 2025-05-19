@@ -97,7 +97,7 @@ class MainWindow(QMainWindow):
         widgets.settingsTopBtn.clicked.connect(openCloseRightBox)
 
         # 设置主页
-        widgets.stackedWidget.setCurrentWidget(widgets.home)
+        widgets.stackedWidget.setCurrentWidget(widgets.autoInjection)
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
         # 绑定其他页面控件
