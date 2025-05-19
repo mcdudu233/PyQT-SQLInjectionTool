@@ -1,91 +1,160 @@
+import subprocess
+from threading import Thread
+
 import requests
 import time
 
-# base_url1 = "http://localhost:8775"
-BASE_URL = "http://127.0.0.1:8775/"
+from service import logger
+
+# SQLMap 服务器默认配置
+RESTAPI_DEFAULT_ADAPTER = "wsgiref"
+RESTAPI_DEFAULT_ADDRESS = "127.0.0.1"
+RESTAPI_DEFAULT_PORT = 8775
 
 
-def get_version():
-    """获取服务器版本"""
-    response = requests.get(f"{BASE_URL}/version")
-    response.raise_for_status()
-    return response.json()
+class SQLMapServer:
+    def __init__(self, address=None, port=None, adapter=None):
+        self.logger = logger.setup("SQLMapServer")
+        self.address = RESTAPI_DEFAULT_ADDRESS if address is None else address
+        self.port = RESTAPI_DEFAULT_PORT if port is None else port
+        self.adapter = RESTAPI_DEFAULT_ADAPTER if adapter is None else adapter
+        self.process = None
+
+        self.start()
+
+    def __delete__(self, instance):
+        self.stop()
+
+    def _read_stream(self, stream, logger_method):
+        """实时读取流并记录日志"""
+        for line in iter(stream.readline, ''):
+            if line.strip():
+                logger_method(line.strip())
+
+    def start(self):
+        if self.process:
+            self.stop()
+
+        cmd = [
+            "python",
+            "sqlmap/sqlmapapi.py",
+            "-s",
+            "-H", self.address,
+            "-p", str(self.port)
+        ]
+        self.process = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            universal_newlines=True
+        )
+
+        # 启动线程监控输出
+        Thread(target=self._read_stream, args=(self.process.stdout, self.logger.info)).start()
+        Thread(target=self._read_stream, args=(self.process.stderr, self.logger.error)).start()
+
+        self.logger.info(f"SQLMap API server started on {self.address}:{self.port}")
+
+    def stop(self):
+        if self.process:
+            self.process.terminate()
+            self.process = None
+            self.logger.info("SQLMap API server stopped")
 
 
-def create_task():
-    """创建新任务"""
-    response = requests.get(f"{BASE_URL}/task/new")
-    response.raise_for_status()
-    data = response.json()
-    if data.get("success"):
-        return data["taskid"]
-    raise Exception("Failed to create task")
+class SQLMap:
+    def __init__(self):
+        self.logger = logger.setup("SQLMapAPI")
+        self.server = SQLMapServer()
+        self.base_url = f"http://{self.server.address}:{self.server.port}/"
 
+        self.logger.info("SQLMap API initialized at %s", self.base_url)
 
-def start_scan(taskid, url):
-    """启动扫描"""
-    response = requests.post(
-        f"{BASE_URL}/scan/{taskid}/start",
-        json={"url": url},
-        headers={"Content-Type": "application/json"}
-    )
-    response.raise_for_status()
-    return response.json()
+    def get_version(self):
+        """获取服务器版本"""
+        response = requests.get(f"{self.base_url}/version")
+        if response.status_code == 200:
+            data = response.json()
+            if data.get("success"):
+                return data.get("version")
+            else:
+                self.logger.error(f"Failed to get version: {data.get('message')}")
+                return None
+        else:
+            self.logger.error(f"Failed to get version: {response.status_code}")
+            return None
 
+    def create_task(self):
+        """创建新任务"""
+        response = requests.get(f"{self.base_url}/task/new")
+        response.raise_for_status()
+        data = response.json()
+        if data.get("success"):
+            return data["taskid"]
+        raise Exception("Failed to create task")
 
-def get_scan_status(taskid):
-    """获取扫描状态"""
-    response = requests.get(f"{BASE_URL}/scan/{taskid}/status")
-    response.raise_for_status()
-    return response.json()
+    def start_scan(self, taskid, url):
+        """启动扫描"""
+        response = requests.post(
+            f"{self.base_url}/scan/{taskid}/start",
+            json={"url": url},
+            headers={"Content-Type": "application/json"}
+        )
+        response.raise_for_status()
+        return response.json()
 
+    def get_scan_status(self, taskid):
+        """获取扫描状态"""
+        response = requests.get(f"{self.base_url}/scan/{taskid}/status")
+        response.raise_for_status()
+        return response.json()
 
-def get_scan_data(taskid):
-    """获取扫描结果"""
-    response = requests.get(f"{BASE_URL}/scan/{taskid}/data")
-    response.raise_for_status()
-    return response.json()
+    def get_scan_data(self, taskid):
+        """获取扫描结果"""
+        response = requests.get(f"{self.base_url}/scan/{taskid}/data")
+        response.raise_for_status()
+        return response.json()
 
+    def delete_task(self, taskid):
+        """删除任务"""
+        response = requests.get(f"{self.base_url}/task/{taskid}/delete")
+        response.raise_for_status()
+        return response.json()
 
-def delete_task(taskid):
-    """删除任务"""
-    response = requests.get(f"{BASE_URL}/task/{taskid}/delete")
-    response.raise_for_status()
-    return response.json()
-
-
-def poll_scan_completion(taskid, interval=5):
-    """轮询扫描状态直到完成"""
-    while True:
-        status = get_scan_status(taskid)
-        if status["status"] in ["terminated", "stopped"]:
-            return status
-        time.sleep(interval)
+    def poll_scan_completion(self, taskid, interval=5):
+        """轮询扫描状态直到完成"""
+        while True:
+            status = self.get_scan_status(taskid)
+            if status["status"] in ["terminated", "stopped"]:
+                return status
+            time.sleep(interval)
 
 
 # 使用示例
-if __name__ == "__main__":
+def test():
     taskid = None
     try:
+        sqlmap = SQLMap()
+
         # 获取版本信息
-        version_info = get_version()
-        print(f"Server version: {version_info['version']}")
+        version_info = sqlmap.get_version()
+        print(f"Server version: {version_info}")
 
         # 创建新任务
-        taskid = create_task()
+        taskid = sqlmap.create_task()
         print(f"Created new task: {taskid}")
 
         # 启动扫描
-        scan_start = start_scan(taskid, "http://testphp.vulnweb.com/artists.php?artist=1")
+        scan_start = sqlmap.start_scan(taskid, "http://testphp.vulnweb.com/artists.php?artist=1")
         print(f"Scan started: {scan_start}")
 
         # 轮询扫描状态
         print("Polling scan status...")
-        final_status = poll_scan_completion(taskid)
+        final_status = sqlmap.poll_scan_completion(taskid)
         print(f"Final scan status: {final_status}")
 
         # 获取扫描结果
-        scan_data = get_scan_data(taskid)
+        scan_data = sqlmap.get_scan_data(taskid)
         print(f"Scan data: {scan_data}")
 
     except requests.exceptions.RequestException as e:
@@ -95,5 +164,5 @@ if __name__ == "__main__":
     finally:
         # 清理任务
         if taskid:
-            delete_task(taskid)
+            sqlmap.delete_task(taskid)
             print(f"Task {taskid} deleted")
