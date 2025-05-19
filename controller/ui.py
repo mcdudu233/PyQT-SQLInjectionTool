@@ -1,9 +1,30 @@
+from PySide6.QtCore import QUrl
+
 from ui.modules import Ui_MainWindow
 
 
 class UIWidgetsFunctions:
     def __init__(self, ui: Ui_MainWindow):
         self.ui = ui
+
+    ###########################
+    ### 自动注入界面组件调用接口 ###
+    ###########################
+    # URL设置 lineedit url
+    def setURL(self): pass
+
+    # 启动浏览 button browse
+    def startBrowing(self):
+        print("test")
+        url = self.ui.lineEdit_3.text()
+        if not url.startswith(("http://", "https://")):
+            url = "http://" + url
+        self.ui.lineEdit_3.setText(url)
+
+        self.ui.webPage.setUrl(QUrl(url))
+
+    # 显示网页 QWebEngineView webPage
+    def showWebPage(self, url): pass
 
     ###########################
     ### 手动注入界面组件调用接口 ###
@@ -40,18 +61,6 @@ class UIWidgetsFunctions:
 
     # 到处配置 button btn_exportConfiguration
     def exportConfiguration(self): pass
-
-    ###########################
-    ### 自动注入界面组件调用接口 ###
-    ###########################
-    # URL设置 lineedit url
-    def setURL(self): pass
-
-    # 启动浏览 button browse
-    def startBrowing(self): pass
-
-    # 显示网页 QWebEngineView webPage
-    def showWebPage(self, url): pass
 
     # 文件操作
     # 路径名设置 lineedit path

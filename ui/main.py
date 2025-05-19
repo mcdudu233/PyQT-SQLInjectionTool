@@ -102,23 +102,23 @@ class MainWindow(QMainWindow):
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
         # 绑定其他页面控件
-        widgetsFunctions = UIWidgetsFunctions(self.ui)
+        self.widgetsFunctions = UIWidgetsFunctions(self.ui)
 
         ### 手动注入界面信号槽 ###
-        widgets.btn_startInjection.clicked.connect(widgetsFunctions.startInjection)
-        widgets.btn_exportConfiguration.clicked.connect(widgetsFunctions.exportConfiguration)
+        widgets.btn_startInjection.clicked.connect(self.widgetsFunctions.startInjection)
+        widgets.btn_exportConfiguration.clicked.connect(self.widgetsFunctions.exportConfiguration)
 
         ### 自动输入界面信号槽 ###
-        widgets.browse.clicked.connect(widgetsFunctions.startBrowing)
+        widgets.browse.clicked.connect(self.widgetsFunctions.startBrowing)
 
         ### 数据中心界面信号槽 ###
-        widgets.btn_getData.clicked.connect(widgetsFunctions.gettingData)
-        widgets.btn_exportData.clicked.connect(widgetsFunctions.exportData)
-        widgets.btn_stopGettingData.clicked.connect(widgetsFunctions.stopGettingData)
+        widgets.btn_getData.clicked.connect(self.widgetsFunctions.gettingData)
+        widgets.btn_exportData.clicked.connect(self.widgetsFunctions.exportData)
+        widgets.btn_stopGettingData.clicked.connect(self.widgetsFunctions.stopGettingData)
 
         ### 命令执行界面信号槽 ###
-        widgets.btn_stopCommand.clicked.connect(widgetsFunctions.stopCommand)
-        widgets.btn_startCommand.clicked.connect(widgetsFunctions.startCommand)
+        widgets.btn_stopCommand.clicked.connect(self.widgetsFunctions.stopCommand)
+        widgets.btn_startCommand.clicked.connect(self.widgetsFunctions.startCommand)
 
         # 显示界面
         self.show()
