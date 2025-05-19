@@ -96,6 +96,9 @@ class UIWidgetsFunctions:
     # 停止获取数据 button stopGettingData
     def stopGettingData(self): pass
 
+    #编码类型
+    def dataCodingType(self): pass
+
     ###########################
     ### 命令执行界面组件调用接口 ###
     ###########################
@@ -110,6 +113,11 @@ class UIWidgetsFunctions:
 
     # 命令展示 plainTextview commandResults
     def showCommmad(self): pass  #
+
+    #是否选择回显结果 checkbox echoResults
+    def ifEchoResults(self): pass
+
+
 
     ###########################
     ### 日志中心界面组件调用接口 ###
