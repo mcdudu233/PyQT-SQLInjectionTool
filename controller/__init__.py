@@ -1,1 +1,2 @@
-from .webparser import *
+import ui
+import webparser
