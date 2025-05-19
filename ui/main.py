@@ -103,20 +103,20 @@ class MainWindow(QMainWindow):
 
         # 绑定其他页面控件
         widgetsFunctions = UIWidgetsFunctions(self.ui)
-        # 手动注入界面信号槽设置
-        # 识别注入绑定
+
+        ### 手动注入界面信号槽 ###
         widgets.btn_startInjection.clicked.connect(widgetsFunctions.startInjection)
         widgets.btn_exportConfiguration.clicked.connect(widgetsFunctions.exportConfiguration)
 
-        # 自动输入界面信号槽
+        ### 自动输入界面信号槽 ###
         widgets.browse.clicked.connect(widgetsFunctions.startBrowing)
 
-        # 数据中心信号槽绑定
+        ### 数据中心界面信号槽 ###
         widgets.btn_getData.clicked.connect(widgetsFunctions.gettingData)
         widgets.btn_exportData.clicked.connect(widgetsFunctions.exportData)
         widgets.btn_stopGettingData.clicked.connect(widgetsFunctions.stopGettingData)
 
-        # 命令执行
+        ### 命令执行界面信号槽 ###
         widgets.btn_stopCommand.clicked.connect(widgetsFunctions.stopCommand)
         widgets.btn_startCommand.clicked.connect(widgetsFunctions.startCommand)
 

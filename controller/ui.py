@@ -5,7 +5,9 @@ class UIWidgetsFunctions:
     def __init__(self, ui: Ui_MainWindow):
         self.ui = ui
 
-    # 手动注入界面组件调用接口（注释后面为组件类型+组件名）
+    ###########################
+    ### 手动注入界面组件调用接口 ###
+    ###########################
     # 地址设置 lineedit address
     def setAddress(self): pass
 
@@ -39,7 +41,9 @@ class UIWidgetsFunctions:
     # 到处配置 button btn_exportConfiguration
     def exportConfiguration(self): pass
 
-    # 自动注入界面组件调用接口
+    ###########################
+    ### 自动注入界面组件调用接口 ###
+    ###########################
     # URL设置 lineedit url
     def setURL(self): pass
 
@@ -68,7 +72,9 @@ class UIWidgetsFunctions:
     # 显示操作结果
     def showFIleOperation(self): pass
 
-    # 数据中心组件调用接口
+    ###########################
+    ### 数据中心组件调用接口 ###
+    ###########################
     # 数据库信息展示 plaintextview databaseInformation
     def showDatabaseInformation(self): pass
 
@@ -90,7 +96,9 @@ class UIWidgetsFunctions:
     # 停止获取数据 button stopGettingData
     def stopGettingData(self): pass
 
-    # 命令执行界面组件调用接口
+    ###########################
+    ### 命令执行界面组件调用接口 ###
+    ###########################
     # 命令设置 lineedit commandInput
     def setCommand(self): pass
 
@@ -103,7 +111,9 @@ class UIWidgetsFunctions:
     # 命令展示 plainTextview commandResults
     def showCommmad(self): pass  #
 
-    # 日志中心界面组件调用接口
+    ###########################
+    ### 日志中心界面组件调用接口 ###
+    ###########################
     # 日志展示 textBrowser
     def showLog(self): pass
 
