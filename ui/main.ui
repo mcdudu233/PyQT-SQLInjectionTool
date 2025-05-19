@@ -8,7 +8,7 @@
     <x>0</x>
     <y>0</y>
     <width>940</width>
-    <height>581</height>
+    <height>573</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -1697,57 +1697,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="bottomMargin">
                  <number>0</number>
                 </property>
-                <item>
-                 <widget class="QLabel" name="titleRightInfo">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>10</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="frameShape">
-                   <enum>QFrame::Shape::NoFrame</enum>
-                  </property>
-                  <property name="lineWidth">
-                   <number>6</number>
-                  </property>
-                  <property name="midLineWidth">
-                   <number>5</number>
-                  </property>
-                  <property name="text">
-                   <string>网络安全课程设计</string>
-                  </property>
-                  <property name="textFormat">
-                   <enum>Qt::TextFormat::PlainText</enum>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-                  </property>
-                  <property name="margin">
-                   <number>2</number>
-                  </property>
-                  <property name="indent">
-                   <number>4</number>
-                  </property>
-                 </widget>
-                </item>
                </layout>
               </widget>
              </item>
@@ -2017,7 +1966,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>3</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2149,7 +2098,7 @@ background-repeat: no-repeat;</string>
                          </widget>
                         </item>
                         <item row="1" column="0">
-                         <widget class="QLineEdit" name="address_2">
+                         <widget class="QLineEdit" name="thread">
                           <property name="minimumSize">
                            <size>
                             <width>0</width>
@@ -2175,7 +2124,7 @@ background-repeat: no-repeat;</string>
                          </widget>
                         </item>
                         <item row="1" column="5">
-                         <widget class="QCheckBox" name="checkBox_3">
+                         <widget class="QCheckBox" name="ssl">
                           <property name="autoFillBackground">
                            <bool>false</bool>
                           </property>
@@ -2352,6 +2301,63 @@ background-repeat: no-repeat;</string>
                         </item>
                        </layout>
                       </widget>
+                      <widget class="QLabel" name="titleRightInfo">
+                       <property name="geometry">
+                        <rect>
+                         <x>-190</x>
+                         <y>0</y>
+                         <width>721</width>
+                         <height>45</height>
+                        </rect>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Segoe UI</family>
+                         <pointsize>10</pointsize>
+                         <italic>false</italic>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::NoFrame</enum>
+                       </property>
+                       <property name="lineWidth">
+                        <number>6</number>
+                       </property>
+                       <property name="midLineWidth">
+                        <number>5</number>
+                       </property>
+                       <property name="text">
+                        <string>网络安全课程设计</string>
+                       </property>
+                       <property name="textFormat">
+                        <enum>Qt::TextFormat::PlainText</enum>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>true</bool>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                       </property>
+                       <property name="margin">
+                        <number>2</number>
+                       </property>
+                       <property name="indent">
+                        <number>4</number>
+                       </property>
+                      </widget>
                      </widget>
                      <widget class="QWidget" name="dataCenter">
                       <widget class="QLabel" name="label_7">
@@ -2423,7 +2429,7 @@ background-repeat: no-repeat;</string>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_7">
                         <item row="0" column="0">
-                         <widget class="QLineEdit" name="number">
+                         <widget class="QLineEdit" name="beginning">
                           <property name="minimumSize">
                            <size>
                             <width>0</width>
@@ -2442,7 +2448,7 @@ background-repeat: no-repeat;</string>
                          </widget>
                         </item>
                         <item row="0" column="1" colspan="2">
-                         <widget class="QLineEdit" name="address_4">
+                         <widget class="QLineEdit" name="number">
                           <property name="minimumSize">
                            <size>
                             <width>0</width>
@@ -2648,7 +2654,7 @@ background-repeat: no-repeat;</string>
                         <iconset theme="QIcon::ThemeIcon::InputMouse"/>
                        </property>
                       </widget>
-                      <widget class="QLineEdit" name="lineEdit_3">
+                      <widget class="QLineEdit" name="url">
                        <property name="geometry">
                         <rect>
                          <x>20</x>
@@ -2795,7 +2801,7 @@ background-repeat: no-repeat;</string>
                          </widget>
                         </item>
                         <item row="0" column="2">
-                         <widget class="QComboBox" name="fileOperationType_2">
+                         <widget class="QComboBox" name="fileOperationCoding">
                           <property name="font">
                            <font>
                             <family>Segoe UI</family>
@@ -3054,7 +3060,7 @@ background-repeat: no-repeat;</string>
                          </widget>
                         </item>
                         <item row="0" column="1">
-                         <widget class="QCheckBox" name="checkBox_4">
+                         <widget class="QCheckBox" name="echoResults">
                           <property name="autoFillBackground">
                            <bool>false</bool>
                           </property>

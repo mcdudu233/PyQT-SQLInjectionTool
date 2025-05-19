@@ -18,8 +18,6 @@ import sys
 import os
 import platform
 
-from PySide6.QtWebEngineCore import QWebEngineSettings
-
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from controller.ui import *
@@ -104,14 +102,25 @@ class MainWindow(QMainWindow):
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
         # 绑定其他页面控件
-        self.widgetsFunctions = UIWidgetsFunctions(self, self.ui)
+        self.widgetsFunctions = UIWidgetsFunctions(self.ui)
 
         ### 手动注入界面信号槽 ###
         widgets.btn_startInjection.clicked.connect(self.widgetsFunctions.startInjection)
         widgets.btn_exportConfiguration.clicked.connect(self.widgetsFunctions.exportConfiguration)
+        widgets.address.textChanged.connect(self.widgetsFunctions.setAddress)
+        widgets.overtime.textChanged.connect(self.widgetsFunctions.setOvertime)
+        widgets.injectionType.currentIndexChanged.connect(self.widgetsFunctions.setStyleSheetInjectionType)
+        widgets.thread.textChanged.connect(self.widgetsFunctions.setThread)
+        widgets.portID.textChanged.connect(self.widgetsFunctions.setPortID)
+        widgets.ssl.stateChanged.connect(self.widgetsFunctions.ifSSL)
+        widgets.coding.currentIndexChanged.connect(self.widgetsFunctions.setCoding)
+        widgets.databaseType.currentIndexChanged.connect(self.widgetsFunctions.setDatabase)
+        widgets.retry.textChanged.connect(self.widgetsFunctions.setRetryTimes)
+
 
         ### 自动输入界面信号槽 ###
         widgets.browse.clicked.connect(self.widgetsFunctions.startBrowing)
+        widgets.url.textChanged.connect(self.widgetsFunctions.setURL)
         widgets.webPage.loadFinished.connect(self.widgetsFunctions.finishWebPage)
         self.ui.webPage.setZoomFactor(0.5)
 
@@ -119,10 +128,27 @@ class MainWindow(QMainWindow):
         widgets.btn_getData.clicked.connect(self.widgetsFunctions.gettingData)
         widgets.btn_exportData.clicked.connect(self.widgetsFunctions.exportData)
         widgets.btn_stopGettingData.clicked.connect(self.widgetsFunctions.stopGettingData)
+        widgets.databaseInformation.textChanged.connect(self.widgetsFunctions.showDatabaseInformation)
+        widgets.getData.textChanged.connect(self.widgetsFunctions.showGettingData)
+        widgets.beginning.textChanged.connect(self.widgetsFunctions.setBeginnig)
+        widgets.number.textChanged.connect(self.widgetsFunctions.setNumnber)
+        widgets.coding.currentIndexChanged.connect(self.widgetsFunctions.dataCodingType)
 
         ### 命令执行界面信号槽 ###
         widgets.btn_stopCommand.clicked.connect(self.widgetsFunctions.stopCommand)
         widgets.btn_startCommand.clicked.connect(self.widgetsFunctions.startCommand)
+        widgets.commandInput.textChanged.connect(self.widgetsFunctions.setCommand)
+        widgets.echoResults.stateChanged.connect(self.widgetsFunctions.ifEchoResults)
+
+        ### 日志中心界面信号槽 ###
+        widgets.log.textChanged.connect(self.widgetsFunctions.showLog)
+
+        ### 文件操作界面信号槽 ###
+        widgets.btn_stratFileOperation.clicked.connect(self.widgetsFunctions.startFileOperation)
+        widgets.btn_stopFileOperation.clicked.connect(self.widgetsFunctions.stopFileOperation)
+        widgets.path.textChanged.connect(self.widgetsFunctions.setPath)
+        widgets.fileOperationCoding.currentIndexChanged.connect(self.widgetsFunctions.setCoding)
+        widgets.fileOperationType.currentIndexChanged.connect(self.widgetsFunctions.setFileOperation)
 
         # 显示界面
         self.show()
