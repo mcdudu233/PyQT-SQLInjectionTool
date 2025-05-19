@@ -102,7 +102,7 @@ class MainWindow(QMainWindow):
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
         # 绑定其他页面控件
-        self.widgetsFunctions = UIWidgetsFunctions(self.ui)
+        self.widgetsFunctions = UIWidgetsFunctions(self, self.ui)
 
         ### 手动注入界面信号槽 ###
         widgets.btn_startInjection.clicked.connect(self.widgetsFunctions.startInjection)
@@ -116,7 +116,6 @@ class MainWindow(QMainWindow):
         widgets.coding.currentIndexChanged.connect(self.widgetsFunctions.setCoding)
         widgets.databaseType.currentIndexChanged.connect(self.widgetsFunctions.setDatabase)
         widgets.retry.textChanged.connect(self.widgetsFunctions.setRetryTimes)
-
 
         ### 自动输入界面信号槽 ###
         widgets.browse.clicked.connect(self.widgetsFunctions.startBrowing)

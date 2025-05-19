@@ -16,12 +16,13 @@ class UIWidgetsFunctions:
 
     ### 启动浏览 button browse ###
     def startBrowing(self):
-        url = self.ui.lineEdit_3.text()
+        url = self.ui.url.text()
         if not url.startswith(("http://", "https://")):
             url = "http://" + url
-        self.ui.lineEdit_3.setText(url)
+        self.ui.url.setText(url)
 
         self.ui.webPage.setUrl(QUrl(url))
+        self.ui.webPage.repaint()
 
     ### 网页加载完成 QWebEngineView webPage ###
     def finishWebPage(self, success):
