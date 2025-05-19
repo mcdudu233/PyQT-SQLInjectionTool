@@ -7,6 +7,7 @@ import time
 import random
 from threading import Thread
 
+
 class WebSpider:
     def __init__(self, config: Dict):
         """
@@ -72,7 +73,8 @@ class WebSpider:
                         no_param_url = self._remove_url_params(normalized_url)
 
                         # 跳过已访问过的URL
-                        if normalized_url not in self.visited_urls and len(self.all_urls) < self.config['max_spider_count']:
+                        if normalized_url not in self.visited_urls and len(self.all_urls) < self.config[
+                            'max_spider_count']:
                             self.visited_urls.add(normalized_url)
                             self.all_urls.add(normalized_url)
                             self.all_no_param_urls.add(no_param_url)
@@ -259,7 +261,7 @@ class WebSpider:
         return urllib.parse.urljoin(base_url, relative_url)
 
 
-if __name__ == "__main__":
+def test():
     # 配置参数
     config = {
         'max_spider_count': 50,

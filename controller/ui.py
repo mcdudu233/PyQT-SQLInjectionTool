@@ -4,7 +4,8 @@ from ui.modules import Ui_MainWindow
 
 
 class UIWidgetsFunctions:
-    def __init__(self, ui: Ui_MainWindow):
+    def __init__(self, main, ui: Ui_MainWindow):
+        self.main = main
         self.ui = ui
 
     ###########################
@@ -15,16 +16,18 @@ class UIWidgetsFunctions:
 
     ### 启动浏览 button browse ###
     def startBrowing(self):
-        print("test")
-        url = self.ui.lineEdit_3.text()
+        url = self.ui.url.text()
         if not url.startswith(("http://", "https://")):
             url = "http://" + url
-        self.ui.lineEdit_3.setText(url)
+        self.ui.url.setText(url)
 
         self.ui.webPage.setUrl(QUrl(url))
+        self.ui.webPage.repaint()
 
-    ### 显示网页 QWebEngineView webPage ###
-    def showWebPage(self, url): pass
+    ### 网页加载完成 QWebEngineView webPage ###
+    def finishWebPage(self, success):
+        # 强制刷新
+        self.ui.webPage.repaint()
 
     ### 开始检测 ###
     def startDetection(self):pass

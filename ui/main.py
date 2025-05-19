@@ -17,7 +17,6 @@ import ctypes
 import sys
 import os
 import platform
-from os import startfile
 
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -104,7 +103,7 @@ class MainWindow(QMainWindow):
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
         # 绑定其他页面控件
-        self.widgetsFunctions = UIWidgetsFunctions(self.ui)
+        self.widgetsFunctions = UIWidgetsFunctions(self, self.ui)
 
         ### 手动注入界面信号槽 ###
         widgets.btn_startInjection.clicked.connect(self.widgetsFunctions.startInjection)
@@ -119,13 +118,12 @@ class MainWindow(QMainWindow):
         widgets.databaseType.currentIndexChanged.connect(self.widgetsFunctions.setDatabase)
         widgets.retry.textChanged.connect(self.widgetsFunctions.setRetryTimes)
 
-
         ### 自动输入界面信号槽 ###
         widgets.browse.clicked.connect(self.widgetsFunctions.startBrowing)
         widgets.detection.clicked.connect(self.widgetsFunctions.startDetection)
         widgets.url.textChanged.connect(self.widgetsFunctions.setURL)
-        widgets.webPage.urlChanged.connect(self.widgetsFunctions.showWebPage)
-
+        widgets.webPage.loadFinished.connect(self.widgetsFunctions.finishWebPage)
+        self.ui.webPage.setZoomFactor(0.5)
 
 
         ### 数据中心界面信号槽 ###
