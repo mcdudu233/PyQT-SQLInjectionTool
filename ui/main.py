@@ -144,8 +144,8 @@ class MainWindow(QMainWindow):
         widgets.log.textChanged.connect(self.widgetsFunctions.showLog)
 
         ### 文件操作界面信号槽 ###
-        widgets.btn_stratFileOperation.clicked.connect(self.widgetsFunctions.startFileOperation())
-        widgets.btn_stopFileOperation.clicked.connect(self.widgetsFunctions.stopFileOperation())
+        widgets.btn_stratFileOperation.clicked.connect(self.widgetsFunctions.startFileOperation)
+        widgets.btn_stopFileOperation.clicked.connect(self.widgetsFunctions.stopFileOperation)
         widgets.path.textChanged.connect(self.widgetsFunctions.setPath)
         widgets.fileOperationCoding.currentIndexChanged.connect(self.widgetsFunctions.setCoding)
         widgets.fileOperationType.currentIndexChanged.connect(self.widgetsFunctions.setFileOperation)
