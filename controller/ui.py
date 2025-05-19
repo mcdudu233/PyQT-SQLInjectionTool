@@ -66,8 +66,8 @@ class UIWidgetsFunctions:
     ### 路径名设置 lineedit path ###
     def setPath(self): pass
 
-    ### 文件编码设置 comboBox coding ###
-    def setCoding(self): pass
+    ### 文件编码设置 comboBox fileOperationCoding ###
+    def setFileOprationCoding(self): pass
 
     ### 文件操作设置 conmobox fileOpreation ###
     def setFileOperation(self): pass

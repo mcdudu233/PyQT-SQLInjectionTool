@@ -17,6 +17,7 @@ import ctypes
 import sys
 import os
 import platform
+from os import startfile
 
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -116,13 +117,12 @@ class MainWindow(QMainWindow):
         widgets.coding.currentIndexChanged.connect(self.widgetsFunctions.setCoding)
         widgets.databaseType.currentIndexChanged.connect(self.widgetsFunctions.setDatabase)
         widgets.retry.textChanged.connect(self.widgetsFunctions.setRetryTimes)
-        widgets.path.textChanged.connect(self.widgetsFunctions.setPath)
-        widgets.coding.currentIndexChanged.connect(self.widgetsFunctions.setCoding)
-        widgets.fileOperationType.currentIndexChanged.connect(self.widgetsFunctions.setFileOperation)
+
 
         ### 自动输入界面信号槽 ###
         widgets.browse.clicked.connect(self.widgetsFunctions.startBrowing)
         widgets.url.textChanged.connect(self.widgetsFunctions.setURL)
+
 
         ### 数据中心界面信号槽 ###
         widgets.btn_getData.clicked.connect(self.widgetsFunctions.gettingData)
@@ -142,6 +142,13 @@ class MainWindow(QMainWindow):
 
         ### 日志中心界面信号槽 ###
         widgets.log.textChanged.connect(self.widgetsFunctions.showLog)
+
+        ### 文件操作界面信号槽 ###
+        widgets.btn_stratFileOperation.clicked.connect(self.widgetsFunctions.startFileOperation())
+        widgets.btn_stopFileOperation.clicked.connect(self.widgetsFunctions.stopFileOperation())
+        widgets.path.textChanged.connect(self.widgetsFunctions.setPath)
+        widgets.fileOperationCoding.currentIndexChanged.connect(self.widgetsFunctions.setCoding)
+        widgets.fileOperationType.currentIndexChanged.connect(self.widgetsFunctions.setFileOperation)
 
         # 显示界面
         self.show()
