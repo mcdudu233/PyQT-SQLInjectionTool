@@ -1966,7 +1966,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>3</number>
+                      <number>4</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2801,7 +2801,7 @@ background-repeat: no-repeat;</string>
                          </widget>
                         </item>
                         <item row="0" column="2">
-                         <widget class="QComboBox" name="fileOperationType_2">
+                         <widget class="QComboBox" name="fileOperationCoding">
                           <property name="font">
                            <font>
                             <family>Segoe UI</family>
