@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from typing import List, Optional, Dict
 
 # 测试的URL
-url = 'https://demo.testfire.net/login.jsp'
+url = 'https://passport.jd.com/uc/login'
 
 # 创建一个会话对象来保持会话状态
 session = requests.Session()
@@ -22,7 +22,7 @@ if response.status_code == 200:
 
     # 查找网页中负责登录的部分，可能是form，也可能是其他元素
     login_form = soup.find('form') or soup.find('div', {'id': 'login'})  # 处理不同结构
-
+    print(login_form)
     if login_form:
         print("找到登录表单或登录元素")
 
@@ -63,7 +63,7 @@ if response.status_code == 200:
         if login_response.status_code == 200:
             print("登录成功！")
             # 登录成功后，你可以继续访问需要登录才能查看的页面
-            dashboard_url = 'https://demo.testfire.net/dashboard.jsp'  # 假设这是登录后的页面
+            dashboard_url = 'https://passport.jd.com/uc/login'  # 假设这是登录后的页面
             dashboard_response = session.get(dashboard_url)
             if dashboard_response.status_code == 200:
                 print("成功访问登录后的页面")
