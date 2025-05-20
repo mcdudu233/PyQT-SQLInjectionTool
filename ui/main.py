@@ -55,8 +55,6 @@ class MainWindow(QMainWindow):
         global widgets
         widgets = self.ui
 
-
-
         # 加载自定义主题
         useCustomTheme = False
         themeFile = "ui\\themes\\py_dracula_light.qss"
@@ -120,7 +118,6 @@ class MainWindow(QMainWindow):
         widgets.url.textChanged.connect(self.widgetsFunctions.setURL)
         widgets.webPage.loadFinished.connect(self.widgetsFunctions.finishWebPage)
         self.ui.webPage.setZoomFactor(0.5)
-
 
         ### 数据中心界面信号槽 ###
         widgets.btn_getData.clicked.connect(self.widgetsFunctions.gettingData)
@@ -204,8 +201,6 @@ class MainWindow(QMainWindow):
             widgets.stackedWidget.setCurrentWidget(widgets.fileOperation)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
-
-
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')

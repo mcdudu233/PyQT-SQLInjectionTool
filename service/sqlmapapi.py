@@ -1,9 +1,10 @@
 import subprocess
-from shutil import Error
 from threading import Thread
+from time import sleep
 
 import requests
-import time
+
+from PySide6.QtWidgets import QApplication
 
 from service import logger
 
@@ -195,14 +196,19 @@ class SQLMap:
             self.logger.error(f"删除任务失败，状态码：{response.status_code}")
             raise Exception("删除任务失败！请求返回码：{}！".format(response.status_code))
 
-    def poll_scan_completion(self, taskid, interval=0.1):
+    def poll_scan_completion(self, taskid, interval=800):
         """轮询扫描状态直到完成"""
+        i = 0
         while True:
             try:
-                status, _ = self.get_scan_status(taskid)
-                if status == "terminated":
-                    return status
-                time.sleep(interval)
+                i += 1
+                if i == interval:
+                    i = 0
+                    status, _ = self.get_scan_status(taskid)
+                    if status == "terminated":
+                        return status
+                QApplication.processEvents()
+                sleep(0.001)
             except Exception as e:
                 raise Exception("轮询扫描状态时发生异常")
 
