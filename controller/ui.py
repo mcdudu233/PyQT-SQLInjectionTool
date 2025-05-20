@@ -49,6 +49,7 @@ class UIWidgetsFunctions:
         # SQLMAP API
         self.sqlmap = SQLMap()
         self.current_task_id = None
+        self.current_kwargs = None
 
     ###########################
     ### 自动注入界面组件调用接口 ###
@@ -171,43 +172,66 @@ class UIWidgetsFunctions:
 
             # 注入方式
             if self.ui.injectionType.currentText() != "自动检测":
-                # B：Boolean-based blind（布尔盲注）
-                # E：Error-based（报错注入）
-                # U：Union query-based（联合注入）
-                # S：Stacked queries（堆叠注入）
-                # T：Time-based blind（时间盲注）
-                # Q：Inline queries（内联注入）
+                # B：Boolean-based blind（布尔盲注） 1
+                # E：Error-based（报错注入） 2
+                # Q：Inline queries（内联注入） 3
+                # S：Stacked queries（堆叠注入） 4
+                # T：Time-based blind（时间盲注） 5
+                # U：Union query-based（联合注入） 6
                 key = None
                 tmp = self.ui.injectionType.currentText()
                 if tmp == "布尔盲注":
                     key = "B"
                 elif tmp == "报错注入":
                     key = "E"
-                elif tmp == "联合注入":
-                    key = "U"
+                elif tmp == "内联注入":
+                    key = "Q"
                 elif tmp == "堆叠注入":
                     key = "S"
                 elif tmp == "时间盲注":
                     key = "T"
-                elif tmp == "内联注入":
-                    key = "Q"
+                elif tmp == "联合注入":
+                    key = "U"
                 if key is not None:
                     kwargs |= {"technique": key}
 
-            print(kwargs)
-            self.sqlmap.start_scan(self.current_task_id, url, **kwargs)
+            # 加入URL
+            kwargs |= {"url": url}
 
+            # 尝试注入
+            self.current_kwargs = kwargs
+            self.sqlmap.start_scan(self.current_task_id, **kwargs)
+
+            # 等待并获取数据
             self.sqlmap.poll_scan_completion(self.current_task_id)
-            data, error = self.sqlmap.get_scan_data(self.current_task_id)
+            datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
 
-            if len(data) == 0 and len(error) == 0:
+            if len(datas) == 0 and len(errors) == 0:
                 QMessageBox.warning(self.main, "注入失败", "未检测到注入点，详细信息请查看日志！")
                 self.ui.btn_logCenter.click()
             else:
-                for i in data:
-                    print(i)
-                for i in error:
-                    print(i)
+                for data in datas:
+                    print(data)
+                    # 解析注入的数据
+                    if data["type"] == 1:
+                        for value in data["value"]:
+                            # 允许的注入类型
+                            for inject in value["data"]:
+                                if self.ui.injectionType.currentText() == "自动检测":
+                                    show_border_effect_yes(self.ui.injectionType)
+                                    self.ui.injectionType.setCurrentIndex(int(inject))
+                                    break
+                            # 数据库类型
+                            if self.ui.databaseType.currentText() == "自动检测":
+                                show_border_effect_yes(self.ui.databaseType)
+                                self.ui.databaseType.setCurrentText(value["dbms"])
+                            # print(value["dbms"])
+                            # print(value["dbms_version"])
+                            # print(value["os"])
+                            for i in value:
+                                print(i)
+                for error in errors:
+                    print(error)
 
             logs = self.sqlmap.get_scan_log(self.current_task_id)
             for log in logs:
@@ -283,7 +307,18 @@ class UIWidgetsFunctions:
 
     ### 获取数据 btn_getData ###
     def gettingData(self):
-        pass
+        if self.current_task_id is None:
+            QMessageBox.information(self.main, "提示", "当前没有注入对象！请先到自动注入或手动注入界面识别注入！")
+        else:
+            kwargs = self.current_kwargs | {"getDbs": True}
+            self.sqlmap.start_scan(self.current_task_id, **kwargs)
+            # 等待并获取数据
+            self.sqlmap.poll_scan_completion(self.current_task_id)
+            datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
+            for data in datas:
+                print(data)
+            for error in errors:
+                print(error)
 
     ### 导出数据 button btn_exportData ###
     def exportData(self):

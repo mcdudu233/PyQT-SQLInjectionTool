@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'main.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.9.0
+## Created by: Qt User Interface Compiler version 6.8.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -1151,12 +1151,12 @@ class Ui_MainWindow(object):
         self.gridLayout.setHorizontalSpacing(15)
         self.gridLayout.setVerticalSpacing(8)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.url = QLineEdit(self.gridLayoutWidget)
-        self.url.setObjectName(u"url")
-        self.url.setMinimumSize(QSize(0, 30))
-        self.url.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.webPage = QWebEngineView(self.gridLayoutWidget)
+        self.webPage.setObjectName(u"webPage")
+        self.webPage.setFocusPolicy(Qt.FocusPolicy.WheelFocus)
+        self.webPage.setUrl(QUrl(u"about:blank"))
 
-        self.gridLayout.addWidget(self.url, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.webPage, 1, 0, 1, 4)
 
         self.detection = QPushButton(self.gridLayoutWidget)
         self.detection.setObjectName(u"detection")
@@ -1165,7 +1165,14 @@ class Ui_MainWindow(object):
         self.detection.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.detection.setStyleSheet(u"background-color: rgb(52, 59, 72);")
 
-        self.gridLayout.addWidget(self.detection, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.detection, 0, 2, 1, 1)
+
+        self.url = QLineEdit(self.gridLayoutWidget)
+        self.url.setObjectName(u"url")
+        self.url.setMinimumSize(QSize(0, 30))
+        self.url.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+
+        self.gridLayout.addWidget(self.url, 0, 0, 1, 1)
 
         self.browse = QPushButton(self.gridLayoutWidget)
         self.browse.setObjectName(u"browse")
@@ -1174,14 +1181,7 @@ class Ui_MainWindow(object):
         self.browse.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.browse.setStyleSheet(u"background-color: rgb(52, 59, 72);")
 
-        self.gridLayout.addWidget(self.browse, 0, 2, 1, 1)
-
-        self.webPage = QWebEngineView(self.gridLayoutWidget)
-        self.webPage.setObjectName(u"webPage")
-        self.webPage.setFocusPolicy(Qt.FocusPolicy.WheelFocus)
-        self.webPage.setUrl(QUrl(u"about:blank"))
-
-        self.gridLayout.addWidget(self.webPage, 1, 0, 1, 3)
+        self.gridLayout.addWidget(self.browse, 0, 1, 1, 1)
 
         self.stackedWidget.addWidget(self.autoInjection)
         self.fileOperation = QWidget()
@@ -1427,41 +1427,41 @@ class Ui_MainWindow(object):
         self.packetSendingRecord.setSizePolicy(sizePolicy4)
         palette = QPalette()
         brush = QBrush(QColor(221, 221, 221, 255))
-        brush.setStyle(Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
+        brush.setStyle(Qt.SolidPattern)
+        palette.setBrush(QPalette.Active, QPalette.WindowText, brush)
         brush1 = QBrush(QColor(0, 0, 0, 0))
-        brush1.setStyle(Qt.BrushStyle.SolidPattern)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush1)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, brush)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, brush)
+        brush1.setStyle(Qt.SolidPattern)
+        palette.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette.setBrush(QPalette.Active, QPalette.Text, brush)
+        palette.setBrush(QPalette.Active, QPalette.ButtonText, brush)
         brush2 = QBrush(QColor(0, 0, 0, 255))
-        brush2.setStyle(Qt.BrushStyle.NoBrush)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, brush2)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, brush1)
+        brush2.setStyle(Qt.NoBrush)
+        palette.setBrush(QPalette.Active, QPalette.Base, brush2)
+        palette.setBrush(QPalette.Active, QPalette.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.PlaceholderText, brush)
+        palette.setBrush(QPalette.Active, QPalette.PlaceholderText, brush)
 #endif
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.WindowText, brush)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, brush1)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Text, brush)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette.setBrush(QPalette.Inactive, QPalette.Text, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
         brush3 = QBrush(QColor(0, 0, 0, 255))
-        brush3.setStyle(Qt.BrushStyle.NoBrush)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, brush3)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, brush1)
+        brush3.setStyle(Qt.NoBrush)
+        palette.setBrush(QPalette.Inactive, QPalette.Base, brush3)
+        palette.setBrush(QPalette.Inactive, QPalette.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.PlaceholderText, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush)
 #endif
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, brush)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Button, brush1)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, brush)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, brush)
+        palette.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
+        palette.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette.setBrush(QPalette.Disabled, QPalette.Text, brush)
+        palette.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
         brush4 = QBrush(QColor(0, 0, 0, 255))
-        brush4.setStyle(Qt.BrushStyle.NoBrush)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Base, brush4)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Window, brush1)
+        brush4.setStyle(Qt.NoBrush)
+        palette.setBrush(QPalette.Disabled, QPalette.Base, brush4)
+        palette.setBrush(QPalette.Disabled, QPalette.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.PlaceholderText, brush)
+        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush)
 #endif
         self.packetSendingRecord.setPalette(palette)
         self.packetSendingRecord.setFrameShape(QFrame.Shape.NoFrame)
@@ -1628,7 +1628,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1703,9 +1703,9 @@ class Ui_MainWindow(object):
         self.btn_stopGettingData.setText(QCoreApplication.translate("MainWindow", u"\u505c\u6b62\u83b7\u53d6", None))
         self.codingType.setItemText(0, QCoreApplication.translate("MainWindow", u"UTF-8", None))
 
+        self.detection.setText(QCoreApplication.translate("MainWindow", u"\u68c0\u6d4b", None))
         self.url.setText("")
         self.url.setPlaceholderText(QCoreApplication.translate("MainWindow", u"URL", None))
-        self.detection.setText(QCoreApplication.translate("MainWindow", u"\u68c0\u6d4b", None))
         self.browse.setText(QCoreApplication.translate("MainWindow", u"\u6d4f\u89c8", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u64cd\u4f5c", None))
         self.path.setText("")
