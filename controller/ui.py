@@ -1,9 +1,43 @@
-from PySide6.QtCore import QUrl
+from PySide6.QtCore import QUrl, QTimer
+from PySide6.QtWidgets import QMessageBox, QListWidgetItem, QLineEdit, QWidget
 
 from service import SQLMap
 from ui.modules import Ui_MainWindow
 
 
+### 效果函数 ###
+def show_border_effect(color, widget: QWidget, step=3, duration=100):
+    """显示边框提示"""
+    style = widget.styleSheet()
+    # 闪多次特效
+    for i in range(0, step * 2, 2):
+        QTimer.singleShot(duration * i, lambda: _show_border_effect(widget, color))
+        QTimer.singleShot(duration * (i + 1), lambda: _reset_border_effect(widget, style))
+
+
+def _show_border_effect(widget: QWidget, color):
+    """显示边框提示"""
+    widget.setStyleSheet(f"border-color: {color};")
+    widget.style().polish(widget)
+
+
+def _reset_border_effect(widget: QWidget, style):
+    """重置样式"""
+    widget.setStyleSheet(style)
+    widget.style().polish(widget)
+
+
+def show_border_effect_yes(widget: QWidget):
+    """触发正确提示效果"""
+    show_border_effect("#8cd881", widget)
+
+
+def show_border_effect_no(widget: QWidget):
+    """触发错误提示效果"""
+    show_border_effect("#ff536f", widget)
+
+
+### UI组件调用函数 ###
 class UIWidgetsFunctions:
     def __init__(self, main, ui: Ui_MainWindow):
         self.main = main
@@ -89,11 +123,17 @@ class UIWidgetsFunctions:
 
     ### 增加参数 ### button btn_addParam  lineedit paramInput  listwidget paramList
     def addParamToList(self):
-        pass
+        if self.ui.paramInput.text() == "":
+            show_border_effect_no(self.ui.paramInput)
+        else:
+            self.ui.paramList.addItem(QListWidgetItem(self.ui.paramInput.text()))
 
     ### 删除参数 ### button btn_deleteParam
     def deleteParamFromList(self):
-        pass
+        if self.ui.paramList.currentIndex().row() == -1:
+            show_border_effect_no(self.ui.paramList)
+        else:
+            self.ui.paramList.takeItem(self.ui.paramList.currentIndex().row())
 
     ### 文件操作 ###
     ### 路径名设置 lineedit path ###
