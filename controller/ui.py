@@ -285,16 +285,25 @@ class UIWidgetsFunctions:
     ### 显示操作结果 ###
     def showFIleOperation(self):
         pass
+    ### 设置注入类型 combox injectionLevel###
+    def setInjectionLevel(self):pass
+
+    ### 设置风险等级 combox riskLevel ###
+    def setRiskLevel(self):pass
 
     ###########################
     ### 数据中心组件调用接口 ###
     ###########################
-    ### 数据库信息展示 plaintextview databaseInformation ###
+    ### 数据库信息展示 tablewidget databaseInformation 无绑定槽函数需求，可直接在函数中调用###
     def showDatabaseInformation(self):
         pass
 
-    ### 获取数据展示 plaintextview getData ###
-    def showGettingData(self):
+    ### 表信息展示 tablwidget tableInformation 无绑定槽函数需求，可直接在函数中调用###
+    def showTableInformation(self):
+        pass
+
+    ### 数据库内容展示 treewidget databaseContent 无绑定槽函数需求，可直接在函数中调用###
+    def showDatabseContent(self):
         pass
 
     ### 开始标志 lineedit beginning ###
@@ -327,10 +336,15 @@ class UIWidgetsFunctions:
     ### 停止获取数据 button stopGettingData ###
     def stopGettingData(self):
         pass
+    ### 获取数据库内容 button btn_getDatabaseContent###
+    def getDatabseContent(self):
+        pass
 
     ### 编码类型 ###
     def dataCodingType(self):
         pass
+
+
 
     ###########################
     ### 命令执行界面组件调用接口 ###

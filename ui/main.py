@@ -111,6 +111,8 @@ class MainWindow(QMainWindow):
         widgets.requestMethod.currentIndexChanged.connect(self.widgetsFunctions.setRequestMethod)
         widgets.btn_addParam.clicked.connect(self.widgetsFunctions.addParamToList)
         widgets.btn_deleteParam.clicked.connect(self.widgetsFunctions.deleteParamFromList)
+        widgets.injectionLevel.currentIndexChanged.connect(self.widgetsFunctions.setInjectionLevel)
+        widgets.riskLevel.currentIndexChanged.connect(self.widgetsFunctions.setRiskLevel)
 
         ### 自动输入界面信号槽 ###
         widgets.browse.clicked.connect(self.widgetsFunctions.startBrowsing)
@@ -123,8 +125,7 @@ class MainWindow(QMainWindow):
         widgets.btn_getData.clicked.connect(self.widgetsFunctions.gettingData)
         widgets.btn_exportData.clicked.connect(self.widgetsFunctions.exportData)
         widgets.btn_stopGettingData.clicked.connect(self.widgetsFunctions.stopGettingData)
-        widgets.databaseInformation.textChanged.connect(self.widgetsFunctions.showDatabaseInformation)
-        widgets.getData.textChanged.connect(self.widgetsFunctions.showGettingData)
+        widgets.btn_getDatabaseContent.clicked.connect(self.widgetsFunctions.getDatabseContent)
         widgets.beginning.textChanged.connect(self.widgetsFunctions.setBeginnig)
         widgets.number.textChanged.connect(self.widgetsFunctions.setNumnber)
         widgets.codingType.currentIndexChanged.connect(self.widgetsFunctions.dataCodingType)
