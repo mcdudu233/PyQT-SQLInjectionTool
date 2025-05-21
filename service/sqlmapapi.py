@@ -48,7 +48,8 @@ class SQLMapServer:
             cmd,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            universal_newlines=True
+            universal_newlines=True,
+            creationflags=subprocess.CREATE_NO_WINDOW
         )
 
         # 启动线程监控输出
