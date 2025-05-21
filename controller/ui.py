@@ -1,7 +1,9 @@
 import datetime
 import html
+from itertools import count
 
-from PySide6.QtCore import QUrl, QTimer
+from PySide6.QtCore import QTimer, Qt, QModelIndex
+from PySide6.QtGui import QStandardItem
 from PySide6.QtWidgets import QMessageBox, QListWidgetItem, QLineEdit, QWidget, QTableWidgetItem
 
 from service import SQLMap
@@ -413,8 +415,14 @@ class UIWidgetsFunctions:
                 # 获取数据库
                 for data in datas[::-1]:
                     if data["type"] == 12:
-                        print(data["value"])
-                        # self.ui.databaseTree.drawTree()
+                        databases = data["value"]
+                        for database in databases:
+                            db_item = QStandardItem(database)
+                            db_item.setFlags(db_item.flags() & ~Qt.ItemIsEditable)
+                            db_item.setData("database", Qt.UserRole + 1)  # 类型标识
+                            db_item.setData(False, Qt.UserRole + 2)  # 是否已加载
+                            db_item.setToolTip(f"双击展开，加载当前数据库表")
+                            self.ui.databaseTreeModel.appendRow(db_item)
                         break
 
                 for error in errors:
@@ -430,6 +438,116 @@ class UIWidgetsFunctions:
     ### 编码类型 ###
     def dataCodingType(self):
         pass
+
+    ### 双击展开树形 ###
+    def expandTree(self, index: QModelIndex):
+        item = self.ui.databaseTreeModel.itemFromIndex(index)
+
+        if not item:
+            return
+
+        if item.data(Qt.UserRole + 1) == "database":
+            try:
+                # 已经加载过
+                if item.data(Qt.UserRole + 2):
+                    return
+
+                # 添加加载提示
+                loading_item = QStandardItem("加载中...")
+                loading_item.setEnabled(False)
+                item.appendRow(loading_item)
+                self.ui.databaseTree.expand(index)
+
+                kwargs = self.current_kwargs | {"db": item.text(), "getTables": True}
+                self.sqlmap.start_scan(self.current_task_id, **kwargs)
+                # 等待并获取数据
+                self.sqlmap.poll_scan_completion(self.current_task_id)
+                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
+
+                # 移除加载提示
+                item.removeRow(0)
+
+                # 添加表节点
+                for data in datas[::-1]:
+                    if data["type"] == 13:
+                        tables = data["value"][item.text()]
+                        for table in tables:
+                            table_item = QStandardItem(table)
+                            table_item.setFlags(table_item.flags() & ~Qt.ItemIsEditable)
+                            table_item.setData("table", Qt.UserRole + 1)
+                            table_item.setToolTip(f"双击获取表数据")
+                            item.appendRow(table_item)
+                        # print(data["value"])
+                        break
+
+                # 标记已加载
+                item.setData(True, Qt.UserRole + 2)
+                self.ui.databaseTree.expand(index)
+
+                for error in errors:
+                    print(error)
+
+                logs = self.sqlmap.get_scan_log(self.current_task_id)
+                for log in logs:
+                    self._add_log_color(log["message"], log["level"], log["time"])
+            except Exception as e:
+                QMessageBox.critical(self.main, "获取数据库表失败", "获取数据库表失败，请查看日志！原因：" + str(e))
+                print(e)
+        elif item.data(Qt.UserRole + 1) == "table":
+            # 加载表内容
+            try:
+                # 添加加载提示
+                self.ui.tableInformation.clear()
+                self.ui.tableInformation.setRowCount(1)
+                self.ui.tableInformation.setColumnCount(1)
+                self.ui.tableInformation.setItem(0, 0, QTableWidgetItem("加载中..."))
+
+                kwargs = self.current_kwargs | {"tbl": item.text(), "dumpTable": True}
+                self.sqlmap.start_scan(self.current_task_id, **kwargs)
+                # 等待并获取数据
+                self.sqlmap.poll_scan_completion(self.current_task_id)
+                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
+
+                # 移除加载提示
+                self.ui.tableInformation.clear()
+
+                # 添加表节点
+                for data in datas[::-1]:
+                    if data["type"] == 17:
+                        # print(data["value"])
+                        tables: dict = data["value"]
+                        self.ui.tableInformation.setColumnCount(len(tables))
+                        self.ui.tableInformation.setRowCount(len(tables))
+                        i = 0
+                        for column in tables:
+                            # print(column)
+                            self.ui.tableInformation.setItem(0, i, QTableWidgetItem(column))
+                            if tables[column].get('values') is not None:
+                                j = 1
+                                for word in tables[column]["values"]:
+                                    # print(word)
+                                    self.ui.tableInformation.setItem(j, i, QTableWidgetItem(word))
+                                    j += 1
+
+                            # table_item = QStandardItem(table)
+                            # table_item.setFlags(table_item.flags() & ~Qt.ItemIsEditable)
+                            # table_item.setData("table", Qt.UserRole + 1)
+                            # table_item.setToolTip(f"双击获取表数据")
+                            # item.appendRow(table_item)
+                            i += 1
+                        break
+
+                for error in errors:
+                    print(error)
+
+                logs = self.sqlmap.get_scan_log(self.current_task_id)
+                for log in logs:
+                    self._add_log_color(log["message"], log["level"], log["time"])
+            except Exception as e:
+                QMessageBox.critical(self.main, "获取数据库表失败", "获取数据库表失败，请查看日志！原因：" + str(e))
+                print(e)
+        else:
+            pass
 
     ###########################
     ### 命令执行界面组件调用接口 ###

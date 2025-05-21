@@ -88,7 +88,6 @@ class MainWindow(QMainWindow):
         def openCloseLeftBox():
             UIFunctions.toggleLeftBox(self, True)
 
-
         def openCloseRightBox():
             UIFunctions.toggleRightBox(self, True)
 
@@ -122,6 +121,10 @@ class MainWindow(QMainWindow):
         self.ui.webPage.setZoomFactor(0.5)
 
         ### 数据中心界面信号槽 ###
+        self.ui.databaseTreeModel = QStandardItemModel()
+        self.ui.databaseTreeModel.setHorizontalHeaderLabels(["数据库结构"])
+        widgets.databaseTree.setModel(self.ui.databaseTreeModel)
+        widgets.databaseTree.doubleClicked.connect(self.widgetsFunctions.expandTree)
         widgets.btn_getData.clicked.connect(self.widgetsFunctions.gettingData)
         widgets.btn_exportData.clicked.connect(self.widgetsFunctions.exportData)
         widgets.btn_stopGettingData.clicked.connect(self.widgetsFunctions.stopGettingData)
