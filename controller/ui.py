@@ -2,7 +2,7 @@ import datetime
 import html
 
 from PySide6.QtCore import QUrl, QTimer
-from PySide6.QtWidgets import QMessageBox, QListWidgetItem, QLineEdit, QWidget
+from PySide6.QtWidgets import QMessageBox, QListWidgetItem, QLineEdit, QWidget, QTableWidgetItem
 
 from service import SQLMap
 from ui.modules import Ui_MainWindow
@@ -195,6 +195,12 @@ class UIWidgetsFunctions:
                 if key is not None:
                     kwargs |= {"technique": key}
 
+            # 风险等级
+            kwargs |= {"risk": self.ui.riskLevel.currentText()}
+
+            # 注入等级
+            kwargs |= {"level": self.ui.injectionLevel.currentText()}
+
             # 加入URL
             kwargs |= {"url": url}
 
@@ -211,7 +217,7 @@ class UIWidgetsFunctions:
                 self.ui.btn_logCenter.click()
             else:
                 for data in datas:
-                    print(data)
+                    # print(data)
                     # 解析注入的数据
                     if data["type"] == 1:
                         for value in data["value"]:
@@ -225,11 +231,10 @@ class UIWidgetsFunctions:
                             if self.ui.databaseType.currentText() == "自动检测":
                                 show_border_effect_yes(self.ui.databaseType)
                                 self.ui.databaseType.setCurrentText(value["dbms"])
-                            # print(value["dbms"])
-                            # print(value["dbms_version"])
-                            # print(value["os"])
-                            for i in value:
-                                print(i)
+
+                            self.showDatabaseInformation([value["dbms"], value["dbms_version"], value["os"]])
+                            # for i in value:
+                            #     print(i)
                 for error in errors:
                     print(error)
 
@@ -241,6 +246,7 @@ class UIWidgetsFunctions:
         except Exception as e:
             self.ui.btn_startInjection.setDisabled(False)
             QMessageBox.critical(self.main, "注入失败", "注入失败，请查看日志！原因：" + str(e))
+            print(e)
             self.ui.btn_logCenter.click()
 
     ### 设置请求方式 ### combox requestMethod
@@ -285,18 +291,31 @@ class UIWidgetsFunctions:
     ### 显示操作结果 ###
     def showFIleOperation(self):
         pass
+
     ### 设置注入类型 combox injectionLevel###
-    def setInjectionLevel(self):pass
+    def setInjectionLevel(self):
+        pass
 
     ### 设置风险等级 combox riskLevel ###
-    def setRiskLevel(self):pass
+    def setRiskLevel(self):
+        pass
 
     ###########################
     ### 数据中心组件调用接口 ###
     ###########################
     ### 数据库信息展示 tablewidget databaseInformation 无绑定槽函数需求，可直接在函数中调用###
-    def showDatabaseInformation(self):
-        pass
+    def showDatabaseInformation(self, args, startAt=1):
+        row = startAt
+        for i in range(len(args)):
+            if self.ui.databaseInformation.item(row, 1) is None:
+                if args[i] is None:
+                    args[i] = "未知"
+                elif type(args[i]) is list:
+                    args[i] = ",".join(args[i])
+                self.ui.databaseInformation.setItem(row, 1, QTableWidgetItem(str(args[i])))
+            else:
+                self.ui.databaseInformation.item(row, 1).setText(args[i])
+            row += 1
 
     ### 表信息展示 tablwidget tableInformation 无绑定槽函数需求，可直接在函数中调用###
     def showTableInformation(self):
@@ -319,13 +338,41 @@ class UIWidgetsFunctions:
         if self.current_task_id is None:
             QMessageBox.information(self.main, "提示", "当前没有注入对象！请先到自动注入或手动注入界面识别注入！")
         else:
-            kwargs = self.current_kwargs | {"getDbs": True}
+            kwargs = self.current_kwargs | {"extensiveFp": True, "getHostname": True,
+                                            "getCurrentUser": True, "getCurrentDb": True}
             self.sqlmap.start_scan(self.current_task_id, **kwargs)
             # 等待并获取数据
             self.sqlmap.poll_scan_completion(self.current_task_id)
             datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
-            for data in datas:
-                print(data)
+
+            args = []
+
+            # 主机名
+            for data in datas[::-1]:
+                if data["type"] == 6:
+                    args.append(data["value"])
+                    break
+
+            # 当前用户
+            for data in datas[::-1]:
+                if data["type"] == 4:
+                    args.append(data["value"])
+                    break
+
+            # 当前数据库
+            for data in datas[::-1]:
+                if data["type"] == 5:
+                    args.append(data["value"])
+                    break
+
+            # 数据库指纹
+            for data in datas[::-1]:
+                if data["type"] == 2:
+                    args.append(data["value"])
+                    break
+
+            self.showDatabaseInformation(args, 4)
+
             for error in errors:
                 print(error)
 
@@ -336,6 +383,7 @@ class UIWidgetsFunctions:
     ### 停止获取数据 button stopGettingData ###
     def stopGettingData(self):
         pass
+
     ### 获取数据库内容 button btn_getDatabaseContent###
     def getDatabseContent(self):
         pass
@@ -343,8 +391,6 @@ class UIWidgetsFunctions:
     ### 编码类型 ###
     def dataCodingType(self):
         pass
-
-
 
     ###########################
     ### 命令执行界面组件调用接口 ###
