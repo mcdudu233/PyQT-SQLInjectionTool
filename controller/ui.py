@@ -124,7 +124,8 @@ class UIWidgetsFunctions:
 
             if self.current_task_id is not None:
                 self.sqlmap.delete_task(self.current_task_id)
-            self.current_task_id = self.sqlmap.create_task()
+                self.current_task_id = None
+            task_id = self.sqlmap.create_task()
 
             # 额外的参数
             kwargs = {}
@@ -204,13 +205,16 @@ class UIWidgetsFunctions:
             # 加入URL
             kwargs |= {"url": url}
 
+            # 不需要用户干预
+            kwargs |= {"batch": True}
+
             # 尝试注入
             self.current_kwargs = kwargs
-            self.sqlmap.start_scan(self.current_task_id, **kwargs)
+            self.sqlmap.start_scan(task_id, **kwargs)
 
             # 等待并获取数据
-            self.sqlmap.poll_scan_completion(self.current_task_id)
-            datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
+            self.sqlmap.poll_scan_completion(task_id)
+            datas, errors = self.sqlmap.get_scan_data(task_id)
 
             if len(datas) == 0 and len(errors) == 0:
                 QMessageBox.warning(self.main, "注入失败", "未检测到注入点，详细信息请查看日志！")
@@ -238,15 +242,17 @@ class UIWidgetsFunctions:
                 for error in errors:
                     print(error)
 
-            logs = self.sqlmap.get_scan_log(self.current_task_id)
+            logs = self.sqlmap.get_scan_log(task_id)
             for log in logs:
                 self._add_log_color(log["message"], log["level"], log["time"])
 
+            self.current_task_id = task_id
             self.ui.btn_startInjection.setDisabled(False)
         except Exception as e:
-            self.ui.btn_startInjection.setDisabled(False)
             QMessageBox.critical(self.main, "注入失败", "注入失败，请查看日志！原因：" + str(e))
             print(e)
+
+            self.ui.btn_startInjection.setDisabled(False)
             self.ui.btn_logCenter.click()
 
     ### 设置请求方式 ### combox requestMethod
@@ -338,43 +344,51 @@ class UIWidgetsFunctions:
         if self.current_task_id is None:
             QMessageBox.information(self.main, "提示", "当前没有注入对象！请先到自动注入或手动注入界面识别注入！")
         else:
-            kwargs = self.current_kwargs | {"extensiveFp": True, "getHostname": True,
-                                            "getCurrentUser": True, "getCurrentDb": True}
-            self.sqlmap.start_scan(self.current_task_id, **kwargs)
-            # 等待并获取数据
-            self.sqlmap.poll_scan_completion(self.current_task_id)
-            datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
+            try:
+                kwargs = self.current_kwargs | {"extensiveFp": True, "getHostname": True,
+                                                "getCurrentUser": True, "getCurrentDb": True}
+                self.sqlmap.start_scan(self.current_task_id, **kwargs)
+                # 等待并获取数据
+                self.sqlmap.poll_scan_completion(self.current_task_id)
+                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
 
-            args = []
+                args = []
 
-            # 主机名
-            for data in datas[::-1]:
-                if data["type"] == 6:
-                    args.append(data["value"])
-                    break
+                # 主机名
+                for data in datas[::-1]:
+                    if data["type"] == 6:
+                        args.append(data["value"])
+                        break
 
-            # 当前用户
-            for data in datas[::-1]:
-                if data["type"] == 4:
-                    args.append(data["value"])
-                    break
+                # 当前用户
+                for data in datas[::-1]:
+                    if data["type"] == 4:
+                        args.append(data["value"])
+                        break
 
-            # 当前数据库
-            for data in datas[::-1]:
-                if data["type"] == 5:
-                    args.append(data["value"])
-                    break
+                # 当前数据库
+                for data in datas[::-1]:
+                    if data["type"] == 5:
+                        args.append(data["value"])
+                        break
 
-            # 数据库指纹
-            for data in datas[::-1]:
-                if data["type"] == 2:
-                    args.append(data["value"])
-                    break
+                # 数据库指纹
+                for data in datas[::-1]:
+                    if data["type"] == 2:
+                        args.append(data["value"])
+                        break
 
-            self.showDatabaseInformation(args, 4)
+                self.showDatabaseInformation(args, 4)
 
-            for error in errors:
-                print(error)
+                for error in errors:
+                    print(error)
+
+                logs = self.sqlmap.get_scan_log(self.current_task_id)
+                for log in logs:
+                    self._add_log_color(log["message"], log["level"], log["time"])
+            except Exception as e:
+                QMessageBox.critical(self.main, "获取数据库信息失败", "获取数据库信息失败，请查看日志！原因：" + str(e))
+                print(e)
 
     ### 导出数据 button btn_exportData ###
     def exportData(self):
@@ -386,7 +400,32 @@ class UIWidgetsFunctions:
 
     ### 获取数据库内容 button btn_getDatabaseContent###
     def getDatabseContent(self):
-        pass
+        if self.current_task_id is None:
+            QMessageBox.information(self.main, "提示", "当前没有注入对象！请先到自动注入或手动注入界面识别注入！")
+        else:
+            try:
+                kwargs = self.current_kwargs | {"getDbs": True}
+                self.sqlmap.start_scan(self.current_task_id, **kwargs)
+                # 等待并获取数据
+                self.sqlmap.poll_scan_completion(self.current_task_id)
+                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
+
+                # 获取数据库
+                for data in datas[::-1]:
+                    if data["type"] == 12:
+                        print(data["value"])
+                        # self.ui.databaseTree.drawTree()
+                        break
+
+                for error in errors:
+                    print(error)
+
+                logs = self.sqlmap.get_scan_log(self.current_task_id)
+                for log in logs:
+                    self._add_log_color(log["message"], log["level"], log["time"])
+            except Exception as e:
+                QMessageBox.critical(self.main, "获取数据库内容失败", "获取数据库内容失败，请查看日志！原因：" + str(e))
+                print(e)
 
     ### 编码类型 ###
     def dataCodingType(self):
@@ -401,7 +440,36 @@ class UIWidgetsFunctions:
 
     ### 开始命令 button btn_startCommand ###
     def startCommand(self):
-        pass
+        if self.current_task_id is None:
+            QMessageBox.information(self.main, "提示", "当前没有注入对象！请先到自动注入或手动注入界面识别注入！")
+        else:
+            try:
+                if self.ui.commandInput.text() == "":
+                    show_border_effect_no(self.ui.commandInput)
+                    return
+
+                kwargs = self.current_kwargs | {"osCmd": self.ui.commandInput.text()}
+                self.sqlmap.start_scan(self.current_task_id, **kwargs)
+                # 等待并获取数据
+                self.sqlmap.poll_scan_completion(self.current_task_id)
+                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
+
+                # 获取命令执行结果
+                if self.ui.echoResults.isChecked():
+                    for data in datas[::-1]:
+                        if data["type"] == 24:
+                            self.ui.commandResults.setPlainText(data["value"])
+                            break
+
+                for error in errors:
+                    print(error)
+
+                logs = self.sqlmap.get_scan_log(self.current_task_id)
+                for log in logs:
+                    self._add_log_color(log["message"], log["level"], log["time"])
+            except Exception as e:
+                QMessageBox.critical(self.main, "命令执行失败", "命令执行失败，请查看日志！原因：" + str(e))
+                print(e)
 
     ### 停止命令 button btn_stopCommand ###
     def stopCommand(self):
