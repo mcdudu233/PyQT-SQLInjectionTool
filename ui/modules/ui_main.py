@@ -1570,7 +1570,7 @@ class Ui_MainWindow(object):
         self.widget_2.setGeometry(QRect(0, -10, 811, 441))
         self.groupBox_32 = QGroupBox(self.widget_2)
         self.groupBox_32.setObjectName(u"groupBox_32")
-        self.groupBox_32.setGeometry(QRect(10, 10, 761, 181))
+        self.groupBox_32.setGeometry(QRect(30, 20, 761, 181))
         self.packetSendingRecord = QTableWidget(self.groupBox_32)
         if (self.packetSendingRecord.columnCount() < 5):
             self.packetSendingRecord.setColumnCount(5)
@@ -1600,7 +1600,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem60 = QTableWidgetItem()
         self.packetSendingRecord.setItem(0, 4, __qtablewidgetitem60)
         self.packetSendingRecord.setObjectName(u"packetSendingRecord")
-        self.packetSendingRecord.setGeometry(QRect(10, 10, 771, 174))
+        self.packetSendingRecord.setGeometry(QRect(10, 10, 757, 175))
         sizePolicy3.setHeightForWidth(self.packetSendingRecord.sizePolicy().hasHeightForWidth())
         self.packetSendingRecord.setSizePolicy(sizePolicy3)
         palette2 = QPalette()
@@ -1657,7 +1657,7 @@ class Ui_MainWindow(object):
         self.packetSendingRecord.verticalHeader().setStretchLastSection(True)
         self.groupBox = QGroupBox(self.widget_2)
         self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setGeometry(QRect(10, 200, 761, 231))
+        self.groupBox.setGeometry(QRect(30, 210, 761, 231))
         self.log = QPlainTextEdit(self.groupBox)
         self.log.setObjectName(u"log")
         self.log.setGeometry(QRect(10, 20, 741, 200))
@@ -1805,7 +1805,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
