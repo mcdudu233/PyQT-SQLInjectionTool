@@ -24,7 +24,7 @@ class SQLMapServer:
 
         self.start()
 
-    def __delete__(self, instance):
+    def __del__(self):
         self.stop()
 
     def _read_stream(self, stream, logger_method):
@@ -62,7 +62,7 @@ class SQLMapServer:
 
     def stop(self):
         if self.process:
-            self.process.terminate()
+            self.process.kill()
             self.process = None
             self.logger.info("SQLMap API server stopped")
 
@@ -74,6 +74,13 @@ class SQLMap:
         self.base_url = f"http://{self.server.address}:{self.server.port}/"
 
         self.logger.info("SQLMap API initialized at %s", self.base_url)
+
+    def __del__(self):
+        self.stop()
+        
+    def stop(self):
+        """停止SQLMap服务器"""
+        self.server.stop()
 
     def get_version(self):
         """获取服务器版本"""

@@ -207,7 +207,8 @@ class MainWindow(QMainWindow):
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
         if btnName == "btn_exit":
-            os._exit(0)
+            del self.widgetsFunctions
+            sys.exit(0)
 
         # PRINT BTN NAME
         # print(f'Button "{btnName}" pressed!')
@@ -243,4 +244,6 @@ def main():
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon("icon.ico"))
     window = MainWindow()
-    os._exit(app.exec_())
+    code = app.exec_()
+    del window.widgetsFunctions
+    sys.exit(code)

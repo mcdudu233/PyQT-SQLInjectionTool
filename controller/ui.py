@@ -51,6 +51,11 @@ class UIWidgetsFunctions:
         self.current_task_id = None
         self.current_kwargs = None
 
+    def __del__(self):
+        # 关闭SQLMap API
+        if self.sqlmap:
+            self.sqlmap.stop()
+
     ###########################
     ### 自动注入界面组件调用接口 ###
     ###########################
@@ -221,7 +226,7 @@ class UIWidgetsFunctions:
                 self.ui.btn_logCenter.click()
             else:
                 for data in datas:
-                    # print(data)
+                    print(data)
                     # 解析注入的数据
                     if data["type"] == 1:
                         for value in data["value"]:
