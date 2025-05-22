@@ -71,6 +71,11 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
 
+        # 调整界面属性
+        widgets.maximizeRestoreAppBtn.setDisabled(True)
+        self.setWindowFlags(self.windowFlags() & ~Qt.WindowMaximizeButtonHint)
+        self.setFixedSize(self.size())
+
         # 设置界面功能绑定
         UIFunctions.uiDefinitions(self)
 
