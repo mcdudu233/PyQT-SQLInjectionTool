@@ -140,10 +140,8 @@ class MainWindow(QMainWindow):
         widgets.echoResults.stateChanged.connect(self.widgetsFunctions.ifEchoResults)
 
         ### 文件操作界面信号槽 ###
-        widgets.btn_stratFileOperation.clicked.connect(self.widgetsFunctions.startFileOperation)
-        widgets.btn_stopFileOperation.clicked.connect(self.widgetsFunctions.stopFileOperation)
+        widgets.btn_startFileOperation.clicked.connect(self.widgetsFunctions.startFileOperation)
         widgets.path.textChanged.connect(self.widgetsFunctions.setPath)
-        widgets.fileOperationCoding.currentIndexChanged.connect(self.widgetsFunctions.setFileOprationCoding)
         widgets.fileOperationType.currentIndexChanged.connect(self.widgetsFunctions.setFileOperation)
 
         # 显示界面

@@ -1262,7 +1262,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem20 = QTableWidgetItem()
         self.databaseInformation.setItem(1, 0, __qtablewidgetitem20)
         self.databaseInformation.setObjectName(u"databaseInformation")
-        self.databaseInformation.setGeometry(QRect(10, 90, 121, 221))
+        self.databaseInformation.setGeometry(QRect(10, 90, 191, 221))
         sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy4.setHorizontalStretch(0)
         sizePolicy4.setVerticalStretch(0)
@@ -1509,43 +1509,16 @@ class Ui_MainWindow(object):
         self.groupBox_2.setGeometry(QRect(10, 50, 731, 111))
         self.gridLayout_6 = QGridLayout(self.groupBox_2)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.path = QLineEdit(self.groupBox_2)
-        self.path.setObjectName(u"path")
-        self.path.setMinimumSize(QSize(0, 30))
-        self.path.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.btn_startFileOperation = QPushButton(self.groupBox_2)
+        self.btn_startFileOperation.setObjectName(u"btn_startFileOperation")
+        self.btn_startFileOperation.setMinimumSize(QSize(150, 30))
+        self.btn_startFileOperation.setFont(font)
+        self.btn_startFileOperation.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.btn_startFileOperation.setStyleSheet(u"background-color: rgb(52, 59, 72);")
 
-        self.gridLayout_6.addWidget(self.path, 0, 0, 1, 1)
-
-        self.label_11 = QLabel(self.groupBox_2)
-        self.label_11.setObjectName(u"label_11")
-
-        self.gridLayout_6.addWidget(self.label_11, 0, 1, 1, 1)
-
-        self.fileOperationCoding = QComboBox(self.groupBox_2)
-        self.fileOperationCoding.addItem("")
-        self.fileOperationCoding.addItem("")
-        self.fileOperationCoding.addItem("")
-        self.fileOperationCoding.addItem("")
-        self.fileOperationCoding.addItem("")
-        self.fileOperationCoding.addItem("")
-        self.fileOperationCoding.addItem("")
-        self.fileOperationCoding.addItem("")
-        self.fileOperationCoding.setObjectName(u"fileOperationCoding")
-        self.fileOperationCoding.setFont(font)
-        self.fileOperationCoding.setAutoFillBackground(False)
-        self.fileOperationCoding.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-        self.fileOperationCoding.setIconSize(QSize(16, 16))
-        self.fileOperationCoding.setFrame(True)
-
-        self.gridLayout_6.addWidget(self.fileOperationCoding, 0, 2, 1, 1)
+        self.gridLayout_6.addWidget(self.btn_startFileOperation, 1, 0, 1, 2)
 
         self.fileOperationType = QComboBox(self.groupBox_2)
-        self.fileOperationType.addItem("")
-        self.fileOperationType.addItem("")
-        self.fileOperationType.addItem("")
-        self.fileOperationType.addItem("")
-        self.fileOperationType.addItem("")
-        self.fileOperationType.addItem("")
         self.fileOperationType.addItem("")
         self.fileOperationType.addItem("")
         self.fileOperationType.setObjectName(u"fileOperationType")
@@ -1555,25 +1528,14 @@ class Ui_MainWindow(object):
         self.fileOperationType.setIconSize(QSize(16, 16))
         self.fileOperationType.setFrame(True)
 
-        self.gridLayout_6.addWidget(self.fileOperationType, 0, 3, 1, 1)
+        self.gridLayout_6.addWidget(self.fileOperationType, 1, 2, 1, 1)
 
-        self.btn_stratFileOperation = QPushButton(self.groupBox_2)
-        self.btn_stratFileOperation.setObjectName(u"btn_stratFileOperation")
-        self.btn_stratFileOperation.setMinimumSize(QSize(150, 30))
-        self.btn_stratFileOperation.setFont(font)
-        self.btn_stratFileOperation.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.btn_stratFileOperation.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        self.path = QLineEdit(self.groupBox_2)
+        self.path.setObjectName(u"path")
+        self.path.setMinimumSize(QSize(0, 30))
+        self.path.setStyleSheet(u"background-color: rgb(33, 37, 43);")
 
-        self.gridLayout_6.addWidget(self.btn_stratFileOperation, 1, 0, 1, 2)
-
-        self.btn_stopFileOperation = QPushButton(self.groupBox_2)
-        self.btn_stopFileOperation.setObjectName(u"btn_stopFileOperation")
-        self.btn_stopFileOperation.setMinimumSize(QSize(150, 30))
-        self.btn_stopFileOperation.setFont(font)
-        self.btn_stopFileOperation.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.btn_stopFileOperation.setStyleSheet(u"background-color: rgb(52, 59, 72);")
-
-        self.gridLayout_6.addWidget(self.btn_stopFileOperation, 1, 2, 1, 2)
+        self.gridLayout_6.addWidget(self.path, 0, 0, 1, 3)
 
         self.fileOperationResults = QPlainTextEdit(self.fileOperation)
         self.fileOperationResults.setObjectName(u"fileOperationResults")
@@ -1665,8 +1627,8 @@ class Ui_MainWindow(object):
         self.groupBox_21.setObjectName(u"groupBox_21")
         self.groupBox_21.setGeometry(QRect(0, 30, 831, 441))
         self.packetSendingRecord = QTableWidget(self.groupBox_21)
-        if (self.packetSendingRecord.columnCount() < 7):
-            self.packetSendingRecord.setColumnCount(7)
+        if (self.packetSendingRecord.columnCount() < 5):
+            self.packetSendingRecord.setColumnCount(5)
         __qtablewidgetitem50 = QTableWidgetItem()
         self.packetSendingRecord.setHorizontalHeaderItem(0, __qtablewidgetitem50)
         __qtablewidgetitem51 = QTableWidgetItem()
@@ -1677,61 +1639,21 @@ class Ui_MainWindow(object):
         self.packetSendingRecord.setHorizontalHeaderItem(3, __qtablewidgetitem53)
         __qtablewidgetitem54 = QTableWidgetItem()
         self.packetSendingRecord.setHorizontalHeaderItem(4, __qtablewidgetitem54)
+        if (self.packetSendingRecord.rowCount() < 1):
+            self.packetSendingRecord.setRowCount(1)
         __qtablewidgetitem55 = QTableWidgetItem()
-        self.packetSendingRecord.setHorizontalHeaderItem(5, __qtablewidgetitem55)
+        __qtablewidgetitem55.setFont(font4);
+        self.packetSendingRecord.setVerticalHeaderItem(0, __qtablewidgetitem55)
         __qtablewidgetitem56 = QTableWidgetItem()
-        self.packetSendingRecord.setHorizontalHeaderItem(6, __qtablewidgetitem56)
-        if (self.packetSendingRecord.rowCount() < 16):
-            self.packetSendingRecord.setRowCount(16)
+        self.packetSendingRecord.setItem(0, 0, __qtablewidgetitem56)
         __qtablewidgetitem57 = QTableWidgetItem()
-        __qtablewidgetitem57.setFont(font4);
-        self.packetSendingRecord.setVerticalHeaderItem(0, __qtablewidgetitem57)
+        self.packetSendingRecord.setItem(0, 1, __qtablewidgetitem57)
         __qtablewidgetitem58 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(1, __qtablewidgetitem58)
+        self.packetSendingRecord.setItem(0, 2, __qtablewidgetitem58)
         __qtablewidgetitem59 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(2, __qtablewidgetitem59)
+        self.packetSendingRecord.setItem(0, 3, __qtablewidgetitem59)
         __qtablewidgetitem60 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(3, __qtablewidgetitem60)
-        __qtablewidgetitem61 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(4, __qtablewidgetitem61)
-        __qtablewidgetitem62 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(5, __qtablewidgetitem62)
-        __qtablewidgetitem63 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(6, __qtablewidgetitem63)
-        __qtablewidgetitem64 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(7, __qtablewidgetitem64)
-        __qtablewidgetitem65 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(8, __qtablewidgetitem65)
-        __qtablewidgetitem66 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(9, __qtablewidgetitem66)
-        __qtablewidgetitem67 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(10, __qtablewidgetitem67)
-        __qtablewidgetitem68 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(11, __qtablewidgetitem68)
-        __qtablewidgetitem69 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(12, __qtablewidgetitem69)
-        __qtablewidgetitem70 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(13, __qtablewidgetitem70)
-        __qtablewidgetitem71 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(14, __qtablewidgetitem71)
-        __qtablewidgetitem72 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(15, __qtablewidgetitem72)
-        __qtablewidgetitem73 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 0, __qtablewidgetitem73)
-        __qtablewidgetitem74 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 1, __qtablewidgetitem74)
-        __qtablewidgetitem75 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 2, __qtablewidgetitem75)
-        __qtablewidgetitem76 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 3, __qtablewidgetitem76)
-        __qtablewidgetitem77 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 4, __qtablewidgetitem77)
-        __qtablewidgetitem78 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 5, __qtablewidgetitem78)
-        __qtablewidgetitem79 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 6, __qtablewidgetitem79)
-        __qtablewidgetitem80 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(1, 0, __qtablewidgetitem80)
+        self.packetSendingRecord.setItem(0, 4, __qtablewidgetitem60)
         self.packetSendingRecord.setObjectName(u"packetSendingRecord")
         self.packetSendingRecord.setGeometry(QRect(10, 60, 816, 160))
         sizePolicy4.setHeightForWidth(self.packetSendingRecord.sizePolicy().hasHeightForWidth())
@@ -1935,7 +1857,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2148,29 +2070,12 @@ class Ui_MainWindow(object):
         self.url.setPlaceholderText(QCoreApplication.translate("MainWindow", u"URL", None))
         self.browse.setText(QCoreApplication.translate("MainWindow", u"\u6d4f\u89c8", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u64cd\u4f5c", None))
+        self.btn_startFileOperation.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb", None))
+        self.fileOperationType.setItemText(0, QCoreApplication.translate("MainWindow", u"\u8bfb\u53d6\u6587\u4ef6", None))
+        self.fileOperationType.setItemText(1, QCoreApplication.translate("MainWindow", u"\u5199\u5165\u6587\u4ef6", None))
+
         self.path.setText("")
         self.path.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u8def\u5f84", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u7f16\u7801\uff1a", None))
-        self.fileOperationCoding.setItemText(0, QCoreApplication.translate("MainWindow", u"GBK", None))
-        self.fileOperationCoding.setItemText(1, "")
-        self.fileOperationCoding.setItemText(2, "")
-        self.fileOperationCoding.setItemText(3, "")
-        self.fileOperationCoding.setItemText(4, "")
-        self.fileOperationCoding.setItemText(5, "")
-        self.fileOperationCoding.setItemText(6, "")
-        self.fileOperationCoding.setItemText(7, "")
-
-        self.fileOperationType.setItemText(0, QCoreApplication.translate("MainWindow", u"MySQL Union\u5199\u6587\u4ef6", None))
-        self.fileOperationType.setItemText(1, QCoreApplication.translate("MainWindow", u"MySQL Load_File \u8bfb\u6587\u4ef6", None))
-        self.fileOperationType.setItemText(2, QCoreApplication.translate("MainWindow", u"SQLServer FileSystemObject\u5199\u6587\u4ef6", None))
-        self.fileOperationType.setItemText(3, QCoreApplication.translate("MainWindow", u"SQLServer Sp_MakeWebTask\u5199\u6587\u4ef6", None))
-        self.fileOperationType.setItemText(4, QCoreApplication.translate("MainWindow", u"SQLServer\u5229\u7528\u5907\u4efd\u6570\u636e\u5e93\u5199\u6587\u4ef6", None))
-        self.fileOperationType.setItemText(5, QCoreApplication.translate("MainWindow", u"SQLServer FileSystemObject\u8bfb\u6587\u4ef6", None))
-        self.fileOperationType.setItemText(6, "")
-        self.fileOperationType.setItemText(7, "")
-
-        self.btn_stratFileOperation.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb", None))
-        self.btn_stopFileOperation.setText(QCoreApplication.translate("MainWindow", u"\u505c\u6b62", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u547d\u4ee4\u6267\u884c", None))
         self.commandInput.setText("")
         self.commandInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u547d\u4ee4", None))
@@ -2199,59 +2104,21 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem45.setText(QCoreApplication.translate("MainWindow", u"3", None));
         ___qtablewidgetitem46 = self.packetSendingRecord.horizontalHeaderItem(4)
         ___qtablewidgetitem46.setText(QCoreApplication.translate("MainWindow", u"4", None));
-        ___qtablewidgetitem47 = self.packetSendingRecord.horizontalHeaderItem(5)
-        ___qtablewidgetitem47.setText(QCoreApplication.translate("MainWindow", u"\u65b0\u5efa\u5217", None));
-        ___qtablewidgetitem48 = self.packetSendingRecord.horizontalHeaderItem(6)
-        ___qtablewidgetitem48.setText(QCoreApplication.translate("MainWindow", u"5", None));
-        ___qtablewidgetitem49 = self.packetSendingRecord.verticalHeaderItem(0)
-        ___qtablewidgetitem49.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem50 = self.packetSendingRecord.verticalHeaderItem(1)
-        ___qtablewidgetitem50.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem51 = self.packetSendingRecord.verticalHeaderItem(2)
-        ___qtablewidgetitem51.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem52 = self.packetSendingRecord.verticalHeaderItem(3)
-        ___qtablewidgetitem52.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem53 = self.packetSendingRecord.verticalHeaderItem(4)
-        ___qtablewidgetitem53.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem54 = self.packetSendingRecord.verticalHeaderItem(5)
-        ___qtablewidgetitem54.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem55 = self.packetSendingRecord.verticalHeaderItem(6)
-        ___qtablewidgetitem55.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem56 = self.packetSendingRecord.verticalHeaderItem(7)
-        ___qtablewidgetitem56.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem57 = self.packetSendingRecord.verticalHeaderItem(8)
-        ___qtablewidgetitem57.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem58 = self.packetSendingRecord.verticalHeaderItem(9)
-        ___qtablewidgetitem58.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem59 = self.packetSendingRecord.verticalHeaderItem(10)
-        ___qtablewidgetitem59.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem60 = self.packetSendingRecord.verticalHeaderItem(11)
-        ___qtablewidgetitem60.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem61 = self.packetSendingRecord.verticalHeaderItem(12)
-        ___qtablewidgetitem61.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem62 = self.packetSendingRecord.verticalHeaderItem(13)
-        ___qtablewidgetitem62.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem63 = self.packetSendingRecord.verticalHeaderItem(14)
-        ___qtablewidgetitem63.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem64 = self.packetSendingRecord.verticalHeaderItem(15)
-        ___qtablewidgetitem64.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
+        ___qtablewidgetitem47 = self.packetSendingRecord.verticalHeaderItem(0)
+        ___qtablewidgetitem47.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
 
         __sortingEnabled2 = self.packetSendingRecord.isSortingEnabled()
         self.packetSendingRecord.setSortingEnabled(False)
-        ___qtablewidgetitem65 = self.packetSendingRecord.item(0, 0)
-        ___qtablewidgetitem65.setText(QCoreApplication.translate("MainWindow", u"\u53d1\u5305\u5e8f\u53f7", None));
-        ___qtablewidgetitem66 = self.packetSendingRecord.item(0, 1)
-        ___qtablewidgetitem66.setText(QCoreApplication.translate("MainWindow", u"Payload", None));
-        ___qtablewidgetitem67 = self.packetSendingRecord.item(0, 2)
-        ___qtablewidgetitem67.setText(QCoreApplication.translate("MainWindow", u"\u7528\u65f6\u3010\u6beb\u79d2\u3011", None));
-        ___qtablewidgetitem68 = self.packetSendingRecord.item(0, 3)
-        ___qtablewidgetitem68.setText(QCoreApplication.translate("MainWindow", u"\u72b6\u6001\u7801", None));
-        ___qtablewidgetitem69 = self.packetSendingRecord.item(0, 4)
-        ___qtablewidgetitem69.setText(QCoreApplication.translate("MainWindow", u"body\u957f\u5ea6", None));
-        ___qtablewidgetitem70 = self.packetSendingRecord.item(0, 5)
-        ___qtablewidgetitem70.setText(QCoreApplication.translate("MainWindow", u"\u5ef6\u8fdf\u3010\u6beb\u7c73\u3011", None));
-        ___qtablewidgetitem71 = self.packetSendingRecord.item(0, 6)
-        ___qtablewidgetitem71.setText(QCoreApplication.translate("MainWindow", u"\u4ee3\u7406", None));
+        ___qtablewidgetitem48 = self.packetSendingRecord.item(0, 0)
+        ___qtablewidgetitem48.setText(QCoreApplication.translate("MainWindow", u"\u65f6\u95f4", None));
+        ___qtablewidgetitem49 = self.packetSendingRecord.item(0, 1)
+        ___qtablewidgetitem49.setText(QCoreApplication.translate("MainWindow", u"\u7f51\u7ad9", None));
+        ___qtablewidgetitem50 = self.packetSendingRecord.item(0, 2)
+        ___qtablewidgetitem50.setText(QCoreApplication.translate("MainWindow", u"\u7c7b\u578b", None));
+        ___qtablewidgetitem51 = self.packetSendingRecord.item(0, 3)
+        ___qtablewidgetitem51.setText(QCoreApplication.translate("MainWindow", u"Payload", None));
+        ___qtablewidgetitem52 = self.packetSendingRecord.item(0, 4)
+        ___qtablewidgetitem52.setText(QCoreApplication.translate("MainWindow", u"\u76f8\u4f3c\u5ea6", None));
         self.packetSendingRecord.setSortingEnabled(__sortingEnabled2)
 
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"\u6d88\u606f", None))

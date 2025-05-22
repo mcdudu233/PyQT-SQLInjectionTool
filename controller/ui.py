@@ -283,20 +283,24 @@ class UIWidgetsFunctions:
         else:
             self.ui.paramList.takeItem(self.ui.paramList.currentIndex().row())
 
+    ### 设置注入类型 combox injectionLevel###
+    def setInjectionLevel(self):
+        pass
+
+    ### 设置风险等级 combox riskLevel ###
+    def setRiskLevel(self):
+        pass
+
     ### 文件操作 ###
     ### 路径名设置 lineedit path ###
     def setPath(self):
-        pass
-
-    ### 文件编码设置 comboBox fileOperationCoding ###
-    def setFileOprationCoding(self):
         pass
 
     ### 文件操作设置 conmobox fileOpreation ###
     def setFileOperation(self):
         pass
 
-    ### 开始 button btn_stratFileOperation ###
+    ### 开始 button btn_startFileOperation ###
     def startFileOperation(self):
         if self.current_task_id is None:
             QMessageBox.information(self.main, "提示", "当前没有注入对象！请先到自动注入或手动注入界面识别注入！")
@@ -354,21 +358,12 @@ class UIWidgetsFunctions:
                 QMessageBox.critical(self.main, "文件操作失败", "文件操作失败，请查看日志！原因：" + str(e))
                 print(e)
 
-    ### 停止  button btn_stopFileOperation ###
-    def stopFileOperation(self):
-        pass
 
     ### 显示操作结果 ###
     def showFIleOperation(self):
         pass
 
-    ### 设置注入类型 combox injectionLevel###
-    def setInjectionLevel(self):
-        pass
 
-    ### 设置风险等级 combox riskLevel ###
-    def setRiskLevel(self):
-        pass
 
     ###########################
     ### 数据中心组件调用接口 ###
