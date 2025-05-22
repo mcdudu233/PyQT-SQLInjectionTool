@@ -1,8 +1,10 @@
 import datetime
 import html
+from time import sleep
+
 from PySide6.QtCore import QTimer, Qt, QModelIndex
 from PySide6.QtGui import QStandardItem
-from PySide6.QtWidgets import QMessageBox, QListWidgetItem, QLineEdit, QWidget, QTableWidgetItem
+from PySide6.QtWidgets import QMessageBox, QListWidgetItem, QLineEdit, QWidget, QTableWidgetItem, QApplication
 
 from service import SQLMap
 from ui.modules import Ui_MainWindow
@@ -124,9 +126,9 @@ class UIWidgetsFunctions:
 
     ### 识别注入 button btn_startInjection ###
     def startInjection(self):
+        self.ui.btn_startInjection.setText("识别中")
+        self.ui.btn_startInjection.setDisabled(True)
         try:
-            self.ui.btn_startInjection.setDisabled(True)
-
             if self.current_task_id is not None:
                 self.sqlmap.delete_task(self.current_task_id)
                 self.current_task_id = None
@@ -218,9 +220,16 @@ class UIWidgetsFunctions:
             self.sqlmap.start_scan(task_id, **kwargs)
 
             # 等待并获取数据
-            self.sqlmap.poll_scan_completion(task_id)
-            datas, errors = self.sqlmap.get_scan_data(task_id)
+            i = 0
+            while True:
+                i += 1
+                if self.sqlmap.get_scan_ok(task_id):
+                    break
+                self.ui.btn_startInjection.setText("识别中" + "." * int(i % 400 / 100))
+                QApplication.processEvents()
+                sleep(0.001)
 
+            datas, errors = self.sqlmap.get_scan_data(task_id)
             if len(datas) == 0 and len(errors) == 0:
                 QMessageBox.warning(self.main, "注入失败", "未检测到注入点，详细信息请查看日志！")
                 self.ui.btn_logCenter.click()
@@ -257,13 +266,15 @@ class UIWidgetsFunctions:
                 self.showLog(log["message"], log["level"], log["time"])
 
             self.current_task_id = task_id
-            self.ui.btn_startInjection.setDisabled(False)
+            self.ui.btn_dataCenter.click()
         except Exception as e:
             QMessageBox.critical(self.main, "注入失败", "注入失败，请查看日志！原因：" + str(e))
             print(e)
 
-            self.ui.btn_startInjection.setDisabled(False)
             self.ui.btn_logCenter.click()
+
+        self.ui.btn_startInjection.setText("识别注入")
+        self.ui.btn_startInjection.setDisabled(False)
 
     ### 设置请求方式 ### combox requestMethod
     def setRequestMethod(self):
@@ -305,6 +316,8 @@ class UIWidgetsFunctions:
                 show_border_effect_no(self.ui.path)
                 return
 
+            self.ui.btn_stratFileOperation.setText(f"{self.ui.fileOperationType.currentText()}中")
+            self.ui.btn_stratFileOperation.setDisabled(True)
             try:
                 if self.ui.fileOperationType.currentText() == "读取文件":
                     kwargs = self.current_kwargs | {"fileRead": self.ui.path.text()}
@@ -314,10 +327,19 @@ class UIWidgetsFunctions:
                     pass
 
                 self.sqlmap.start_scan(self.current_task_id, **kwargs)
-                # 等待并获取数据
-                self.sqlmap.poll_scan_completion(self.current_task_id)
-                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
 
+                # 等待并获取数据
+                i = 0
+                while True:
+                    i += 1
+                    if self.sqlmap.get_scan_ok(self.current_task_id):
+                        break
+                    self.ui.btn_stratFileOperation.setText(
+                        f"{self.ui.fileOperationType.currentText()}中" + "." * int(i % 400 / 100))
+                    QApplication.processEvents()
+                    sleep(0.001)
+
+                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
                 if self.ui.fileOperationType.currentText() == "读取文件":
                     for data in datas[::-1]:
                         if data["type"] == 22:
@@ -354,6 +376,9 @@ class UIWidgetsFunctions:
                 QMessageBox.critical(self.main, "文件操作失败", "文件操作失败，请查看日志！原因：" + str(e))
                 print(e)
 
+            self.ui.btn_stratFileOperation.setText(f"执行")
+            self.ui.btn_stratFileOperation.setDisabled(False)
+
     ### 停止  button btn_stopFileOperation ###
     def stopFileOperation(self):
         pass
@@ -377,11 +402,11 @@ class UIWidgetsFunctions:
     def showDatabaseInformation(self, args, startAt=1):
         row = startAt
         for i in range(len(args)):
+            if args[i] is None:
+                args[i] = "未知"
+            elif type(args[i]) is list:
+                args[i] = ",".join(args[i])
             if self.ui.databaseInformation.item(row, 1) is None:
-                if args[i] is None:
-                    args[i] = "未知"
-                elif type(args[i]) is list:
-                    args[i] = ",".join(args[i])
                 self.ui.databaseInformation.setItem(row, 1, QTableWidgetItem(str(args[i])))
             else:
                 self.ui.databaseInformation.item(row, 1).setText(args[i])
@@ -408,16 +433,25 @@ class UIWidgetsFunctions:
         if self.current_task_id is None:
             QMessageBox.information(self.main, "提示", "当前没有注入对象！请先到自动注入或手动注入界面识别注入！")
         else:
+            self.ui.btn_getData.setText("获取中")
+            self.ui.btn_getData.setDisabled(True)
             try:
                 kwargs = self.current_kwargs | {"extensiveFp": True, "getHostname": True,
                                                 "getCurrentUser": True, "getCurrentDb": True}
                 self.sqlmap.start_scan(self.current_task_id, **kwargs)
+
                 # 等待并获取数据
-                self.sqlmap.poll_scan_completion(self.current_task_id)
+                i = 0
+                while True:
+                    i += 1
+                    if self.sqlmap.get_scan_ok(self.current_task_id):
+                        break
+                    self.ui.btn_getData.setText("获取中" + "." * int(i % 400 / 100))
+                    QApplication.processEvents()
+                    sleep(0.001)
+
                 datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
-
                 args = []
-
                 # 主机名
                 for data in datas[::-1]:
                     if data["type"] == 6:
@@ -453,6 +487,8 @@ class UIWidgetsFunctions:
             except Exception as e:
                 QMessageBox.critical(self.main, "获取数据库信息失败", "获取数据库信息失败，请查看日志！原因：" + str(e))
                 print(e)
+            self.ui.btn_getData.setText("获取数据库信息")
+            self.ui.btn_getData.setDisabled(False)
 
     ### 导出数据 button btn_exportData ###
     def exportData(self):
@@ -467,13 +503,23 @@ class UIWidgetsFunctions:
         if self.current_task_id is None:
             QMessageBox.information(self.main, "提示", "当前没有注入对象！请先到自动注入或手动注入界面识别注入！")
         else:
+            self.ui.btn_getDatabaseContent.setText("获取中")
+            self.ui.btn_getDatabaseContent.setDisabled(True)
             try:
                 kwargs = self.current_kwargs | {"getDbs": True}
                 self.sqlmap.start_scan(self.current_task_id, **kwargs)
-                # 等待并获取数据
-                self.sqlmap.poll_scan_completion(self.current_task_id)
-                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
 
+                # 等待并获取数据
+                i = 0
+                while True:
+                    i += 1
+                    if self.sqlmap.get_scan_ok(self.current_task_id):
+                        break
+                    self.ui.btn_getDatabaseContent.setText("获取中" + "." * int(i % 400 / 100))
+                    QApplication.processEvents()
+                    sleep(0.001)
+
+                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
                 # 获取数据库
                 for data in datas[::-1]:
                     if data["type"] == 12:
@@ -496,6 +542,8 @@ class UIWidgetsFunctions:
             except Exception as e:
                 QMessageBox.critical(self.main, "获取数据库内容失败", "获取数据库内容失败，请查看日志！原因：" + str(e))
                 print(e)
+            self.ui.btn_getDatabaseContent.setText("获取数据库内容")
+            self.ui.btn_getDatabaseContent.setDisabled(False)
 
     ### 编码类型 ###
     def dataCodingType(self):
@@ -544,7 +592,6 @@ class UIWidgetsFunctions:
 
                 # 标记已加载
                 item.setData(True, Qt.UserRole + 2)
-                self.ui.databaseTree.expand(index)
 
                 for error in errors:
                     print(error)
@@ -623,6 +670,8 @@ class UIWidgetsFunctions:
         if self.current_task_id is None:
             QMessageBox.information(self.main, "提示", "当前没有注入对象！请先到自动注入或手动注入界面识别注入！")
         else:
+            self.ui.btn_startCommand.setText("命令执行中")
+            self.ui.btn_startCommand.setDisabled(True)
             try:
                 if self.ui.commandInput.text() == "":
                     show_border_effect_no(self.ui.commandInput)
@@ -630,10 +679,18 @@ class UIWidgetsFunctions:
 
                 kwargs = self.current_kwargs | {"osCmd": self.ui.commandInput.text()}
                 self.sqlmap.start_scan(self.current_task_id, **kwargs)
-                # 等待并获取数据
-                self.sqlmap.poll_scan_completion(self.current_task_id)
-                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
 
+                # 等待并获取数据
+                i = 0
+                while True:
+                    i += 1
+                    if self.sqlmap.get_scan_ok(self.current_task_id):
+                        break
+                    self.ui.btn_startCommand.setText("命令执行中" + "." * int(i % 400 / 100))
+                    QApplication.processEvents()
+                    sleep(0.001)
+
+                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
                 # 获取命令执行结果
                 if self.ui.echoResults.isChecked():
                     for data in datas[::-1]:
@@ -650,6 +707,8 @@ class UIWidgetsFunctions:
             except Exception as e:
                 QMessageBox.critical(self.main, "命令执行失败", "命令执行失败，请查看日志！原因：" + str(e))
                 print(e)
+            self.ui.btn_startCommand.setText("执行")
+            self.ui.btn_startCommand.setDisabled(False)
 
     ### 停止命令 button btn_stopCommand ###
     def stopCommand(self):
