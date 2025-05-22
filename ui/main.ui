@@ -4115,81 +4115,6 @@ background-repeat: no-repeat;</string>
                           </font>
                          </property>
                         </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
                         <column>
                          <property name="text">
                           <string>0</string>
@@ -4215,54 +4140,29 @@ background-repeat: no-repeat;</string>
                           <string>4</string>
                          </property>
                         </column>
-                        <column>
-                         <property name="text">
-                          <string>新建列</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>5</string>
-                         </property>
-                        </column>
                         <item row="0" column="0">
                          <property name="text">
-                          <string>发包序号</string>
+                          <string>时间</string>
                          </property>
                         </item>
                         <item row="0" column="1">
                          <property name="text">
-                          <string>Payload</string>
+                          <string>网站</string>
                          </property>
                         </item>
                         <item row="0" column="2">
                          <property name="text">
-                          <string>用时【毫秒】</string>
+                          <string>类型</string>
                          </property>
                         </item>
                         <item row="0" column="3">
                          <property name="text">
-                          <string>状态码</string>
+                          <string>Payload</string>
                          </property>
                         </item>
                         <item row="0" column="4">
                          <property name="text">
-                          <string>body长度</string>
-                         </property>
-                        </item>
-                        <item row="0" column="5">
-                         <property name="text">
-                          <string>延迟【毫米】</string>
-                         </property>
-                        </item>
-                        <item row="0" column="6">
-                         <property name="text">
-                          <string>代理</string>
-                         </property>
-                        </item>
-                        <item row="1" column="0">
-                         <property name="text">
-                          <string/>
+                          <string>相似度</string>
                          </property>
                         </item>
                        </widget>

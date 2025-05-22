@@ -139,9 +139,6 @@ class MainWindow(QMainWindow):
         widgets.commandInput.textChanged.connect(self.widgetsFunctions.setCommand)
         widgets.echoResults.stateChanged.connect(self.widgetsFunctions.ifEchoResults)
 
-        ### 日志中心界面信号槽 ###
-        widgets.log.textChanged.connect(self.widgetsFunctions.showLog)
-
         ### 文件操作界面信号槽 ###
         widgets.btn_stratFileOperation.clicked.connect(self.widgetsFunctions.startFileOperation)
         widgets.btn_stopFileOperation.clicked.connect(self.widgetsFunctions.stopFileOperation)

@@ -226,7 +226,7 @@ class UIWidgetsFunctions:
                 self.ui.btn_logCenter.click()
             else:
                 for data in datas:
-                    print(data)
+                    # print(data)
                     # 解析注入的数据
                     if data["type"] == 1:
                         for value in data["value"]:
@@ -241,6 +241,11 @@ class UIWidgetsFunctions:
                                 show_border_effect_yes(self.ui.databaseType)
                                 self.ui.databaseType.setCurrentText(value["dbms"])
 
+                            # 添加到注入日志
+                            for inject in value["data"]:
+                                self.showPayloadRecord(
+                                    [url, value["data"][inject]["title"], value["data"][inject]["payload"],
+                                     value["data"][inject]["matchRatio"]])
                             self.showDatabaseInformation([value["dbms"], value["dbms_version"], value["os"]])
                             # for i in value:
                             #     print(i)
@@ -249,7 +254,7 @@ class UIWidgetsFunctions:
 
             logs = self.sqlmap.get_scan_log(task_id)
             for log in logs:
-                self._add_log_color(log["message"], log["level"], log["time"])
+                self.showLog(log["message"], log["level"], log["time"])
 
             self.current_task_id = task_id
             self.ui.btn_startInjection.setDisabled(False)
@@ -344,7 +349,7 @@ class UIWidgetsFunctions:
 
                 logs = self.sqlmap.get_scan_log(self.current_task_id)
                 for log in logs:
-                    self._add_log_color(log["message"], log["level"], log["time"])
+                    self.showLog(log["message"], log["level"], log["time"])
             except Exception as e:
                 QMessageBox.critical(self.main, "文件操作失败", "文件操作失败，请查看日志！原因：" + str(e))
                 print(e)
@@ -444,7 +449,7 @@ class UIWidgetsFunctions:
 
                 logs = self.sqlmap.get_scan_log(self.current_task_id)
                 for log in logs:
-                    self._add_log_color(log["message"], log["level"], log["time"])
+                    self.showLog(log["message"], log["level"], log["time"])
             except Exception as e:
                 QMessageBox.critical(self.main, "获取数据库信息失败", "获取数据库信息失败，请查看日志！原因：" + str(e))
                 print(e)
@@ -487,7 +492,7 @@ class UIWidgetsFunctions:
 
                 logs = self.sqlmap.get_scan_log(self.current_task_id)
                 for log in logs:
-                    self._add_log_color(log["message"], log["level"], log["time"])
+                    self.showLog(log["message"], log["level"], log["time"])
             except Exception as e:
                 QMessageBox.critical(self.main, "获取数据库内容失败", "获取数据库内容失败，请查看日志！原因：" + str(e))
                 print(e)
@@ -546,7 +551,7 @@ class UIWidgetsFunctions:
 
                 logs = self.sqlmap.get_scan_log(self.current_task_id)
                 for log in logs:
-                    self._add_log_color(log["message"], log["level"], log["time"])
+                    self.showLog(log["message"], log["level"], log["time"])
             except Exception as e:
                 QMessageBox.critical(self.main, "获取数据库表失败", "获取数据库表失败，请查看日志！原因：" + str(e))
                 print(e)
@@ -599,7 +604,7 @@ class UIWidgetsFunctions:
 
                 logs = self.sqlmap.get_scan_log(self.current_task_id)
                 for log in logs:
-                    self._add_log_color(log["message"], log["level"], log["time"])
+                    self.showLog(log["message"], log["level"], log["time"])
             except Exception as e:
                 QMessageBox.critical(self.main, "获取数据库表失败", "获取数据库表失败，请查看日志！原因：" + str(e))
                 print(e)
@@ -641,7 +646,7 @@ class UIWidgetsFunctions:
 
                 logs = self.sqlmap.get_scan_log(self.current_task_id)
                 for log in logs:
-                    self._add_log_color(log["message"], log["level"], log["time"])
+                    self.showLog(log["message"], log["level"], log["time"])
             except Exception as e:
                 QMessageBox.critical(self.main, "命令执行失败", "命令执行失败，请查看日志！原因：" + str(e))
                 print(e)
@@ -661,16 +666,27 @@ class UIWidgetsFunctions:
     ###########################
     ### 日志中心界面组件调用接口 ###
     ###########################
-    ### 日志展示 plaintext log ###
-    def showLog(self):
-        pass
+    ### 添加payload记录 ###
+    def showPayloadRecord(self, args, time=None):
+        # 获取时间
+        if time is None:
+            time = datetime.datetime.now().strftime("%H:%M:%S")
 
-    ### 数据包发包记录 tableWidget packetSendingRecord ###
-    def showPacketSendingRecord(self):
-        pass
+        # 插入行
+        row = self.ui.packetSendingRecord.rowCount()
+        self.ui.packetSendingRecord.insertRow(row)
+
+        # 写入数据
+        self.ui.packetSendingRecord.setItem(row, 0, QTableWidgetItem(time))
+        for i in range(len(args)):
+            if args[i] is None:
+                args[i] = "未知"
+            elif type(args[i]) is list:
+                args[i] = ",".join(args[i])
+            self.ui.packetSendingRecord.setItem(row, i + 1, QTableWidgetItem(str(args[i])))
 
     ### 添加文本到日志 ###
-    def _add_log_color(self, txt, level="PLAIN", time=None):
+    def showLog(self, txt, level="PLAIN", time=None):
         # 设置最大行数
         # len(self.ui.log.toPlainText().split("\n"))
 
