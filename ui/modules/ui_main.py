@@ -1462,6 +1462,21 @@ class Ui_MainWindow(object):
         self.groupBox_2.setGeometry(QRect(10, 0, 811, 441))
         self.gridLayout_6 = QGridLayout(self.groupBox_2)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.fileOperationResults = QPlainTextEdit(self.groupBox_2)
+        self.fileOperationResults.setObjectName(u"fileOperationResults")
+        self.fileOperationResults.setMinimumSize(QSize(200, 200))
+        self.fileOperationResults.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.fileOperationResults.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByKeyboard|Qt.TextInteractionFlag.TextSelectableByMouse)
+
+        self.gridLayout_6.addWidget(self.fileOperationResults, 5, 0, 1, 3)
+
+        self.path = QLineEdit(self.groupBox_2)
+        self.path.setObjectName(u"path")
+        self.path.setMinimumSize(QSize(0, 30))
+        self.path.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+
+        self.gridLayout_6.addWidget(self.path, 0, 0, 1, 1)
+
         self.btn_startFileOperation = QPushButton(self.groupBox_2)
         self.btn_startFileOperation.setObjectName(u"btn_startFileOperation")
         self.btn_startFileOperation.setMinimumSize(QSize(150, 30))
@@ -1469,14 +1484,7 @@ class Ui_MainWindow(object):
         self.btn_startFileOperation.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.btn_startFileOperation.setStyleSheet(u"background-color: rgb(52, 59, 72);")
 
-        self.gridLayout_6.addWidget(self.btn_startFileOperation, 2, 0, 1, 2)
-
-        self.path = QLineEdit(self.groupBox_2)
-        self.path.setObjectName(u"path")
-        self.path.setMinimumSize(QSize(0, 30))
-        self.path.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.gridLayout_6.addWidget(self.path, 0, 0, 1, 3)
+        self.gridLayout_6.addWidget(self.btn_startFileOperation, 0, 2, 1, 1)
 
         self.fileOperationType = QComboBox(self.groupBox_2)
         self.fileOperationType.addItem("")
@@ -1488,15 +1496,7 @@ class Ui_MainWindow(object):
         self.fileOperationType.setIconSize(QSize(16, 16))
         self.fileOperationType.setFrame(True)
 
-        self.gridLayout_6.addWidget(self.fileOperationType, 2, 2, 1, 1)
-
-        self.fileOperationResults = QPlainTextEdit(self.groupBox_2)
-        self.fileOperationResults.setObjectName(u"fileOperationResults")
-        self.fileOperationResults.setMinimumSize(QSize(200, 200))
-        self.fileOperationResults.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-        self.fileOperationResults.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByKeyboard|Qt.TextInteractionFlag.TextSelectableByMouse)
-
-        self.gridLayout_6.addWidget(self.fileOperationResults, 3, 0, 1, 3)
+        self.gridLayout_6.addWidget(self.fileOperationType, 0, 1, 1, 1)
 
         self.stackedWidget.addWidget(self.fileOperation)
         self.command = QWidget()
@@ -1783,7 +1783,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1988,9 +1988,9 @@ class Ui_MainWindow(object):
         self.url.setPlaceholderText(QCoreApplication.translate("MainWindow", u"URL", None))
         self.browse.setText(QCoreApplication.translate("MainWindow", u"\u6d4f\u89c8", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u64cd\u4f5c", None))
-        self.btn_startFileOperation.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb", None))
         self.path.setText("")
         self.path.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u8def\u5f84", None))
+        self.btn_startFileOperation.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb", None))
         self.fileOperationType.setItemText(0, QCoreApplication.translate("MainWindow", u"\u8bfb\u53d6\u6587\u4ef6", None))
         self.fileOperationType.setItemText(1, QCoreApplication.translate("MainWindow", u"\u5199\u5165\u6587\u4ef6", None))
 

@@ -1560,7 +1560,7 @@ Button */
                       <number>0</number>
                      </property>
                      <property name="currentIndex">
-                      <number>2</number>
+                      <number>4</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -3234,7 +3234,42 @@ background-repeat: no-repeat;</string>
                         <string>文件操作</string>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_6">
-                        <item row="2" column="0" colspan="2">
+                        <item row="5" column="0" colspan="3">
+                         <widget class="QPlainTextEdit" name="fileOperationResults">
+                          <property name="minimumSize">
+                           <size>
+                            <width>200</width>
+                            <height>200</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="textInteractionFlags">
+                           <set>Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="0">
+                         <widget class="QLineEdit" name="path">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="placeholderText">
+                           <string>路径</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="2">
                          <widget class="QPushButton" name="btn_startFileOperation">
                           <property name="minimumSize">
                            <size>
@@ -3261,26 +3296,7 @@ background-repeat: no-repeat;</string>
                           </property>
                          </widget>
                         </item>
-                        <item row="0" column="0" colspan="3">
-                         <widget class="QLineEdit" name="path">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                          <property name="placeholderText">
-                           <string>路径</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="2">
+                        <item row="0" column="1">
                          <widget class="QComboBox" name="fileOperationType">
                           <property name="font">
                            <font>
@@ -3315,22 +3331,6 @@ background-repeat: no-repeat;</string>
                             <string>写入文件</string>
                            </property>
                           </item>
-                         </widget>
-                        </item>
-                        <item row="3" column="0" colspan="3">
-                         <widget class="QPlainTextEdit" name="fileOperationResults">
-                          <property name="minimumSize">
-                           <size>
-                            <width>200</width>
-                            <height>200</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="textInteractionFlags">
-                           <set>Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
-                          </property>
                          </widget>
                         </item>
                        </layout>

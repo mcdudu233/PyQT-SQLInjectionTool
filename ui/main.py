@@ -156,54 +156,42 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW MANUALINJECTION
-        if btnName == "btn_manualInjection":
+        elif btnName == "btn_manualInjection":
             widgets.stackedWidget.setCurrentWidget(widgets.manualInjection)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW LOGCENTER
-        if btnName == "btn_logCenter":
+        elif btnName == "btn_logCenter":
             widgets.stackedWidget.setCurrentWidget(widgets.logCenter)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW DATACENTER
-        if btnName == "btn_dataCenter":
+        elif btnName == "btn_dataCenter":
             widgets.stackedWidget.setCurrentWidget(widgets.dataCenter)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW COMMAND
-        if btnName == "btn_command":
+        elif btnName == "btn_command":
             widgets.stackedWidget.setCurrentWidget(widgets.command)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW LOGCENTER
-        if btnName == "btn_logCenter":
-            widgets.stackedWidget.setCurrentWidget(widgets.logCenter)
+        elif btnName == "btn_new":
+            widgets.stackedWidget.setCurrentWidget(widgets.new_page)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW NEW PAGE
-        if btnName == "btn_new":
-            widgets.stackedWidget.setCurrentWidget(widgets.new_page)  # SET PAGE
-            UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
-
-        # SHOW FILEOPERATION
-        if btnName == "btn_fileOperation":
+        elif btnName == "btn_fileOperation":
             widgets.stackedWidget.setCurrentWidget(widgets.fileOperation)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        if btnName == "btn_exit":
+        elif btnName == "btn_exit":
             del self.widgetsFunctions
             sys.exit(0)
 
-        # PRINT BTN NAME
-        # print(f'Button "{btnName}" pressed!')
+
+        btn.clearFocus()
 
     # 尺寸改变事件
     def resizeEvent(self, event):
