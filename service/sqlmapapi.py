@@ -32,6 +32,8 @@ class SQLMapServer:
         for line in iter(stream.readline, ''):
             if line.strip():
                 logger_method(line.strip())
+            if self.process is None:
+                break
 
     def start(self):
         if self.process:

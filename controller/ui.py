@@ -1,7 +1,5 @@
 import datetime
 import html
-from itertools import count
-
 from PySide6.QtCore import QTimer, Qt, QModelIndex
 from PySide6.QtGui import QStandardItem
 from PySide6.QtWidgets import QMessageBox, QListWidgetItem, QLineEdit, QWidget, QTableWidgetItem

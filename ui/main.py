@@ -206,8 +206,11 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
+        if btnName == "btn_exit":
+            os._exit(0)
+
         # PRINT BTN NAME
-        print(f'Button "{btnName}" pressed!')
+        # print(f'Button "{btnName}" pressed!')
 
     # 尺寸改变事件
     def resizeEvent(self, event):
@@ -240,4 +243,4 @@ def main():
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon("icon.ico"))
     window = MainWindow()
-    sys.exit(app.exec_())
+    os._exit(app.exec_())
