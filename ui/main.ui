@@ -1560,7 +1560,7 @@ Button */
                       <number>0</number>
                      </property>
                      <property name="currentIndex">
-                      <number>4</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -1570,54 +1570,24 @@ background-repeat: no-repeat;</string>
                       </property>
                      </widget>
                      <widget class="QWidget" name="manualInjection">
-                      <widget class="QGroupBox" name="gridGroupBox_2">
+                      <widget class="QWidget" name="gridWidget_2" native="true">
                        <property name="geometry">
                         <rect>
-                         <x>10</x>
+                         <x>200</x>
                          <y>0</y>
-                         <width>811</width>
-                         <height>441</height>
+                         <width>421</width>
+                         <height>431</height>
                         </rect>
                        </property>
-                       <property name="title">
-                        <string>手动注入</string>
-                       </property>
                        <layout class="QGridLayout" name="gridLayout_2">
-                        <property name="leftMargin">
-                         <number>79</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>16</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>79</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>10</number>
-                        </property>
-                        <property name="verticalSpacing">
-                         <number>12</number>
-                        </property>
-                        <item row="7" column="2">
-                         <widget class="QLineEdit" name="inspectionInterval">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
+                        <item row="4" column="0">
+                         <widget class="QLabel" name="label_17">
                           <property name="text">
-                           <string/>
-                          </property>
-                          <property name="placeholderText">
-                           <string>检测间隔</string>
+                           <string>注入等级：</string>
                           </property>
                          </widget>
                         </item>
-                        <item row="4" column="1">
+                        <item row="0" column="0" colspan="3">
                          <widget class="QLineEdit" name="autoUrl">
                           <property name="minimumSize">
                            <size>
@@ -1625,92 +1595,31 @@ background-repeat: no-repeat;</string>
                             <height>30</height>
                            </size>
                           </property>
+                          <property name="layoutDirection">
+                           <enum>Qt::LayoutDirection::LeftToRight</enum>
+                          </property>
                           <property name="styleSheet">
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
                           <property name="text">
-                           <string/>
+                           <string>URL</string>
+                          </property>
+                          <property name="maxLength">
+                           <number>78</number>
                           </property>
                           <property name="placeholderText">
-                           <string>autoUrl</string>
+                           <string>URL</string>
                           </property>
                          </widget>
                         </item>
-                        <item row="6" column="1">
-                         <widget class="QLabel" name="label_18">
+                        <item row="2" column="2">
+                         <widget class="QLabel" name="label_3">
                           <property name="text">
-                           <string>风险等级</string>
+                           <string>注入类型：</string>
                           </property>
                          </widget>
                         </item>
-                        <item row="8" column="2">
-                         <widget class="QPushButton" name="btn_addParam">
-                          <property name="minimumSize">
-                           <size>
-                            <width>150</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(52, 59, 72);</string>
-                          </property>
-                          <property name="text">
-                           <string>添加参数</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="4" column="2">
-                         <widget class="QCheckBox" name="https">
-                          <property name="autoFillBackground">
-                           <bool>false</bool>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="text">
-                           <string>HTTPS</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="9" column="2">
-                         <widget class="QPushButton" name="btn_deleteParam">
-                          <property name="minimumSize">
-                           <size>
-                            <width>150</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(52, 59, 72);</string>
-                          </property>
-                          <property name="text">
-                           <string>删除参数</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="6" column="2">
+                        <item row="4" column="1">
                          <widget class="QComboBox" name="riskLevel">
                           <property name="font">
                            <font>
@@ -1752,7 +1661,206 @@ background-repeat: no-repeat;</string>
                           </item>
                          </widget>
                         </item>
+                        <item row="7" column="3">
+                         <widget class="QPushButton" name="btn_startInjection">
+                          <property name="minimumSize">
+                           <size>
+                            <width>150</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(52, 59, 72);</string>
+                          </property>
+                          <property name="text">
+                           <string>识别注入</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="4" column="2">
+                         <widget class="QLineEdit" name="paramInput">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="placeholderText">
+                           <string>参数输入</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="6" column="3">
+                         <widget class="QPushButton" name="btn_deleteParam">
+                          <property name="minimumSize">
+                           <size>
+                            <width>150</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(52, 59, 72);</string>
+                          </property>
+                          <property name="text">
+                           <string>删除参数</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="0">
+                         <widget class="QLabel" name="label_18">
+                          <property name="text">
+                           <string>风险等级：</string>
+                          </property>
+                         </widget>
+                        </item>
                         <item row="3" column="2">
+                         <widget class="QLabel" name="label_10">
+                          <property name="text">
+                           <string>数据库</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="1">
+                         <widget class="QComboBox" name="requestMethod">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="autoFillBackground">
+                           <bool>false</bool>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="currentText">
+                           <string>GET</string>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>16</width>
+                            <height>16</height>
+                           </size>
+                          </property>
+                          <property name="frame">
+                           <bool>true</bool>
+                          </property>
+                          <item>
+                           <property name="text">
+                            <string>GET</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>POST</string>
+                           </property>
+                          </item>
+                         </widget>
+                        </item>
+                        <item row="2" column="3">
+                         <widget class="QComboBox" name="injectionType">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="autoFillBackground">
+                           <bool>false</bool>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>16</width>
+                            <height>16</height>
+                           </size>
+                          </property>
+                          <property name="frame">
+                           <bool>true</bool>
+                          </property>
+                          <item>
+                           <property name="text">
+                            <string>自动检测</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>布尔盲注</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>报错注入</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>内联注入</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>堆叠注入</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>时间盲注</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>联合注入</string>
+                           </property>
+                          </item>
+                         </widget>
+                        </item>
+                        <item row="2" column="0">
+                         <widget class="QLabel" name="label_8">
+                          <property name="text">
+                           <string>请求方式</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignmentFlag::AlignJustify|Qt::AlignmentFlag::AlignVCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="3">
                          <widget class="QComboBox" name="databaseType">
                           <property name="font">
                            <font>
@@ -1899,109 +2007,46 @@ background-repeat: no-repeat;</string>
                           </item>
                          </widget>
                         </item>
-                        <item row="1" column="2">
-                         <widget class="QComboBox" name="requestMethod">
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
+                        <item row="5" column="0" rowspan="3" colspan="3">
+                         <widget class="QGroupBox" name="groupBox_2">
+                          <property name="title">
+                           <string>参数选择</string>
                           </property>
-                          <property name="autoFillBackground">
-                           <bool>false</bool>
+                          <widget class="QListWidget" name="paramList">
+                           <property name="geometry">
+                            <rect>
+                             <x>0</x>
+                             <y>10</y>
+                             <width>220</width>
+                             <height>140</height>
+                            </rect>
+                           </property>
+                          </widget>
+                         </widget>
+                        </item>
+                        <item row="4" column="3">
+                         <widget class="QLineEdit" name="inspectionInterval">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>30</height>
+                           </size>
                           </property>
                           <property name="styleSheet">
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
                           </property>
-                          <property name="currentText">
-                           <string>GET</string>
+                          <property name="text">
+                           <string/>
                           </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>16</width>
-                            <height>16</height>
-                           </size>
+                          <property name="maxLength">
+                           <number>56</number>
                           </property>
-                          <property name="frame">
-                           <bool>true</bool>
+                          <property name="placeholderText">
+                           <string>检测间隔</string>
                           </property>
-                          <item>
-                           <property name="text">
-                            <string>GET</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>POST</string>
-                           </property>
-                          </item>
                          </widget>
                         </item>
-                        <item row="2" column="2">
-                         <widget class="QComboBox" name="injectionType">
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="autoFillBackground">
-                           <bool>false</bool>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>16</width>
-                            <height>16</height>
-                           </size>
-                          </property>
-                          <property name="frame">
-                           <bool>true</bool>
-                          </property>
-                          <item>
-                           <property name="text">
-                            <string>自动检测</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>布尔盲注</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>报错注入</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>内联注入</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>堆叠注入</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>时间盲注</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>联合注入</string>
-                           </property>
-                          </item>
-                         </widget>
-                        </item>
-                        <item row="5" column="2">
+                        <item row="3" column="1">
                          <widget class="QComboBox" name="injectionLevel">
                           <property name="font">
                            <font>
@@ -2053,51 +2098,8 @@ background-repeat: no-repeat;</string>
                           </item>
                          </widget>
                         </item>
-                        <item row="8" column="1" rowspan="4">
-                         <widget class="QListWidget" name="paramList"/>
-                        </item>
-                        <item row="7" column="1">
-                         <widget class="QLineEdit" name="paramInput">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                          <property name="placeholderText">
-                           <string>参数输入</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="3" column="1">
-                         <widget class="QLabel" name="label_10">
-                          <property name="text">
-                           <string>数据库：</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="5" column="1">
-                         <widget class="QLabel" name="label_17">
-                          <property name="text">
-                           <string>注入等级：</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="1">
-                         <widget class="QLabel" name="label_3">
-                          <property name="text">
-                           <string>注入类型：</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="11" column="2">
-                         <widget class="QPushButton" name="btn_startInjection">
+                        <item row="5" column="3">
+                         <widget class="QPushButton" name="btn_addParam">
                           <property name="minimumSize">
                            <size>
                             <width>150</width>
@@ -2119,17 +2121,29 @@ background-repeat: no-repeat;</string>
                            <string notr="true">background-color: rgb(52, 59, 72);</string>
                           </property>
                           <property name="text">
-                           <string>识别注入</string>
+                           <string>添加参数</string>
                           </property>
                          </widget>
                         </item>
-                        <item row="1" column="1">
-                         <widget class="QLabel" name="label_8">
-                          <property name="text">
-                           <string>请求方式</string>
+                        <item row="0" column="3">
+                         <widget class="QCheckBox" name="https">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
                           </property>
-                          <property name="alignment">
-                           <set>Qt::AlignmentFlag::AlignJustify|Qt::AlignmentFlag::AlignVCenter</set>
+                          <property name="layoutDirection">
+                           <enum>Qt::LayoutDirection::LeftToRight</enum>
+                          </property>
+                          <property name="autoFillBackground">
+                           <bool>false</bool>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="text">
+                           <string>HTTPS</string>
                           </property>
                          </widget>
                         </item>
@@ -2137,887 +2151,22 @@ background-repeat: no-repeat;</string>
                       </widget>
                      </widget>
                      <widget class="QWidget" name="dataCenter">
-                      <widget class="QGroupBox" name="groupBox">
+                      <widget class="QWidget" name="widget" native="true">
                        <property name="geometry">
                         <rect>
-                         <x>10</x>
+                         <x>0</x>
                          <y>0</y>
                          <width>811</width>
                          <height>441</height>
                         </rect>
                        </property>
-                       <property name="title">
-                        <string>数据中心</string>
-                       </property>
-                       <widget class="QTableWidget" name="databaseInformation">
-                        <property name="geometry">
-                         <rect>
-                          <x>20</x>
-                          <y>100</y>
-                          <width>211</width>
-                          <height>191</height>
-                         </rect>
-                        </property>
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="palette">
-                         <palette>
-                          <active>
-                           <colorrole role="WindowText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Button">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Text">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="ButtonText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Base">
-                            <brush brushstyle="NoBrush">
-                             <color alpha="255">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Window">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="PlaceholderText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="128">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                          </active>
-                          <inactive>
-                           <colorrole role="WindowText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Button">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Text">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="ButtonText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Base">
-                            <brush brushstyle="NoBrush">
-                             <color alpha="255">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Window">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="PlaceholderText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="128">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                          </inactive>
-                          <disabled>
-                           <colorrole role="WindowText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Button">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Text">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="ButtonText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Base">
-                            <brush brushstyle="NoBrush">
-                             <color alpha="255">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Window">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="PlaceholderText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="128">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                          </disabled>
-                         </palette>
-                        </property>
-                        <property name="toolTipDuration">
-                         <number>0</number>
-                        </property>
-                        <property name="frameShape">
-                         <enum>QFrame::Shape::NoFrame</enum>
-                        </property>
-                        <property name="verticalScrollBarPolicy">
-                         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-                        </property>
-                        <property name="horizontalScrollBarPolicy">
-                         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-                        </property>
-                        <property name="sizeAdjustPolicy">
-                         <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-                        </property>
-                        <property name="autoScrollMargin">
-                         <number>6</number>
-                        </property>
-                        <property name="editTriggers">
-                         <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-                        </property>
-                        <property name="selectionMode">
-                         <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
-                        </property>
-                        <property name="selectionBehavior">
-                         <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-                        </property>
-                        <property name="showGrid">
-                         <bool>true</bool>
-                        </property>
-                        <property name="gridStyle">
-                         <enum>Qt::PenStyle::SolidLine</enum>
-                        </property>
-                        <property name="sortingEnabled">
-                         <bool>false</bool>
-                        </property>
-                        <property name="columnCount">
-                         <number>2</number>
-                        </property>
-                        <attribute name="horizontalHeaderVisible">
-                         <bool>false</bool>
-                        </attribute>
-                        <attribute name="horizontalHeaderCascadingSectionResizes">
-                         <bool>true</bool>
-                        </attribute>
-                        <attribute name="horizontalHeaderMinimumSectionSize">
-                         <number>20</number>
-                        </attribute>
-                        <attribute name="horizontalHeaderDefaultSectionSize">
-                         <number>50</number>
-                        </attribute>
-                        <attribute name="horizontalHeaderStretchLastSection">
-                         <bool>true</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderVisible">
-                         <bool>false</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderCascadingSectionResizes">
-                         <bool>true</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderMinimumSectionSize">
-                         <number>17</number>
-                        </attribute>
-                        <attribute name="verticalHeaderDefaultSectionSize">
-                         <number>17</number>
-                        </attribute>
-                        <attribute name="verticalHeaderHighlightSections">
-                         <bool>false</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderStretchLastSection">
-                         <bool>true</bool>
-                        </attribute>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Segoe UI</family>
-                          </font>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <column>
-                         <property name="text">
-                          <string>0</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>1</string>
-                         </property>
-                        </column>
-                        <item row="0" column="0">
-                         <property name="text">
-                          <string>信息</string>
-                         </property>
-                        </item>
-                        <item row="0" column="1">
-                         <property name="text">
-                          <string>值</string>
-                         </property>
-                        </item>
-                        <item row="1" column="0">
-                         <property name="text">
-                          <string/>
-                         </property>
-                        </item>
-                       </widget>
-                       <widget class="QTableWidget" name="tableInformation">
-                        <property name="geometry">
-                         <rect>
-                          <x>450</x>
-                          <y>110</y>
-                          <width>331</width>
-                          <height>181</height>
-                         </rect>
-                        </property>
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="palette">
-                         <palette>
-                          <active>
-                           <colorrole role="WindowText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Button">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Text">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="ButtonText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Base">
-                            <brush brushstyle="NoBrush">
-                             <color alpha="255">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Window">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="PlaceholderText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="128">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                          </active>
-                          <inactive>
-                           <colorrole role="WindowText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Button">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Text">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="ButtonText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Base">
-                            <brush brushstyle="NoBrush">
-                             <color alpha="255">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Window">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="PlaceholderText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="128">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                          </inactive>
-                          <disabled>
-                           <colorrole role="WindowText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Button">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Text">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="ButtonText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Base">
-                            <brush brushstyle="NoBrush">
-                             <color alpha="255">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Window">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="PlaceholderText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="128">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                          </disabled>
-                         </palette>
-                        </property>
-                        <property name="frameShape">
-                         <enum>QFrame::Shape::NoFrame</enum>
-                        </property>
-                        <property name="verticalScrollBarPolicy">
-                         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
-                        </property>
-                        <property name="sizeAdjustPolicy">
-                         <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-                        </property>
-                        <property name="editTriggers">
-                         <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-                        </property>
-                        <property name="selectionMode">
-                         <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
-                        </property>
-                        <property name="selectionBehavior">
-                         <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-                        </property>
-                        <property name="showGrid">
-                         <bool>true</bool>
-                        </property>
-                        <property name="gridStyle">
-                         <enum>Qt::PenStyle::SolidLine</enum>
-                        </property>
-                        <property name="sortingEnabled">
-                         <bool>false</bool>
-                        </property>
-                        <attribute name="horizontalHeaderVisible">
-                         <bool>false</bool>
-                        </attribute>
-                        <attribute name="horizontalHeaderCascadingSectionResizes">
-                         <bool>true</bool>
-                        </attribute>
-                        <attribute name="horizontalHeaderDefaultSectionSize">
-                         <number>200</number>
-                        </attribute>
-                        <attribute name="horizontalHeaderStretchLastSection">
-                         <bool>true</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderVisible">
-                         <bool>false</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderCascadingSectionResizes">
-                         <bool>false</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderHighlightSections">
-                         <bool>false</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderStretchLastSection">
-                         <bool>true</bool>
-                        </attribute>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Segoe UI</family>
-                          </font>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                        </row>
-                        <column>
-                         <property name="text">
-                          <string>0</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>1</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>2</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>3</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>4</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>5</string>
-                         </property>
-                        </column>
-                        <item row="0" column="0">
-                         <property name="text">
-                          <string/>
-                         </property>
-                        </item>
-                        <item row="0" column="1">
-                         <property name="text">
-                          <string/>
-                         </property>
-                        </item>
-                        <item row="0" column="2">
-                         <property name="text">
-                          <string/>
-                         </property>
-                        </item>
-                        <item row="0" column="3">
-                         <property name="text">
-                          <string/>
-                         </property>
-                        </item>
-                        <item row="0" column="4">
-                         <property name="text">
-                          <string/>
-                         </property>
-                        </item>
-                        <item row="0" column="5">
-                         <property name="text">
-                          <string/>
-                         </property>
-                        </item>
-                        <item row="1" column="0">
-                         <property name="text">
-                          <string/>
-                         </property>
-                        </item>
-                       </widget>
-                       <widget class="QLabel" name="label_19">
-                        <property name="geometry">
-                         <rect>
-                          <x>290</x>
-                          <y>70</y>
-                          <width>65</width>
-                          <height>18</height>
-                         </rect>
-                        </property>
-                        <property name="text">
-                         <string>数据库内容</string>
-                        </property>
-                       </widget>
-                       <widget class="QLabel" name="label_13">
-                        <property name="geometry">
-                         <rect>
-                          <x>590</x>
-                          <y>70</y>
-                          <width>39</width>
-                          <height>18</height>
-                         </rect>
-                        </property>
-                        <property name="text">
-                         <string>表信息</string>
-                        </property>
-                       </widget>
-                       <widget class="QLabel" name="label_12">
-                        <property name="geometry">
-                         <rect>
-                          <x>80</x>
-                          <y>70</y>
-                          <width>65</width>
-                          <height>18</height>
-                         </rect>
-                        </property>
-                        <property name="text">
-                         <string>数据库信息</string>
-                        </property>
-                       </widget>
-                       <widget class="QTreeView" name="databaseTree">
-                        <property name="geometry">
-                         <rect>
-                          <x>240</x>
-                          <y>110</y>
-                          <width>201</width>
-                          <height>181</height>
-                         </rect>
-                        </property>
-                       </widget>
                        <widget class="QWidget" name="widget_7" native="true">
                         <property name="geometry">
                          <rect>
                           <x>20</x>
                           <y>330</y>
-                          <width>761</width>
-                          <height>81</height>
+                          <width>781</width>
+                          <height>101</height>
                          </rect>
                         </property>
                         <layout class="QGridLayout" name="gridLayout_3">
@@ -3104,10 +2253,859 @@ background-repeat: no-repeat;</string>
                          </item>
                         </layout>
                        </widget>
+                       <widget class="QGroupBox" name="groupBox_4">
+                        <property name="geometry">
+                         <rect>
+                          <x>20</x>
+                          <y>50</y>
+                          <width>221</width>
+                          <height>251</height>
+                         </rect>
+                        </property>
+                        <property name="title">
+                         <string>数据库信息</string>
+                        </property>
+                        <layout class="QGridLayout" name="gridLayout_9">
+                         <item row="0" column="0">
+                          <widget class="QTableWidget" name="databaseInformation">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="palette">
+                            <palette>
+                             <active>
+                              <colorrole role="WindowText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Button">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Text">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="ButtonText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Base">
+                               <brush brushstyle="NoBrush">
+                                <color alpha="255">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Window">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="PlaceholderText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="128">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                             </active>
+                             <inactive>
+                              <colorrole role="WindowText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Button">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Text">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="ButtonText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Base">
+                               <brush brushstyle="NoBrush">
+                                <color alpha="255">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Window">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="PlaceholderText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="128">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                             </inactive>
+                             <disabled>
+                              <colorrole role="WindowText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Button">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Text">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="ButtonText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Base">
+                               <brush brushstyle="NoBrush">
+                                <color alpha="255">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Window">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="PlaceholderText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="128">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                             </disabled>
+                            </palette>
+                           </property>
+                           <property name="toolTipDuration">
+                            <number>0</number>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::NoFrame</enum>
+                           </property>
+                           <property name="verticalScrollBarPolicy">
+                            <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+                           </property>
+                           <property name="horizontalScrollBarPolicy">
+                            <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+                           </property>
+                           <property name="sizeAdjustPolicy">
+                            <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+                           </property>
+                           <property name="autoScrollMargin">
+                            <number>6</number>
+                           </property>
+                           <property name="editTriggers">
+                            <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                           </property>
+                           <property name="selectionMode">
+                            <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+                           </property>
+                           <property name="selectionBehavior">
+                            <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+                           </property>
+                           <property name="showGrid">
+                            <bool>true</bool>
+                           </property>
+                           <property name="gridStyle">
+                            <enum>Qt::PenStyle::SolidLine</enum>
+                           </property>
+                           <property name="sortingEnabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="columnCount">
+                            <number>2</number>
+                           </property>
+                           <attribute name="horizontalHeaderVisible">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="horizontalHeaderCascadingSectionResizes">
+                            <bool>true</bool>
+                           </attribute>
+                           <attribute name="horizontalHeaderMinimumSectionSize">
+                            <number>20</number>
+                           </attribute>
+                           <attribute name="horizontalHeaderDefaultSectionSize">
+                            <number>50</number>
+                           </attribute>
+                           <attribute name="horizontalHeaderStretchLastSection">
+                            <bool>true</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderVisible">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderCascadingSectionResizes">
+                            <bool>true</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderMinimumSectionSize">
+                            <number>17</number>
+                           </attribute>
+                           <attribute name="verticalHeaderDefaultSectionSize">
+                            <number>17</number>
+                           </attribute>
+                           <attribute name="verticalHeaderHighlightSections">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderStretchLastSection">
+                            <bool>true</bool>
+                           </attribute>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Segoe UI</family>
+                             </font>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <column>
+                            <property name="text">
+                             <string>0</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>1</string>
+                            </property>
+                           </column>
+                           <item row="0" column="0">
+                            <property name="text">
+                             <string>信息</string>
+                            </property>
+                           </item>
+                           <item row="0" column="1">
+                            <property name="text">
+                             <string>值</string>
+                            </property>
+                           </item>
+                           <item row="1" column="0">
+                            <property name="text">
+                             <string/>
+                            </property>
+                           </item>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QGroupBox" name="groupBox_3">
+                        <property name="geometry">
+                         <rect>
+                          <x>250</x>
+                          <y>50</y>
+                          <width>221</width>
+                          <height>251</height>
+                         </rect>
+                        </property>
+                        <property name="title">
+                         <string>数据库结构</string>
+                        </property>
+                        <layout class="QGridLayout" name="gridLayout_7">
+                         <item row="0" column="0">
+                          <widget class="QTreeView" name="databaseTree"/>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QGroupBox" name="groupBox_3">
+                        <property name="geometry">
+                         <rect>
+                          <x>480</x>
+                          <y>50</y>
+                          <width>311</width>
+                          <height>251</height>
+                         </rect>
+                        </property>
+                        <property name="title">
+                         <string>表信息</string>
+                        </property>
+                        <layout class="QGridLayout" name="gridLayout_4">
+                         <item row="0" column="0">
+                          <widget class="QTableWidget" name="tableInformation">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="palette">
+                            <palette>
+                             <active>
+                              <colorrole role="WindowText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Button">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Text">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="ButtonText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Base">
+                               <brush brushstyle="NoBrush">
+                                <color alpha="255">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Window">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="PlaceholderText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="128">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                             </active>
+                             <inactive>
+                              <colorrole role="WindowText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Button">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Text">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="ButtonText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Base">
+                               <brush brushstyle="NoBrush">
+                                <color alpha="255">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Window">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="PlaceholderText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="128">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                             </inactive>
+                             <disabled>
+                              <colorrole role="WindowText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Button">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Text">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="ButtonText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="255">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Base">
+                               <brush brushstyle="NoBrush">
+                                <color alpha="255">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="Window">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="0">
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                              <colorrole role="PlaceholderText">
+                               <brush brushstyle="SolidPattern">
+                                <color alpha="128">
+                                 <red>221</red>
+                                 <green>221</green>
+                                 <blue>221</blue>
+                                </color>
+                               </brush>
+                              </colorrole>
+                             </disabled>
+                            </palette>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::Shape::NoFrame</enum>
+                           </property>
+                           <property name="verticalScrollBarPolicy">
+                            <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+                           </property>
+                           <property name="sizeAdjustPolicy">
+                            <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+                           </property>
+                           <property name="editTriggers">
+                            <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                           </property>
+                           <property name="selectionMode">
+                            <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+                           </property>
+                           <property name="selectionBehavior">
+                            <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+                           </property>
+                           <property name="showGrid">
+                            <bool>true</bool>
+                           </property>
+                           <property name="gridStyle">
+                            <enum>Qt::PenStyle::SolidLine</enum>
+                           </property>
+                           <property name="sortingEnabled">
+                            <bool>false</bool>
+                           </property>
+                           <attribute name="horizontalHeaderVisible">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="horizontalHeaderCascadingSectionResizes">
+                            <bool>true</bool>
+                           </attribute>
+                           <attribute name="horizontalHeaderDefaultSectionSize">
+                            <number>200</number>
+                           </attribute>
+                           <attribute name="horizontalHeaderStretchLastSection">
+                            <bool>true</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderVisible">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderCascadingSectionResizes">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderHighlightSections">
+                            <bool>false</bool>
+                           </attribute>
+                           <attribute name="verticalHeaderStretchLastSection">
+                            <bool>true</bool>
+                           </attribute>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Segoe UI</family>
+                             </font>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <row>
+                            <property name="text">
+                             <string>New Row</string>
+                            </property>
+                           </row>
+                           <column>
+                            <property name="text">
+                             <string>0</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>1</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>2</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>3</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>4</string>
+                            </property>
+                           </column>
+                           <column>
+                            <property name="text">
+                             <string>5</string>
+                            </property>
+                           </column>
+                           <item row="0" column="0">
+                            <property name="text">
+                             <string/>
+                            </property>
+                           </item>
+                           <item row="0" column="1">
+                            <property name="text">
+                             <string/>
+                            </property>
+                           </item>
+                           <item row="0" column="2">
+                            <property name="text">
+                             <string/>
+                            </property>
+                           </item>
+                           <item row="0" column="3">
+                            <property name="text">
+                             <string/>
+                            </property>
+                           </item>
+                           <item row="0" column="4">
+                            <property name="text">
+                             <string/>
+                            </property>
+                           </item>
+                           <item row="0" column="5">
+                            <property name="text">
+                             <string/>
+                            </property>
+                           </item>
+                           <item row="1" column="0">
+                            <property name="text">
+                             <string/>
+                            </property>
+                           </item>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
                       </widget>
                      </widget>
                      <widget class="QWidget" name="autoInjection">
-                      <widget class="QGroupBox" name="gridGroupBox">
+                      <widget class="QWidget" name="gridWidget" native="true">
                        <property name="geometry">
                         <rect>
                          <x>10</x>
@@ -3115,9 +3113,6 @@ background-repeat: no-repeat;</string>
                          <width>811</width>
                          <height>441</height>
                         </rect>
-                       </property>
-                       <property name="title">
-                        <string>自动注入</string>
                        </property>
                        <layout class="QGridLayout" name="gridLayout">
                         <property name="horizontalSpacing">
@@ -3221,7 +3216,7 @@ background-repeat: no-repeat;</string>
                       </widget>
                      </widget>
                      <widget class="QWidget" name="fileOperation">
-                      <widget class="QGroupBox" name="groupBox_2">
+                      <widget class="QFrame" name="frame_2">
                        <property name="geometry">
                         <rect>
                          <x>10</x>
@@ -3229,9 +3224,6 @@ background-repeat: no-repeat;</string>
                          <width>811</width>
                          <height>441</height>
                         </rect>
-                       </property>
-                       <property name="title">
-                        <string>文件操作</string>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_6">
                         <item row="5" column="0" colspan="3">
@@ -3337,7 +3329,7 @@ background-repeat: no-repeat;</string>
                       </widget>
                      </widget>
                      <widget class="QWidget" name="command">
-                      <widget class="QGroupBox" name="gridGroupBox">
+                      <widget class="QWidget" name="gridWidget" native="true">
                        <property name="geometry">
                         <rect>
                          <x>10</x>
@@ -3345,9 +3337,6 @@ background-repeat: no-repeat;</string>
                          <width>811</width>
                          <height>441</height>
                         </rect>
-                       </property>
-                       <property name="title">
-                        <string>命令执行</string>
                        </property>
                        <layout class="QGridLayout" name="gridLayout_5">
                         <item row="1" column="0">
@@ -3432,375 +3421,385 @@ background-repeat: no-repeat;</string>
                       </widget>
                      </widget>
                      <widget class="QWidget" name="logCenter">
-                      <widget class="QGroupBox" name="groupBox_2">
+                      <widget class="QWidget" name="widget_2" native="true">
                        <property name="geometry">
                         <rect>
                          <x>0</x>
-                         <y>0</y>
+                         <y>-10</y>
                          <width>811</width>
                          <height>441</height>
                         </rect>
                        </property>
-                       <property name="title">
-                        <string>日志中心</string>
-                       </property>
-                       <widget class="QTableWidget" name="packetSendingRecord">
+                       <widget class="QGroupBox" name="groupBox_3">
                         <property name="geometry">
                          <rect>
-                          <x>10</x>
-                          <y>50</y>
-                          <width>791</width>
-                          <height>161</height>
+                          <x>30</x>
+                          <y>20</y>
+                          <width>761</width>
+                          <height>181</height>
                          </rect>
                         </property>
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="palette">
-                         <palette>
-                          <active>
-                           <colorrole role="WindowText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Button">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Text">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="ButtonText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Base">
-                            <brush brushstyle="NoBrush">
-                             <color alpha="255">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Window">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="PlaceholderText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                          </active>
-                          <inactive>
-                           <colorrole role="WindowText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Button">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Text">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="ButtonText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Base">
-                            <brush brushstyle="NoBrush">
-                             <color alpha="255">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Window">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="PlaceholderText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                          </inactive>
-                          <disabled>
-                           <colorrole role="WindowText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Button">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Text">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="ButtonText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Base">
-                            <brush brushstyle="NoBrush">
-                             <color alpha="255">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="Window">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="0">
-                              <red>0</red>
-                              <green>0</green>
-                              <blue>0</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                           <colorrole role="PlaceholderText">
-                            <brush brushstyle="SolidPattern">
-                             <color alpha="255">
-                              <red>221</red>
-                              <green>221</green>
-                              <blue>221</blue>
-                             </color>
-                            </brush>
-                           </colorrole>
-                          </disabled>
-                         </palette>
-                        </property>
-                        <property name="frameShape">
-                         <enum>QFrame::Shape::NoFrame</enum>
-                        </property>
-                        <property name="verticalScrollBarPolicy">
-                         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
-                        </property>
-                        <property name="sizeAdjustPolicy">
-                         <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-                        </property>
-                        <property name="editTriggers">
-                         <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-                        </property>
-                        <property name="selectionMode">
-                         <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
-                        </property>
-                        <property name="selectionBehavior">
-                         <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-                        </property>
-                        <property name="showGrid">
-                         <bool>true</bool>
-                        </property>
-                        <property name="gridStyle">
-                         <enum>Qt::PenStyle::SolidLine</enum>
-                        </property>
-                        <property name="sortingEnabled">
-                         <bool>false</bool>
-                        </property>
-                        <attribute name="horizontalHeaderVisible">
-                         <bool>false</bool>
-                        </attribute>
-                        <attribute name="horizontalHeaderCascadingSectionResizes">
-                         <bool>true</bool>
-                        </attribute>
-                        <attribute name="horizontalHeaderDefaultSectionSize">
-                         <number>200</number>
-                        </attribute>
-                        <attribute name="horizontalHeaderStretchLastSection">
-                         <bool>true</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderVisible">
-                         <bool>false</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderCascadingSectionResizes">
-                         <bool>false</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderHighlightSections">
-                         <bool>false</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderStretchLastSection">
-                         <bool>true</bool>
-                        </attribute>
-                        <row>
-                         <property name="text">
-                          <string>New Row</string>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Segoe UI</family>
-                          </font>
-                         </property>
-                        </row>
-                        <column>
-                         <property name="text">
-                          <string>0</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>1</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>2</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>3</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>4</string>
-                         </property>
-                        </column>
-                        <item row="0" column="0">
-                         <property name="text">
-                          <string>时间</string>
-                         </property>
-                        </item>
-                        <item row="0" column="1">
-                         <property name="text">
-                          <string>网站</string>
-                         </property>
-                        </item>
-                        <item row="0" column="2">
-                         <property name="text">
-                          <string>类型</string>
-                         </property>
-                        </item>
-                        <item row="0" column="3">
-                         <property name="text">
-                          <string>Payload</string>
-                         </property>
-                        </item>
-                        <item row="0" column="4">
-                         <property name="text">
-                          <string>相似度</string>
-                         </property>
-                        </item>
-                       </widget>
-                       <widget class="QPlainTextEdit" name="log">
-                        <property name="geometry">
-                         <rect>
-                          <x>10</x>
-                          <y>220</y>
-                          <width>791</width>
-                          <height>200</height>
-                         </rect>
-                        </property>
-                        <property name="minimumSize">
-                         <size>
-                          <width>200</width>
-                          <height>200</height>
-                         </size>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">background-color: rgb(33, 37, 43);</string>
-                        </property>
-                       </widget>
-                       <widget class="QLabel" name="label_16">
-                        <property name="geometry">
-                         <rect>
-                          <x>20</x>
-                          <y>30</y>
-                          <width>121</width>
-                          <height>31</height>
-                         </rect>
-                        </property>
-                        <property name="text">
+                        <property name="title">
                          <string>数据包发包记录</string>
                         </property>
+                        <widget class="QTableWidget" name="packetSendingRecord">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>10</y>
+                           <width>757</width>
+                           <height>175</height>
+                          </rect>
+                         </property>
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="palette">
+                          <palette>
+                           <active>
+                            <colorrole role="WindowText">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Button">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="0">
+                               <red>0</red>
+                               <green>0</green>
+                               <blue>0</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Text">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="ButtonText">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Base">
+                             <brush brushstyle="NoBrush">
+                              <color alpha="255">
+                               <red>0</red>
+                               <green>0</green>
+                               <blue>0</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Window">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="0">
+                               <red>0</red>
+                               <green>0</green>
+                               <blue>0</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="PlaceholderText">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                           </active>
+                           <inactive>
+                            <colorrole role="WindowText">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Button">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="0">
+                               <red>0</red>
+                               <green>0</green>
+                               <blue>0</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Text">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="ButtonText">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Base">
+                             <brush brushstyle="NoBrush">
+                              <color alpha="255">
+                               <red>0</red>
+                               <green>0</green>
+                               <blue>0</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Window">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="0">
+                               <red>0</red>
+                               <green>0</green>
+                               <blue>0</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="PlaceholderText">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                           </inactive>
+                           <disabled>
+                            <colorrole role="WindowText">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Button">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="0">
+                               <red>0</red>
+                               <green>0</green>
+                               <blue>0</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Text">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="ButtonText">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Base">
+                             <brush brushstyle="NoBrush">
+                              <color alpha="255">
+                               <red>0</red>
+                               <green>0</green>
+                               <blue>0</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="Window">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="0">
+                               <red>0</red>
+                               <green>0</green>
+                               <blue>0</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                            <colorrole role="PlaceholderText">
+                             <brush brushstyle="SolidPattern">
+                              <color alpha="255">
+                               <red>221</red>
+                               <green>221</green>
+                               <blue>221</blue>
+                              </color>
+                             </brush>
+                            </colorrole>
+                           </disabled>
+                          </palette>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::Shape::NoFrame</enum>
+                         </property>
+                         <property name="verticalScrollBarPolicy">
+                          <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+                         </property>
+                         <property name="sizeAdjustPolicy">
+                          <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+                         </property>
+                         <property name="editTriggers">
+                          <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                         </property>
+                         <property name="selectionMode">
+                          <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+                         </property>
+                         <property name="selectionBehavior">
+                          <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+                         </property>
+                         <property name="showGrid">
+                          <bool>true</bool>
+                         </property>
+                         <property name="gridStyle">
+                          <enum>Qt::PenStyle::SolidLine</enum>
+                         </property>
+                         <property name="sortingEnabled">
+                          <bool>false</bool>
+                         </property>
+                         <attribute name="horizontalHeaderVisible">
+                          <bool>false</bool>
+                         </attribute>
+                         <attribute name="horizontalHeaderCascadingSectionResizes">
+                          <bool>true</bool>
+                         </attribute>
+                         <attribute name="horizontalHeaderDefaultSectionSize">
+                          <number>200</number>
+                         </attribute>
+                         <attribute name="horizontalHeaderStretchLastSection">
+                          <bool>true</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderVisible">
+                          <bool>false</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderCascadingSectionResizes">
+                          <bool>false</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderHighlightSections">
+                          <bool>false</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderStretchLastSection">
+                          <bool>true</bool>
+                         </attribute>
+                         <row>
+                          <property name="text">
+                           <string>New Row</string>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                           </font>
+                          </property>
+                         </row>
+                         <column>
+                          <property name="text">
+                           <string>0</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>1</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>2</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>3</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>4</string>
+                          </property>
+                         </column>
+                         <item row="0" column="0">
+                          <property name="text">
+                           <string>时间</string>
+                          </property>
+                         </item>
+                         <item row="0" column="1">
+                          <property name="text">
+                           <string>网站</string>
+                          </property>
+                         </item>
+                         <item row="0" column="2">
+                          <property name="text">
+                           <string>类型</string>
+                          </property>
+                         </item>
+                         <item row="0" column="3">
+                          <property name="text">
+                           <string>Payload</string>
+                          </property>
+                         </item>
+                         <item row="0" column="4">
+                          <property name="text">
+                           <string>相似度</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </widget>
+                       <widget class="QGroupBox" name="groupBox">
+                        <property name="geometry">
+                         <rect>
+                          <x>30</x>
+                          <y>210</y>
+                          <width>761</width>
+                          <height>231</height>
+                         </rect>
+                        </property>
+                        <property name="title">
+                         <string>日志</string>
+                        </property>
+                        <widget class="QPlainTextEdit" name="log">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>20</y>
+                           <width>741</width>
+                           <height>200</height>
+                          </rect>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>200</width>
+                           <height>200</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(33, 37, 43);</string>
+                         </property>
+                        </widget>
                        </widget>
                       </widget>
                      </widget>
