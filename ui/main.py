@@ -127,14 +127,11 @@ class MainWindow(QMainWindow):
         widgets.databaseTree.doubleClicked.connect(self.widgetsFunctions.expandTree)
         widgets.btn_getData.clicked.connect(self.widgetsFunctions.gettingData)
         widgets.btn_exportData.clicked.connect(self.widgetsFunctions.exportData)
-        widgets.btn_stopGettingData.clicked.connect(self.widgetsFunctions.stopGettingData)
         widgets.btn_getDatabaseContent.clicked.connect(self.widgetsFunctions.getDatabseContent)
-        widgets.beginning.textChanged.connect(self.widgetsFunctions.setBeginnig)
-        widgets.number.textChanged.connect(self.widgetsFunctions.setNumnber)
-        widgets.codingType.currentIndexChanged.connect(self.widgetsFunctions.dataCodingType)
+
 
         ### 命令执行界面信号槽 ###
-        widgets.btn_stopCommand.clicked.connect(self.widgetsFunctions.stopCommand)
+
         widgets.btn_startCommand.clicked.connect(self.widgetsFunctions.startCommand)
         widgets.commandInput.textChanged.connect(self.widgetsFunctions.setCommand)
         widgets.echoResults.stateChanged.connect(self.widgetsFunctions.ifEchoResults)
