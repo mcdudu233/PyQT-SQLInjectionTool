@@ -290,7 +290,61 @@ class UIWidgetsFunctions:
 
     ### 开始 button btn_stratFileOperation ###
     def startFileOperation(self):
-        pass
+        if self.current_task_id is None:
+            QMessageBox.information(self.main, "提示", "当前没有注入对象！请先到自动注入或手动注入界面识别注入！")
+        else:
+            if self.ui.path.text() == "":
+                show_border_effect_no(self.ui.path)
+                return
+
+            try:
+                if self.ui.fileOperationType.currentText() == "读取文件":
+                    kwargs = self.current_kwargs | {"fileRead": self.ui.path.text()}
+                elif self.ui.fileOperationType.currentText() == "写入文件":
+                    kwargs = self.current_kwargs | {"fileWrite": self.ui.path.text(), "fileDest": self.ui.path.text()}
+                else:
+                    pass
+
+                self.sqlmap.start_scan(self.current_task_id, **kwargs)
+                # 等待并获取数据
+                self.sqlmap.poll_scan_completion(self.current_task_id)
+                datas, errors = self.sqlmap.get_scan_data(self.current_task_id)
+
+                if self.ui.fileOperationType.currentText() == "读取文件":
+                    for data in datas[::-1]:
+                        if data["type"] == 22:
+                            bin_data = data["value"]
+                            if len(bin_data) == 0:
+                                self.ui.fileOperationResults.setPlainText(
+                                    f"读取靶机文件 '{self.ui.path.text()}' 失败！或者文件内容为空！")
+                            else:
+                                try:
+                                    # 写入文件
+                                    # with open(self.ui.path.text(), "wb") as f:
+                                    #     f.write(bin_data)
+
+                                    self.ui.fileOperationResults.setPlainText(bin_data)
+                                except Exception as e:
+                                    self.ui.fileOperationResults.setPlainText(
+                                        f"文件显示失败！请查看编码是否匹配！原因：{str(e)}")
+                            break
+                elif self.ui.fileOperationType.currentText() == "写入文件":
+                    for data in datas[::-1]:
+                        print(data)
+                        if data["type"] == 23:
+                            break
+                else:
+                    pass
+
+                for error in errors:
+                    print(error)
+
+                logs = self.sqlmap.get_scan_log(self.current_task_id)
+                for log in logs:
+                    self._add_log_color(log["message"], log["level"], log["time"])
+            except Exception as e:
+                QMessageBox.critical(self.main, "文件操作失败", "文件操作失败，请查看日志！原因：" + str(e))
+                print(e)
 
     ### 停止  button btn_stopFileOperation ###
     def stopFileOperation(self):

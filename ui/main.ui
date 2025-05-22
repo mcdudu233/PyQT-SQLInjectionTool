@@ -3509,42 +3509,12 @@ background-repeat: no-repeat;</string>
                           </property>
                           <item>
                            <property name="text">
-                            <string>MySQL Union写文件</string>
+                            <string>读取文件</string>
                            </property>
                           </item>
                           <item>
                            <property name="text">
-                            <string>MySQL Load_File 读文件</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>SQLServer FileSystemObject写文件</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>SQLServer Sp_MakeWebTask写文件</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>SQLServer利用备份数据库写文件</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>SQLServer FileSystemObject读文件</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string/>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string/>
+                            <string>写入文件</string>
                            </property>
                           </item>
                          </widget>
