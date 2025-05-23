@@ -677,7 +677,7 @@ Button */
              <property name="geometry">
               <rect>
                <x>70</x>
-               <y>8</y>
+               <y>16</y>
                <width>160</width>
                <height>20</height>
               </rect>
