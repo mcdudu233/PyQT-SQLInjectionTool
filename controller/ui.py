@@ -163,8 +163,7 @@ class UIWidgetsFunctions:
             # 不需要用户干预
             kwargs |= {"batch": True}
 
-            print(kwargs)
-
+            # print(kwargs)
             # 尝试注入
             self.current_kwargs = kwargs
             self.sqlmap.start_scan(task_id, **kwargs)
@@ -179,6 +178,11 @@ class UIWidgetsFunctions:
                 QApplication.processEvents()
                 sleep(0.001)
 
+            # 日志
+            logs = self.sqlmap.get_scan_log(task_id)
+            for log in logs:
+                self.showLog(log["message"], log["level"], log["time"])
+            # 获取数据
             datas, errors = self.sqlmap.get_scan_data(task_id)
             if len(datas) == 0 and len(errors) == 0:
                 QMessageBox.warning(self.main, "注入失败", "未检测到注入点，详细信息请查看日志！")
@@ -211,12 +215,17 @@ class UIWidgetsFunctions:
                 for error in errors:
                     print(error)
 
-            logs = self.sqlmap.get_scan_log(task_id)
-            for log in logs:
-                self.showLog(log["message"], log["level"], log["time"])
+                # 更新手动注入界面
+                self.ui.autoUrl.setText(url)
+                self.ui.requestMethod.setCurrentText(method)
+                self.ui.paramList.clear()
+                for key in params:
+                    self.ui.paramList.addItem(QListWidgetItem(key))
+                show_border_effect_yes(self.ui.autoUrl)
+                show_border_effect_yes(self.ui.requestMethod)
 
-            self.current_task_id = task_id
-            self.ui.btn_dataCenter.click()
+                self.current_task_id = task_id
+                self.ui.btn_manualInjection.click()
         except Exception as e:
             QMessageBox.critical(self.main, "检测失败", "检测失败，请查看日志！原因：" + str(e))
             print(e)
@@ -349,6 +358,11 @@ class UIWidgetsFunctions:
                 QApplication.processEvents()
                 sleep(0.001)
 
+            # 日志
+            logs = self.sqlmap.get_scan_log(task_id)
+            for log in logs:
+                self.showLog(log["message"], log["level"], log["time"])
+            # 获取数据
             datas, errors = self.sqlmap.get_scan_data(task_id)
             if len(datas) == 0 and len(errors) == 0:
                 QMessageBox.warning(self.main, "注入失败", "未检测到注入点，详细信息请查看日志！")
@@ -381,12 +395,8 @@ class UIWidgetsFunctions:
                 for error in errors:
                     print(error)
 
-            logs = self.sqlmap.get_scan_log(task_id)
-            for log in logs:
-                self.showLog(log["message"], log["level"], log["time"])
-
-            self.current_task_id = task_id
-            self.ui.btn_dataCenter.click()
+                self.current_task_id = task_id
+                self.ui.btn_dataCenter.click()
         except Exception as e:
             QMessageBox.critical(self.main, "注入失败", "注入失败，请查看日志！原因：" + str(e))
             print(e)
@@ -434,14 +444,13 @@ class UIWidgetsFunctions:
     ### 打开文件选择对话框 ###
     def openFileDialog(self):
         file_path, _ = QFileDialog.getOpenFileName(
-            self.main_window,  # 设置主窗口为父窗口
+            self.main,  # 设置主窗口为父窗口
             "选择文件",  # 对话框标题
             "",  # 初始目录为空表示当前目录
-            "所有文件 (*.*);;文本文件 (*.txt);;Python 文件 (*.py)"  # 文件过滤器
+            "所有文件 (*.*)"  # 文件过滤器
         )
         if file_path:
-            print("选择的文件路径：", file_path)
-            self.ui.filePath.setText(file_path)  # 设置到对应的 QLineEdit 控件
+            self.ui.filePath.setText(file_path)
 
     ### 开始 button btn_startFileOperation ###
     def startFileOperation(self):
@@ -452,13 +461,14 @@ class UIWidgetsFunctions:
                 show_border_effect_no(self.ui.path)
                 return
 
-            self.ui.btn_stratFileOperation.setText(f"{self.ui.fileOperationType.currentText()}中")
-            self.ui.btn_stratFileOperation.setDisabled(True)
+            self.ui.btn_startFileOperation.setText(f"{self.ui.fileOperationType.currentText()}中")
+            self.ui.btn_startFileOperation.setDisabled(True)
             try:
                 if self.ui.fileOperationType.currentText() == "读取文件":
                     kwargs = self.current_kwargs | {"fileRead": self.ui.path.text()}
                 elif self.ui.fileOperationType.currentText() == "写入文件":
-                    kwargs = self.current_kwargs | {"fileWrite": self.ui.path.text(), "fileDest": self.ui.path.text()}
+                    kwargs = self.current_kwargs | {"fileWrite": self.ui.filePath.text(),
+                                                    "fileDest": self.ui.path.text()}
                 else:
                     pass
 
@@ -470,7 +480,7 @@ class UIWidgetsFunctions:
                     i += 1
                     if self.sqlmap.get_scan_ok(self.current_task_id):
                         break
-                    self.ui.btn_stratFileOperation.setText(
+                    self.ui.btn_startFileOperation.setText(
                         f"{self.ui.fileOperationType.currentText()}中" + "." * int(i % 400 / 100))
                     QApplication.processEvents()
                     sleep(0.001)
@@ -486,8 +496,8 @@ class UIWidgetsFunctions:
                             else:
                                 try:
                                     # 写入文件
-                                    # with open(self.ui.path.text(), "wb") as f:
-                                    #     f.write(bin_data)
+                                    with open(self.ui.filePath.text(), "wb") as f:
+                                        f.write(bin_data)
 
                                     self.ui.fileOperationResults.setPlainText(bin_data)
                                 except Exception as e:
@@ -512,8 +522,8 @@ class UIWidgetsFunctions:
                 QMessageBox.critical(self.main, "文件操作失败", "文件操作失败，请查看日志！原因：" + str(e))
                 print(e)
 
-            self.ui.btn_stratFileOperation.setText(f"执行")
-            self.ui.btn_stratFileOperation.setDisabled(False)
+            self.ui.btn_startFileOperation.setText(f"执行")
+            self.ui.btn_startFileOperation.setDisabled(False)
 
     ### 停止  button btn_stopFileOperation ###
     def stopFileOperation(self):
