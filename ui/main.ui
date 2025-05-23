@@ -1560,7 +1560,7 @@ Button */
                       <number>0</number>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>4</number>
                      </property>
                      <widget class="QWidget" name="manualInjection">
                       <widget class="QWidget" name="gridWidget_2" native="true">

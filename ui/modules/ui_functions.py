@@ -124,7 +124,7 @@ class UIFunctions:
         if enable:
             # GET WIDTH
             width = self.ui.extraRightBox.width()
-            widthLeftBox = self.ui.extraLeftBox.width()
+            widthLeftBox = self.ui.extraRightBox.width()
             maxExtend = Settings.RIGHT_BOX_WIDTH
             color = Settings.BTN_RIGHT_BOX_COLOR
             standard = 0
@@ -162,12 +162,6 @@ class UIFunctions:
         else:
             right_width = 0
 
-            # ANIMATION LEFT BOX
-        self.left_box = QPropertyAnimation(self.ui.extraLeftBox, b"minimumWidth")
-        self.left_box.setDuration(Settings.TIME_ANIMATION)
-        self.left_box.setStartValue(left_box_width)
-        self.left_box.setEndValue(left_width)
-        self.left_box.setEasingCurve(QEasingCurve.InOutQuart)
 
         # ANIMATION RIGHT BOX        
         self.right_box = QPropertyAnimation(self.ui.extraRightBox, b"minimumWidth")
@@ -178,7 +172,6 @@ class UIFunctions:
 
         # GROUP ANIMATION
         self.group = QParallelAnimationGroup()
-        self.group.addAnimation(self.left_box)
         self.group.addAnimation(self.right_box)
         self.group.start()
 

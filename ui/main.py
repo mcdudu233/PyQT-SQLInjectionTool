@@ -89,9 +89,7 @@ class MainWindow(QMainWindow):
         widgets.btn_logCenter.clicked.connect(self.menuButtonClick)
         widgets.btn_fileOperation.clicked.connect(self.menuButtonClick)
 
-        # 侧边栏
-        def openCloseLeftBox():
-            UIFunctions.toggleLeftBox(self, True)
+        # 侧边
 
         def openCloseRightBox():
             UIFunctions.toggleRightBox(self, True)
