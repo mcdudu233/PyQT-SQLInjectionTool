@@ -2,12 +2,14 @@ import datetime
 import html
 from time import sleep
 
-from PySide6.QtCore import QTimer, Qt, QModelIndex
+from PySide6.QtCore import QTimer, Qt, QModelIndex, QUrl, QEventLoop
 from PySide6.QtGui import QStandardItem
-from PySide6.QtWidgets import QMessageBox, QListWidgetItem, QLineEdit, QWidget, QTableWidgetItem, QApplication
+from PySide6.QtWidgets import QMessageBox, QListWidgetItem, QWidget, QTableWidgetItem, QApplication
 
 from service import SQLMap
 from ui.modules import Ui_MainWindow
+
+from .webparser import WebParser
 
 
 ### 效果函数 ###
@@ -79,27 +81,147 @@ class UIWidgetsFunctions:
         # 强制刷新
         self.ui.webPage.repaint()
 
+        if not success:
+            self.ui.webPage.setUrl(QUrl("about:blank"))
+            QMessageBox.warning(self.main, "警告", "网页访问失败！请检查您的网络！")
+
     ### 开始检测 ###
     def startDetection(self):
+        if self.ui.webPage.url() is None or self.ui.webPage.url().toString() == "about:blank":
+            QMessageBox.information(self.main, "提示", "请先点击浏览网页！")
+            return
+
+        self.ui.detection.setText("检测中")
+        self.ui.detection.setDisabled(True)
         try:
             if self.current_task_id is not None:
                 self.sqlmap.delete_task(self.current_task_id)
+                self.current_task_id = None
+            task_id = self.sqlmap.create_task()
 
-            self.current_task_id = self.sqlmap.create_task()
-            self.sqlmap.start_scan(self.current_task_id, self.ui.url.text())
+            # 获取网页HTML内容
+            html = ""
+            loop = QEventLoop()
 
-            self.sqlmap.poll_scan_completion(self.current_task_id)
-            data, error = self.sqlmap.get_scan_data(self.current_task_id)
+            def callback(result):
+                nonlocal html
+                html += result
+                loop.quit()
 
-            for i in data:
-                print(i)
+            self.ui.webPage.page().toHtml(callback)
+            loop.exec()
 
-            for i in error:
-                print(i)
+            # 解析HTML并返回可注入参数
+            parser = WebParser(self.ui.webPage.url().toString(), html)
+            web = parser.get_all_parameters()
+            if len(web) == 0:
+                QMessageBox.information(self.main, "提示", "当前网页没有找到可注入参数！")
+                self.ui.detection.setText("检测")
+                self.ui.detection.setDisabled(False)
+                return
+            else:
+                web = web[0]
 
-            logs = self.sqlmap.get_scan_log(self.current_task_id)
+            # 额外的参数
+            kwargs = {}
+
+            # URL
+            url = web["action"]
+
+            # 获取注入参数
+            params = web["params"]
+            for key in params:
+                if params[key] is None or params[key] == "":
+                    params[key] = "xxx"
+            kwargs |= {"testParameter": ",".join(params.keys())}
+
+            # 请求方式
+            method = web["method"].upper()
+            if method == "GET":
+                if params is not None:
+                    url += "?"
+                    for key in params:
+                        url += key + f"={params[key]}&"
+                    url = url[:len(url) - 1]
+                kwargs |= {"method": "GET"}
+            elif method == "POST":
+                if params is not None:
+                    tmp = ""
+                    for key in params:
+                        tmp += key + f"={params[key]}&"
+                    tmp = tmp[:len(tmp) - 1]
+                    kwargs |= {"data": tmp}
+                kwargs |= {"method": "POST"}
+            else:
+                kwargs |= {"method": method}
+
+            # 加入URL
+            kwargs |= {"url": url}
+
+            # 不需要用户干预
+            kwargs |= {"batch": True}
+
+            print(kwargs)
+
+            # 尝试注入
+            self.current_kwargs = kwargs
+            self.sqlmap.start_scan(task_id, **kwargs)
+
+            # 等待并获取数据
+            i = 0
+            while True:
+                i += 1
+                if self.sqlmap.get_scan_ok(task_id):
+                    break
+                self.ui.detection.setText("检测中" + "." * int(i % 400 / 100))
+                QApplication.processEvents()
+                sleep(0.001)
+
+            datas, errors = self.sqlmap.get_scan_data(task_id)
+            if len(datas) == 0 and len(errors) == 0:
+                QMessageBox.warning(self.main, "注入失败", "未检测到注入点，详细信息请查看日志！")
+                self.ui.btn_logCenter.click()
+            else:
+                for data in datas:
+                    # print(data)
+                    # 解析注入的数据
+                    if data["type"] == 1:
+                        for value in data["value"]:
+                            # 允许的注入类型
+                            for inject in value["data"]:
+                                if self.ui.injectionType.currentText() == "自动检测":
+                                    show_border_effect_yes(self.ui.injectionType)
+                                    self.ui.injectionType.setCurrentIndex(int(inject))
+                                    break
+                            # 数据库类型
+                            if self.ui.databaseType.currentText() == "自动检测":
+                                show_border_effect_yes(self.ui.databaseType)
+                                self.ui.databaseType.setCurrentText(value["dbms"])
+
+                            # 添加到注入日志
+                            for inject in value["data"]:
+                                self.showPayloadRecord(
+                                    [url, value["data"][inject]["title"], value["data"][inject]["payload"],
+                                     value["data"][inject]["matchRatio"]])
+                            self.showDatabaseInformation([value["dbms"], value["dbms_version"], value["os"]])
+                            # for i in value:
+                            #     print(i)
+                for error in errors:
+                    print(error)
+
+            logs = self.sqlmap.get_scan_log(task_id)
+            for log in logs:
+                self.showLog(log["message"], log["level"], log["time"])
+
+            self.current_task_id = task_id
+            self.ui.btn_dataCenter.click()
         except Exception as e:
-            QMessageBox.critical(self.main, "检测网页失败", str(e))
+            QMessageBox.critical(self.main, "检测失败", "检测失败，请查看日志！原因：" + str(e))
+            print(e)
+
+            self.ui.btn_logCenter.click()
+        self.ui.detection.setText("检测")
+        self.ui.detection.setDisabled(False)
 
     ###########################
     ### 手动注入界面组件调用接口 ###
