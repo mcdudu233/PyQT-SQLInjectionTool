@@ -77,7 +77,7 @@ class SQLMap:
 
     def __del__(self):
         self.stop()
-        
+
     def stop(self):
         """停止SQLMap服务器"""
         self.server.stop()
@@ -205,6 +205,13 @@ class SQLMap:
         else:
             self.logger.error(f"删除任务失败，状态码：{response.status_code}")
             raise Exception("删除任务失败！请求返回码：{}！".format(response.status_code))
+
+    def get_scan_ok(self, taskid):
+        """获取扫描是否完成"""
+        status, _ = self.get_scan_status(taskid)
+        if status == "terminated":
+            return True
+        return False
 
     def poll_scan_completion(self, taskid, interval=800):
         """轮询扫描状态直到完成"""

@@ -66,10 +66,15 @@ class MainWindow(QMainWindow):
         Settings.ENABLE_CUSTOM_TITLE_BAR = True
 
         # 程序名
-        title = "SQL自动注入工具"
-        description = "SQL自动注入工具"
+        title = "SQL注入工具"
+        description = "带QT界面的SQL自动化注入工具"
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
+
+        # 调整界面属性
+        widgets.maximizeRestoreAppBtn.setDisabled(True)
+        self.setWindowFlags(self.windowFlags() & ~Qt.WindowMaximizeButtonHint)
+        self.setFixedSize(self.size())
 
         # 设置界面功能绑定
         UIFunctions.uiDefinitions(self)
@@ -129,7 +134,6 @@ class MainWindow(QMainWindow):
         widgets.btn_exportData.clicked.connect(self.widgetsFunctions.exportData)
         widgets.btn_getDatabaseContent.clicked.connect(self.widgetsFunctions.getDatabseContent)
 
-
         ### 命令执行界面信号槽 ###
 
         widgets.btn_startCommand.clicked.connect(self.widgetsFunctions.startCommand)
@@ -142,6 +146,7 @@ class MainWindow(QMainWindow):
         widgets.fileOperationType.currentIndexChanged.connect(self.widgetsFunctions.setFileOperation)
 
         # 显示界面
+        widgets.toggleButton.click()
         self.show()
 
     # 菜单栏被点击
@@ -189,7 +194,6 @@ class MainWindow(QMainWindow):
         elif btnName == "btn_exit":
             del self.widgetsFunctions
             sys.exit(0)
-
 
         btn.clearFocus()
 
