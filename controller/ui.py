@@ -1,6 +1,7 @@
 import datetime
 import html
 from time import sleep
+from urllib.parse import urlparse, urlunparse
 
 from PySide6.QtCore import QTimer, Qt, QModelIndex, QUrl, QEventLoop
 from PySide6.QtGui import QStandardItem
@@ -286,6 +287,14 @@ class UIWidgetsFunctions:
 
             # 请求方式
             if self.ui.requestMethod.currentText() == "GET":
+                # 去掉GET参数
+                parsed = urlparse(url)
+                clean_url = urlunparse((parsed.scheme, parsed.netloc, parsed.path,
+                                        '',  # 移除 params
+                                        '',  # 移除 query
+                                        ''  # 移除 fragment
+                                        ))
+                url = clean_url
                 if params is not None:
                     url += "?"
                     for key in params:
@@ -881,6 +890,8 @@ class UIWidgetsFunctions:
             elif type(args[i]) is list:
                 args[i] = ",".join(args[i])
             self.ui.packetSendingRecord.setItem(row, i + 1, QTableWidgetItem(str(args[i])))
+            self.ui.packetSendingRecord.resizeRowToContents(row)
+            self.ui.packetSendingRecord.resizeColumnToContents(i + 1)
 
     ### 添加文本到日志 ###
     def showLog(self, txt, level="PLAIN", time=None):
