@@ -108,10 +108,6 @@ class UIWidgetsFunctions:
     def setAutoUrl(self):
         pass
 
-    ### 超时设置 lineedit overtime ###
-    def setInspectionInterval(self):
-        pass
-
     ### 获取注入类型 comboBox injectionTyoe ###
     def setStyleSheetInjectionType(self):
         pass
@@ -390,8 +386,6 @@ class UIWidgetsFunctions:
     ### 显示操作结果 ###
     def showFIleOperation(self):
         pass
-
-
 
     ###########################
     ### 数据中心组件调用接口 ###

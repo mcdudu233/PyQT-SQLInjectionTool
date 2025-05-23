@@ -1568,7 +1568,7 @@ Button */
                       <number>0</number>
                      </property>
                      <property name="currentIndex">
-                      <number>2</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -1578,186 +1578,24 @@ background-repeat: no-repeat;</string>
                       </property>
                      </widget>
                      <widget class="QWidget" name="manualInjection">
-                      <widget class="QWidget" name="gridWidget_2" native="true">
+                      <widget class="QWidget" name="horizontalLayoutWidget">
                        <property name="geometry">
                         <rect>
-                         <x>200</x>
-                         <y>0</y>
-                         <width>421</width>
-                         <height>431</height>
+                         <x>20</x>
+                         <y>20</y>
+                         <width>701</width>
+                         <height>51</height>
                         </rect>
                        </property>
-                       <layout class="QGridLayout" name="gridLayout_2">
-                        <item row="4" column="0">
-                         <widget class="QLabel" name="label_17">
-                          <property name="text">
-                           <string>注入等级：</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="0" colspan="3">
-                         <widget class="QLineEdit" name="autoUrl">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="layoutDirection">
-                           <enum>Qt::LayoutDirection::LeftToRight</enum>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="text">
-                           <string>URL</string>
-                          </property>
-                          <property name="maxLength">
-                           <number>78</number>
-                          </property>
-                          <property name="placeholderText">
-                           <string>URL</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="2">
-                         <widget class="QLabel" name="label_3">
-                          <property name="text">
-                           <string>注入类型：</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="4" column="1">
-                         <widget class="QComboBox" name="riskLevel">
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="autoFillBackground">
-                           <bool>false</bool>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>16</width>
-                            <height>16</height>
-                           </size>
-                          </property>
-                          <property name="frame">
-                           <bool>true</bool>
-                          </property>
-                          <item>
-                           <property name="text">
-                            <string>1</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>2</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>3</string>
-                           </property>
-                          </item>
-                         </widget>
-                        </item>
-                        <item row="7" column="3">
-                         <widget class="QPushButton" name="btn_startInjection">
-                          <property name="minimumSize">
-                           <size>
-                            <width>150</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(52, 59, 72);</string>
-                          </property>
-                          <property name="text">
-                           <string>识别注入</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="4" column="2">
-                         <widget class="QLineEdit" name="paramInput">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                          <property name="placeholderText">
-                           <string>参数输入</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="6" column="3">
-                         <widget class="QPushButton" name="btn_deleteParam">
-                          <property name="minimumSize">
-                           <size>
-                            <width>150</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(52, 59, 72);</string>
-                          </property>
-                          <property name="text">
-                           <string>删除参数</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="3" column="0">
-                         <widget class="QLabel" name="label_18">
-                          <property name="text">
-                           <string>风险等级：</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="3" column="2">
-                         <widget class="QLabel" name="label_10">
-                          <property name="text">
-                           <string>数据库</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="1">
+                       <layout class="QHBoxLayout" name="horizontalLayout_10">
+                        <item>
                          <widget class="QComboBox" name="requestMethod">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>34</height>
+                           </size>
+                          </property>
                           <property name="font">
                            <font>
                             <family>Segoe UI</family>
@@ -1781,6 +1619,9 @@ background-repeat: no-repeat;</string>
                             <height>16</height>
                            </size>
                           </property>
+                          <property name="placeholderText">
+                           <string>网页请求方式</string>
+                          </property>
                           <property name="frame">
                            <bool>true</bool>
                           </property>
@@ -1794,251 +1635,43 @@ background-repeat: no-repeat;</string>
                             <string>POST</string>
                            </property>
                           </item>
-                         </widget>
-                        </item>
-                        <item row="2" column="3">
-                         <widget class="QComboBox" name="injectionType">
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="autoFillBackground">
-                           <bool>false</bool>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>16</width>
-                            <height>16</height>
-                           </size>
-                          </property>
-                          <property name="frame">
-                           <bool>true</bool>
-                          </property>
-                          <item>
+						  <item>
                            <property name="text">
-                            <string>自动检测</string>
+                            <string>PUT</string>
                            </property>
                           </item>
-                          <item>
+						  <item>
                            <property name="text">
-                            <string>布尔盲注</string>
+                            <string>DELETE</string>
                            </property>
                           </item>
-                          <item>
+						  <item>
                            <property name="text">
-                            <string>报错注入</string>
+                            <string>PATCH</string>
                            </property>
                           </item>
-                          <item>
+						  <item>
                            <property name="text">
-                            <string>内联注入</string>
+                            <string>HEAD</string>
                            </property>
                           </item>
-                          <item>
+						  <item>
                            <property name="text">
-                            <string>堆叠注入</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>时间盲注</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>联合注入</string>
+                            <string>OPTIONS</string>
                            </property>
                           </item>
                          </widget>
                         </item>
-                        <item row="2" column="0">
-                         <widget class="QLabel" name="label_8">
-                          <property name="text">
-                           <string>请求方式</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignmentFlag::AlignJustify|Qt::AlignmentFlag::AlignVCenter</set>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="3" column="3">
-                         <widget class="QComboBox" name="databaseType">
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="autoFillBackground">
-                           <bool>false</bool>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>16</width>
-                            <height>16</height>
-                           </size>
-                          </property>
-                          <property name="frame">
-                           <bool>true</bool>
-                          </property>
-                          <item>
-                           <property name="text">
-                            <string>自动检测</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>MySQL</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Access</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Oracle</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Microsoft SQL Server</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>SAP MaxDB</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>PostgreSQL</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>SQLite</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Sybase</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Informix</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>HSQLDB</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>H2</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>MonetDB</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Apache Derby</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Vertica</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Mckoi</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Presto</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Altibase</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>MimerSQL</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>ClickHouse</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>CrateDB</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>FrontBase</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Raima Database Manager</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>Virtuoso</string>
-                           </property>
-                          </item>
-                         </widget>
-                        </item>
-                        <item row="5" column="0" rowspan="3" colspan="3">
-                         <widget class="QGroupBox" name="groupBox_2">
-                          <property name="title">
-                           <string>参数选择</string>
-                          </property>
-                          <widget class="QListWidget" name="paramList">
-                           <property name="geometry">
-                            <rect>
-                             <x>0</x>
-                             <y>10</y>
-                             <width>220</width>
-                             <height>140</height>
-                            </rect>
-                           </property>
-                          </widget>
-                         </widget>
-                        </item>
-                        <item row="4" column="3">
-                         <widget class="QLineEdit" name="inspectionInterval">
+                        <item>
+                         <widget class="QLineEdit" name="autoUrl">
                           <property name="minimumSize">
                            <size>
                             <width>0</width>
-                            <height>30</height>
+                            <height>34</height>
                            </size>
+                          </property>
+                          <property name="layoutDirection">
+                           <enum>Qt::LayoutDirection::LeftToRight</enum>
                           </property>
                           <property name="styleSheet">
                            <string notr="true">background-color: rgb(33, 37, 43);</string>
@@ -2047,96 +1680,17 @@ background-repeat: no-repeat;</string>
                            <string/>
                           </property>
                           <property name="maxLength">
-                           <number>56</number>
+                           <number>78</number>
                           </property>
                           <property name="placeholderText">
-                           <string>检测间隔</string>
+                           <string>请输入要注入的网址</string>
                           </property>
                          </widget>
                         </item>
-                        <item row="3" column="1">
-                         <widget class="QComboBox" name="injectionLevel">
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="autoFillBackground">
-                           <bool>false</bool>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>16</width>
-                            <height>16</height>
-                           </size>
-                          </property>
-                          <property name="frame">
-                           <bool>true</bool>
-                          </property>
-                          <item>
-                           <property name="text">
-                            <string>1</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>2</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>3</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>4</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>5</string>
-                           </property>
-                          </item>
-                         </widget>
-                        </item>
-                        <item row="5" column="3">
-                         <widget class="QPushButton" name="btn_addParam">
-                          <property name="minimumSize">
-                           <size>
-                            <width>150</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(52, 59, 72);</string>
-                          </property>
-                          <property name="text">
-                           <string>添加参数</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="3">
+                        <item>
                          <widget class="QCheckBox" name="https">
                           <property name="sizePolicy">
-                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                             <horstretch>0</horstretch>
                             <verstretch>0</verstretch>
                            </sizepolicy>
@@ -2155,7 +1709,498 @@ background-repeat: no-repeat;</string>
                           </property>
                          </widget>
                         </item>
+                        <item>
+                         <widget class="QPushButton" name="btn_startInjection">
+                          <property name="minimumSize">
+                           <size>
+                            <width>100</width>
+                            <height>34</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(52, 59, 72);</string>
+                          </property>
+                          <property name="text">
+                           <string>识别注入</string>
+                          </property>
+                         </widget>
+                        </item>
                        </layout>
+                      </widget>
+                      <widget class="QGroupBox" name="groupBox_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>20</x>
+                         <y>90</y>
+                         <width>701</width>
+                         <height>341</height>
+                        </rect>
+                       </property>
+                       <property name="title">
+                        <string>注入参数</string>
+                       </property>
+                       <widget class="QWidget" name="horizontalLayoutWidget_4">
+                        <property name="geometry">
+                         <rect>
+                          <x>20</x>
+                          <y>30</y>
+                          <width>661</width>
+                          <height>61</height>
+                         </rect>
+                        </property>
+                        <layout class="QHBoxLayout" name="horizontalLayout_13">
+                         <item>
+                          <widget class="QLabel" name="label_3">
+                           <property name="text">
+                            <string>注入类型</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="injectionType">
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>10</pointsize>
+                             <italic>false</italic>
+                             <bold>false</bold>
+                            </font>
+                           </property>
+                           <property name="autoFillBackground">
+                            <bool>false</bool>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">background-color: rgb(33, 37, 43);</string>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>16</width>
+                             <height>16</height>
+                            </size>
+                           </property>
+                           <property name="frame">
+                            <bool>true</bool>
+                           </property>
+                           <item>
+                            <property name="text">
+                             <string>自动检测</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>布尔盲注</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>报错注入</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>内联注入</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>堆叠注入</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>时间盲注</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>联合注入</string>
+                            </property>
+                           </item>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="label_10">
+                           <property name="text">
+                            <string>数据库</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QComboBox" name="databaseType">
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>10</pointsize>
+                             <italic>false</italic>
+                             <bold>false</bold>
+                            </font>
+                           </property>
+                           <property name="autoFillBackground">
+                            <bool>false</bool>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">background-color: rgb(33, 37, 43);</string>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>16</width>
+                             <height>16</height>
+                            </size>
+                           </property>
+                           <property name="frame">
+                            <bool>true</bool>
+                           </property>
+                           <item>
+                            <property name="text">
+                             <string>自动检测</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>MySQL</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Access</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Oracle</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Microsoft SQL Server</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>SAP MaxDB</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>PostgreSQL</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>SQLite</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Sybase</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Informix</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>HSQLDB</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>H2</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>MonetDB</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Apache Derby</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Vertica</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Mckoi</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Presto</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Altibase</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>MimerSQL</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>ClickHouse</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>CrateDB</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>FrontBase</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Raima Database Manager</string>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>Virtuoso</string>
+                            </property>
+                           </item>
+                          </widget>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_12">
+                           <item>
+                            <widget class="QLabel" name="label_18">
+                             <property name="text">
+                              <string>风险等级</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QComboBox" name="injectionLevel">
+                             <property name="font">
+                              <font>
+                               <family>Segoe UI</family>
+                               <pointsize>10</pointsize>
+                               <italic>false</italic>
+                               <bold>false</bold>
+                              </font>
+                             </property>
+                             <property name="autoFillBackground">
+                              <bool>false</bool>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: rgb(33, 37, 43);</string>
+                             </property>
+                             <property name="iconSize">
+                              <size>
+                               <width>16</width>
+                               <height>16</height>
+                              </size>
+                             </property>
+                             <property name="frame">
+                              <bool>true</bool>
+                             </property>
+                             <item>
+                              <property name="text">
+                               <string>1</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>2</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>3</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>4</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>5</string>
+                              </property>
+                             </item>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label_17">
+                             <property name="text">
+                              <string>注入等级</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QComboBox" name="riskLevel">
+                             <property name="font">
+                              <font>
+                               <family>Segoe UI</family>
+                               <pointsize>10</pointsize>
+                               <italic>false</italic>
+                               <bold>false</bold>
+                              </font>
+                             </property>
+                             <property name="autoFillBackground">
+                              <bool>false</bool>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: rgb(33, 37, 43);</string>
+                             </property>
+                             <property name="iconSize">
+                              <size>
+                               <width>16</width>
+                               <height>16</height>
+                              </size>
+                             </property>
+                             <property name="frame">
+                              <bool>true</bool>
+                             </property>
+                             <item>
+                              <property name="text">
+                               <string>1</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>2</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>3</string>
+                              </property>
+                             </item>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                        </layout>
+                       </widget>
+                       <widget class="QWidget" name="verticalLayoutWidget_7">
+                        <property name="geometry">
+                         <rect>
+                          <x>20</x>
+                          <y>110</y>
+                          <width>661</width>
+                          <height>211</height>
+                         </rect>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_17">
+                         <item>
+                          <widget class="QListWidget" name="paramList"/>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_11">
+                           <item>
+                            <widget class="QLineEdit" name="paramInput">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>30</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: rgb(33, 37, 43);</string>
+                             </property>
+                             <property name="text">
+                              <string/>
+                             </property>
+                             <property name="placeholderText">
+                              <string>请输入添加的参数名</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="btn_addParam">
+                             <property name="minimumSize">
+                              <size>
+                               <width>81</width>
+                               <height>30</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <family>Segoe UI</family>
+                               <pointsize>10</pointsize>
+                               <italic>false</italic>
+                               <bold>false</bold>
+                              </font>
+                             </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: rgb(52, 59, 72);</string>
+                             </property>
+                             <property name="text">
+                              <string>添加参数</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="btn_deleteParam">
+                             <property name="minimumSize">
+                              <size>
+                               <width>80</width>
+                               <height>30</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <family>Segoe UI</family>
+                               <pointsize>10</pointsize>
+                               <italic>false</italic>
+                               <bold>false</bold>
+                              </font>
+                             </property>
+                             <property name="cursor">
+                              <cursorShape>PointingHandCursor</cursorShape>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: rgb(52, 59, 72);</string>
+                             </property>
+                             <property name="text">
+                              <string>删除参数</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                        </layout>
+                       </widget>
                       </widget>
                      </widget>
                      <widget class="QWidget" name="dataCenter">
@@ -2524,7 +2569,37 @@ background-repeat: no-repeat;</string>
                           </item>
                           <item row="1" column="0">
                            <property name="text">
-                            <string/>
+                            <string>数据库</string>
+                           </property>
+                          </item>
+						  <item row="2" column="0">
+                           <property name="text">
+                            <string>版本</string>
+                           </property>
+                          </item>
+						  <item row="3" column="0">
+                           <property name="text">
+                            <string>操作系统</string>
+                           </property>
+                          </item>
+						  <item row="4" column="0">
+                           <property name="text">
+                            <string>主机名</string>
+                           </property>
+                          </item>
+						  <item row="5" column="0">
+                           <property name="text">
+                            <string>当前用户</string>
+                           </property>
+                          </item>
+						  <item row="6" column="0">
+                           <property name="text">
+                            <string>当前数据库</string>
+                           </property>
+                          </item>
+						  <item row="7" column="0">
+                           <property name="text">
+                            <string>指纹</string>
                            </property>
                           </item>
                          </widget>
