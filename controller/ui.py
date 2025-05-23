@@ -4,7 +4,8 @@ from time import sleep
 
 from PySide6.QtCore import QTimer, Qt, QModelIndex
 from PySide6.QtGui import QStandardItem
-from PySide6.QtWidgets import QMessageBox, QListWidgetItem, QLineEdit, QWidget, QTableWidgetItem, QApplication
+from PySide6.QtWidgets import QMessageBox, QListWidgetItem, QLineEdit, QWidget, QTableWidgetItem, QApplication, \
+    QFileDialog
 
 from service import SQLMap
 from ui.modules import Ui_MainWindow
@@ -45,6 +46,7 @@ def show_border_effect_no(widget: QWidget):
 ### UI组件调用函数 ###
 class UIWidgetsFunctions:
     def __init__(self, main, ui: Ui_MainWindow):
+        self.main_window = main
         self.main = main
         self.ui = ui
 
@@ -306,6 +308,18 @@ class UIWidgetsFunctions:
     ### 文件操作设置 conmobox fileOpreation ###
     def setFileOperation(self):
         pass
+
+    ### 打开文件选择对话框 ###
+    def openFileDialog(self):
+        file_path, _ = QFileDialog.getOpenFileName(
+            self.main_window,  # 设置主窗口为父窗口
+            "选择文件",  # 对话框标题
+            "",  # 初始目录为空表示当前目录
+            "所有文件 (*.*);;文本文件 (*.txt);;Python 文件 (*.py)"  # 文件过滤器
+        )
+        if file_path:
+            print("选择的文件路径：", file_path)
+            self.ui.filePath.setText(file_path)  # 设置到对应的 QLineEdit 控件
 
     ### 开始 button btn_startFileOperation ###
     def startFileOperation(self):

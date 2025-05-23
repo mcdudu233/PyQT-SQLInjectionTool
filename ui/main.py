@@ -137,6 +137,10 @@ class MainWindow(QMainWindow):
         widgets.btn_getData.clicked.connect(self.widgetsFunctions.gettingData)
         widgets.btn_exportData.clicked.connect(self.widgetsFunctions.exportData)
         widgets.btn_getDatabaseContent.clicked.connect(self.widgetsFunctions.getDatabseContent)
+        widgets.tableInformation.resizeColumnsToContents()
+        widgets.tableInformation.resizeRowsToContents()
+        widgets.databaseInformation.resizeColumnsToContents()
+        widgets.databaseInformation.resizeRowsToContents()
 
         ### 命令执行界面信号槽 ###
 
@@ -148,6 +152,12 @@ class MainWindow(QMainWindow):
         widgets.btn_startFileOperation.clicked.connect(self.widgetsFunctions.startFileOperation)
         widgets.path.textChanged.connect(self.widgetsFunctions.setPath)
         widgets.fileOperationType.currentIndexChanged.connect(self.widgetsFunctions.setFileOperation)
+        widgets.btn_fileSelection.clicked.connect(self.widgetsFunctions.openFileDialog)
+
+        ### 日志中心 ###
+        widgets.packetSendingRecord.resizeColumnsToContents()
+        widgets.packetSendingRecord.resizeRowsToContents()
+
 
         # 显示界面
         widgets.toggleButton.click()
