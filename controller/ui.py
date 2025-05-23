@@ -309,7 +309,7 @@ class UIWidgetsFunctions:
     def setFileOperation(self):
         pass
 
-    ### 打开文件选择对话框 ###
+    ### 打开文件选择对话框 lineedit filePath button btn_fileSelection###
     def openFileDialog(self):
         file_path, _ = QFileDialog.getOpenFileName(
             self.main_window,  # 设置主窗口为父窗口
