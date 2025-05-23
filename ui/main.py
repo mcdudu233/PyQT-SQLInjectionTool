@@ -25,6 +25,7 @@ from controller.ui import *
 from .modules import *
 from .widgets import *
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QFontMetrics
 
 # SET AS GLOBAL WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -137,10 +138,9 @@ class MainWindow(QMainWindow):
         widgets.btn_getData.clicked.connect(self.widgetsFunctions.gettingData)
         widgets.btn_exportData.clicked.connect(self.widgetsFunctions.exportData)
         widgets.btn_getDatabaseContent.clicked.connect(self.widgetsFunctions.getDatabseContent)
-        widgets.tableInformation.resizeColumnsToContents()
-        widgets.tableInformation.resizeRowsToContents()
-        widgets.databaseInformation.resizeColumnsToContents()
-        widgets.databaseInformation.resizeRowsToContents()
+        self.adjustTableWidgetToContents(widgets.tableInformation)
+        self.adjustTableWidgetToContents(widgets.databaseInformation)
+
 
         ### 命令执行界面信号槽 ###
 
@@ -155,8 +155,7 @@ class MainWindow(QMainWindow):
         widgets.btn_fileSelection.clicked.connect(self.widgetsFunctions.openFileDialog)
 
         ### 日志中心 ###
-        widgets.packetSendingRecord.resizeColumnsToContents()
-        widgets.packetSendingRecord.resizeRowsToContents()
+        self.adjustTableWidgetToContents(widgets.packetSendingRecord)
 
 
         # 显示界面
@@ -232,6 +231,32 @@ class MainWindow(QMainWindow):
             self.move(self.pos() + event.globalPos() - self.dragPos)
             self.dragPos = event.globalPos()
             event.accept()
+
+    ### 表格显示精确调整 ###
+
+    def adjustTableWidgetToContents(self,tableWidget):
+        font = tableWidget.font()
+        metrics = QFontMetrics(font)
+
+        for col in range(tableWidget.columnCount()):
+            max_width = 0
+
+            # 表头宽度
+            header_item = tableWidget.horizontalHeaderItem(col)
+            if header_item:
+                max_width = metrics.horizontalAdvance(header_item.text())
+
+            # 数据行宽度
+            for row in range(tableWidget.rowCount()):
+                item = tableWidget.item(row, col)
+                if item:
+                    width = metrics.horizontalAdvance(item.text())
+                    if width > max_width:
+                        max_width = width
+
+            tableWidget.setColumnWidth(col, max_width + 24)  # padding
+
+        tableWidget.resizeRowsToContents()
 
     def mouseReleaseEvent(self, event):
         self.dragPos = None
