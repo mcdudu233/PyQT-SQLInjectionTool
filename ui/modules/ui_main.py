@@ -1652,39 +1652,21 @@ class Ui_MainWindow(object):
         self.packetSendingRecord.setHorizontalHeaderItem(3, __qtablewidgetitem51)
         __qtablewidgetitem52 = QTableWidgetItem()
         self.packetSendingRecord.setHorizontalHeaderItem(4, __qtablewidgetitem52)
-        if (self.packetSendingRecord.rowCount() < 10):
-            self.packetSendingRecord.setRowCount(10)
+        if (self.packetSendingRecord.rowCount() < 1):
+            self.packetSendingRecord.setRowCount(1)
         __qtablewidgetitem53 = QTableWidgetItem()
         __qtablewidgetitem53.setFont(font4);
         self.packetSendingRecord.setVerticalHeaderItem(0, __qtablewidgetitem53)
         __qtablewidgetitem54 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(1, __qtablewidgetitem54)
+        self.packetSendingRecord.setItem(0, 0, __qtablewidgetitem54)
         __qtablewidgetitem55 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(2, __qtablewidgetitem55)
+        self.packetSendingRecord.setItem(0, 1, __qtablewidgetitem55)
         __qtablewidgetitem56 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(3, __qtablewidgetitem56)
+        self.packetSendingRecord.setItem(0, 2, __qtablewidgetitem56)
         __qtablewidgetitem57 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(4, __qtablewidgetitem57)
+        self.packetSendingRecord.setItem(0, 3, __qtablewidgetitem57)
         __qtablewidgetitem58 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(5, __qtablewidgetitem58)
-        __qtablewidgetitem59 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(6, __qtablewidgetitem59)
-        __qtablewidgetitem60 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(7, __qtablewidgetitem60)
-        __qtablewidgetitem61 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(8, __qtablewidgetitem61)
-        __qtablewidgetitem62 = QTableWidgetItem()
-        self.packetSendingRecord.setVerticalHeaderItem(9, __qtablewidgetitem62)
-        __qtablewidgetitem63 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 0, __qtablewidgetitem63)
-        __qtablewidgetitem64 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 1, __qtablewidgetitem64)
-        __qtablewidgetitem65 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 2, __qtablewidgetitem65)
-        __qtablewidgetitem66 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 3, __qtablewidgetitem66)
-        __qtablewidgetitem67 = QTableWidgetItem()
-        self.packetSendingRecord.setItem(0, 4, __qtablewidgetitem67)
+        self.packetSendingRecord.setItem(0, 4, __qtablewidgetitem58)
         self.packetSendingRecord.setObjectName(u"packetSendingRecord")
         sizePolicy4.setHeightForWidth(self.packetSendingRecord.sizePolicy().hasHeightForWidth())
         self.packetSendingRecord.setSizePolicy(sizePolicy4)
@@ -1732,7 +1714,7 @@ class Ui_MainWindow(object):
         self.packetSendingRecord.setShowGrid(True)
         self.packetSendingRecord.setGridStyle(Qt.PenStyle.SolidLine)
         self.packetSendingRecord.setSortingEnabled(False)
-        self.packetSendingRecord.setRowCount(10)
+        self.packetSendingRecord.setRowCount(1)
         self.packetSendingRecord.setColumnCount(5)
         self.packetSendingRecord.horizontalHeader().setVisible(False)
         self.packetSendingRecord.horizontalHeader().setCascadingSectionResizes(True)
@@ -2122,37 +2104,19 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem45.setText(QCoreApplication.translate("MainWindow", u"4", None));
         ___qtablewidgetitem46 = self.packetSendingRecord.verticalHeaderItem(0)
         ___qtablewidgetitem46.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem47 = self.packetSendingRecord.verticalHeaderItem(1)
-        ___qtablewidgetitem47.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem48 = self.packetSendingRecord.verticalHeaderItem(2)
-        ___qtablewidgetitem48.setText(QCoreApplication.translate("MainWindow", u"\u65b0\u5efa\u884c", None));
-        ___qtablewidgetitem49 = self.packetSendingRecord.verticalHeaderItem(3)
-        ___qtablewidgetitem49.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem50 = self.packetSendingRecord.verticalHeaderItem(4)
-        ___qtablewidgetitem50.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem51 = self.packetSendingRecord.verticalHeaderItem(5)
-        ___qtablewidgetitem51.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem52 = self.packetSendingRecord.verticalHeaderItem(6)
-        ___qtablewidgetitem52.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem53 = self.packetSendingRecord.verticalHeaderItem(7)
-        ___qtablewidgetitem53.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem54 = self.packetSendingRecord.verticalHeaderItem(8)
-        ___qtablewidgetitem54.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem55 = self.packetSendingRecord.verticalHeaderItem(9)
-        ___qtablewidgetitem55.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
 
         __sortingEnabled2 = self.packetSendingRecord.isSortingEnabled()
         self.packetSendingRecord.setSortingEnabled(False)
-        ___qtablewidgetitem56 = self.packetSendingRecord.item(0, 0)
-        ___qtablewidgetitem56.setText(QCoreApplication.translate("MainWindow", u"\u65f6\u95f4", None));
-        ___qtablewidgetitem57 = self.packetSendingRecord.item(0, 1)
-        ___qtablewidgetitem57.setText(QCoreApplication.translate("MainWindow", u"\u7f51\u7ad9", None));
-        ___qtablewidgetitem58 = self.packetSendingRecord.item(0, 2)
-        ___qtablewidgetitem58.setText(QCoreApplication.translate("MainWindow", u"\u7c7b\u578b", None));
-        ___qtablewidgetitem59 = self.packetSendingRecord.item(0, 3)
-        ___qtablewidgetitem59.setText(QCoreApplication.translate("MainWindow", u"Payload", None));
-        ___qtablewidgetitem60 = self.packetSendingRecord.item(0, 4)
-        ___qtablewidgetitem60.setText(QCoreApplication.translate("MainWindow", u"\u76f8\u4f3c\u5ea6", None));
+        ___qtablewidgetitem47 = self.packetSendingRecord.item(0, 0)
+        ___qtablewidgetitem47.setText(QCoreApplication.translate("MainWindow", u"\u65f6\u95f4", None));
+        ___qtablewidgetitem48 = self.packetSendingRecord.item(0, 1)
+        ___qtablewidgetitem48.setText(QCoreApplication.translate("MainWindow", u"\u7f51\u7ad9", None));
+        ___qtablewidgetitem49 = self.packetSendingRecord.item(0, 2)
+        ___qtablewidgetitem49.setText(QCoreApplication.translate("MainWindow", u"\u7c7b\u578b", None));
+        ___qtablewidgetitem50 = self.packetSendingRecord.item(0, 3)
+        ___qtablewidgetitem50.setText(QCoreApplication.translate("MainWindow", u"Payload", None));
+        ___qtablewidgetitem51 = self.packetSendingRecord.item(0, 4)
+        ___qtablewidgetitem51.setText(QCoreApplication.translate("MainWindow", u"\u76f8\u4f3c\u5ea6", None));
         self.packetSendingRecord.setSortingEnabled(__sortingEnabled2)
 
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"\u6d88\u606f", None))
