@@ -1568,7 +1568,7 @@ Button */
                       <number>0</number>
                      </property>
                      <property name="currentIndex">
-                      <number>2</number>
+                      <number>6</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -3775,7 +3775,7 @@ background-repeat: no-repeat;</string>
                            <bool>false</bool>
                           </property>
                           <property name="rowCount">
-                           <number>1</number>
+                           <number>10</number>
                           </property>
                           <property name="columnCount">
                            <number>5</number>
@@ -3821,6 +3821,51 @@ background-repeat: no-repeat;</string>
                             <font>
                              <family>Segoe UI</family>
                             </font>
+                           </property>
+                          </row>
+                          <row>
+                           <property name="text">
+                            <string>New Row</string>
+                           </property>
+                          </row>
+                          <row>
+                           <property name="text">
+                            <string>新建行</string>
+                           </property>
+                          </row>
+                          <row>
+                           <property name="text">
+                            <string>New Row</string>
+                           </property>
+                          </row>
+                          <row>
+                           <property name="text">
+                            <string>New Row</string>
+                           </property>
+                          </row>
+                          <row>
+                           <property name="text">
+                            <string>New Row</string>
+                           </property>
+                          </row>
+                          <row>
+                           <property name="text">
+                            <string>New Row</string>
+                           </property>
+                          </row>
+                          <row>
+                           <property name="text">
+                            <string>New Row</string>
+                           </property>
+                          </row>
+                          <row>
+                           <property name="text">
+                            <string>New Row</string>
+                           </property>
+                          </row>
+                          <row>
+                           <property name="text">
+                            <string>New Row</string>
                            </property>
                           </row>
                           <column>

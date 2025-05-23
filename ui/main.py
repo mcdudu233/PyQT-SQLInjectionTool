@@ -158,6 +158,7 @@ class MainWindow(QMainWindow):
         self.adjustTableWidgetToContents(widgets.packetSendingRecord)
 
 
+
         # 显示界面
         widgets.toggleButton.click()
         self.show()
@@ -257,6 +258,7 @@ class MainWindow(QMainWindow):
             tableWidget.setColumnWidth(col, max_width + 24)  # padding
 
         tableWidget.resizeRowsToContents()
+
 
     def mouseReleaseEvent(self, event):
         self.dragPos = None
