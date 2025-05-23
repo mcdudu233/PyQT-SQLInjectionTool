@@ -1428,29 +1428,9 @@ class Ui_MainWindow(object):
         self.autoInjection.setObjectName(u"autoInjection")
         self.gridWidget = QWidget(self.autoInjection)
         self.gridWidget.setObjectName(u"gridWidget")
-        self.gridWidget.setGeometry(QRect(10, 0, 811, 441))
+        self.gridWidget.setGeometry(QRect(10, 0, 801, 451))
         self.gridLayout = QGridLayout(self.gridWidget)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.gridLayout.setHorizontalSpacing(15)
-        self.gridLayout.setVerticalSpacing(8)
-        self.webPage = QWebEngineView(self.gridWidget)
-        self.webPage.setObjectName(u"webPage")
-        self.webPage.setFocusPolicy(Qt.FocusPolicy.WheelFocus)
-        self.webPage.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
-        self.webPage.setAutoFillBackground(False)
-        self.webPage.setUrl(QUrl(u"about:blank"))
-
-        self.gridLayout.addWidget(self.webPage, 1, 0, 1, 4)
-
-        self.detection = QPushButton(self.gridWidget)
-        self.detection.setObjectName(u"detection")
-        self.detection.setMinimumSize(QSize(150, 30))
-        self.detection.setFont(font)
-        self.detection.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.detection.setStyleSheet(u"background-color: rgb(52, 59, 72);")
-
-        self.gridLayout.addWidget(self.detection, 0, 2, 1, 1)
-
         self.url = QLineEdit(self.gridWidget)
         self.url.setObjectName(u"url")
         self.url.setMinimumSize(QSize(0, 30))
@@ -1465,39 +1445,47 @@ class Ui_MainWindow(object):
         self.browse.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.browse.setStyleSheet(u"background-color: rgb(52, 59, 72);")
 
-        self.gridLayout.addWidget(self.browse, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.browse, 0, 2, 1, 1)
+
+        self.detection = QPushButton(self.gridWidget)
+        self.detection.setObjectName(u"detection")
+        self.detection.setMinimumSize(QSize(150, 30))
+        self.detection.setFont(font)
+        self.detection.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.detection.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+
+        self.gridLayout.addWidget(self.detection, 0, 3, 1, 1)
+
+        self.groupBox_7 = QGroupBox(self.gridWidget)
+        self.groupBox_7.setObjectName(u"groupBox_7")
+        self.gridLayout_11 = QGridLayout(self.groupBox_7)
+        self.gridLayout_11.setObjectName(u"gridLayout_11")
+        self.webPage = QWebEngineView(self.groupBox_7)
+        self.webPage.setObjectName(u"webPage")
+        self.webPage.setFocusPolicy(Qt.FocusPolicy.WheelFocus)
+        self.webPage.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
+        self.webPage.setAutoFillBackground(False)
+        self.webPage.setUrl(QUrl(u"about:blank"))
+
+        self.gridLayout_11.addWidget(self.webPage, 0, 0, 1, 1)
+
+
+        self.gridLayout.addWidget(self.groupBox_7, 1, 0, 1, 4)
 
         self.stackedWidget.addWidget(self.autoInjection)
         self.fileOperation = QWidget()
         self.fileOperation.setObjectName(u"fileOperation")
         self.frame_2 = QFrame(self.fileOperation)
         self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setGeometry(QRect(10, 0, 811, 441))
+        self.frame_2.setGeometry(QRect(10, 0, 801, 441))
         self.gridLayout_6 = QGridLayout(self.frame_2)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.fileOperationResults = QPlainTextEdit(self.frame_2)
-        self.fileOperationResults.setObjectName(u"fileOperationResults")
-        self.fileOperationResults.setMinimumSize(QSize(200, 200))
-        self.fileOperationResults.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-        self.fileOperationResults.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByKeyboard|Qt.TextInteractionFlag.TextSelectableByMouse)
-
-        self.gridLayout_6.addWidget(self.fileOperationResults, 5, 0, 1, 3)
-
         self.path = QLineEdit(self.frame_2)
         self.path.setObjectName(u"path")
         self.path.setMinimumSize(QSize(0, 30))
         self.path.setStyleSheet(u"background-color: rgb(33, 37, 43);")
 
         self.gridLayout_6.addWidget(self.path, 0, 0, 1, 1)
-
-        self.btn_startFileOperation = QPushButton(self.frame_2)
-        self.btn_startFileOperation.setObjectName(u"btn_startFileOperation")
-        self.btn_startFileOperation.setMinimumSize(QSize(150, 30))
-        self.btn_startFileOperation.setFont(font)
-        self.btn_startFileOperation.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.btn_startFileOperation.setStyleSheet(u"background-color: rgb(52, 59, 72);")
-
-        self.gridLayout_6.addWidget(self.btn_startFileOperation, 0, 2, 1, 1)
 
         self.fileOperationType = QComboBox(self.frame_2)
         self.fileOperationType.addItem("")
@@ -1511,21 +1499,39 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.fileOperationType, 0, 1, 1, 1)
 
+        self.btn_startFileOperation = QPushButton(self.frame_2)
+        self.btn_startFileOperation.setObjectName(u"btn_startFileOperation")
+        self.btn_startFileOperation.setMinimumSize(QSize(150, 30))
+        self.btn_startFileOperation.setFont(font)
+        self.btn_startFileOperation.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.btn_startFileOperation.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+
+        self.gridLayout_6.addWidget(self.btn_startFileOperation, 0, 2, 1, 1)
+
+        self.groupBox_6 = QGroupBox(self.frame_2)
+        self.groupBox_6.setObjectName(u"groupBox_6")
+        self.horizontalLayout_7 = QHBoxLayout(self.groupBox_6)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.fileOperationResults = QPlainTextEdit(self.groupBox_6)
+        self.fileOperationResults.setObjectName(u"fileOperationResults")
+        self.fileOperationResults.setMinimumSize(QSize(200, 200))
+        self.fileOperationResults.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.fileOperationResults.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByKeyboard|Qt.TextInteractionFlag.TextSelectableByMouse)
+
+        self.horizontalLayout_7.addWidget(self.fileOperationResults)
+
+
+        self.gridLayout_6.addWidget(self.groupBox_6, 1, 0, 1, 3)
+
         self.stackedWidget.addWidget(self.fileOperation)
         self.command = QWidget()
         self.command.setObjectName(u"command")
+        self.gridLayout_10 = QGridLayout(self.command)
+        self.gridLayout_10.setObjectName(u"gridLayout_10")
         self.gridWidget1 = QWidget(self.command)
         self.gridWidget1.setObjectName(u"gridWidget1")
-        self.gridWidget1.setGeometry(QRect(10, 0, 811, 441))
         self.gridLayout_5 = QGridLayout(self.gridWidget1)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.commandResults = QPlainTextEdit(self.gridWidget1)
-        self.commandResults.setObjectName(u"commandResults")
-        self.commandResults.setMinimumSize(QSize(200, 200))
-        self.commandResults.setStyleSheet(u"background-color: rgb(33, 37, 43);")
-
-        self.gridLayout_5.addWidget(self.commandResults, 1, 0, 1, 1)
-
         self.frame_8 = QFrame(self.gridWidget1)
         self.frame_8.setObjectName(u"frame_8")
         self.gridLayout_8 = QGridLayout(self.frame_8)
@@ -1555,6 +1561,25 @@ class Ui_MainWindow(object):
 
 
         self.gridLayout_5.addWidget(self.frame_8, 0, 0, 1, 1)
+
+        self.groupBox_5 = QGroupBox(self.gridWidget1)
+        self.groupBox_5.setObjectName(u"groupBox_5")
+        sizePolicy3.setHeightForWidth(self.groupBox_5.sizePolicy().hasHeightForWidth())
+        self.groupBox_5.setSizePolicy(sizePolicy3)
+        self.horizontalLayout_6 = QHBoxLayout(self.groupBox_5)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.commandResults = QPlainTextEdit(self.groupBox_5)
+        self.commandResults.setObjectName(u"commandResults")
+        self.commandResults.setMinimumSize(QSize(200, 200))
+        self.commandResults.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+
+        self.horizontalLayout_6.addWidget(self.commandResults)
+
+
+        self.gridLayout_5.addWidget(self.groupBox_5, 1, 0, 1, 1)
+
+
+        self.gridLayout_10.addWidget(self.gridWidget1, 0, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.command)
         self.logCenter = QWidget()
@@ -1799,7 +1824,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1811,7 +1836,7 @@ class Ui_MainWindow(object):
         self.titleLeftDescription.setText("")
         self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"\u9690\u85cf\u83dc\u5355\u680f", None))
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"\u81ea\u52a8\u6ce8\u5165", None))
-        self.btn_manualInjection.setText(QCoreApplication.translate("MainWindow", u"\u4eba\u5de5\u6ce8\u5165", None))
+        self.btn_manualInjection.setText(QCoreApplication.translate("MainWindow", u"\u624b\u52a8\u6ce8\u5165", None))
         self.btn_dataCenter.setText(QCoreApplication.translate("MainWindow", u"\u6570\u636e\u4e2d\u5fc3", None))
         self.btn_command.setText(QCoreApplication.translate("MainWindow", u"\u547d\u4ee4\u6267\u884c", None))
         self.btn_fileOperation.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u64cd\u4f5c", None))
@@ -1997,20 +2022,23 @@ class Ui_MainWindow(object):
         self.tableInformation.setSortingEnabled(False)
         self.tableInformation.setSortingEnabled(__sortingEnabled1)
 
-        self.detection.setText(QCoreApplication.translate("MainWindow", u"\u68c0\u6d4b", None))
         self.url.setText("")
         self.url.setPlaceholderText(QCoreApplication.translate("MainWindow", u"URL", None))
         self.browse.setText(QCoreApplication.translate("MainWindow", u"\u6d4f\u89c8", None))
+        self.detection.setText(QCoreApplication.translate("MainWindow", u"\u68c0\u6d4b", None))
+        self.groupBox_7.setTitle(QCoreApplication.translate("MainWindow", u"\u7f51\u9875\u663e\u793a", None))
         self.path.setText("")
         self.path.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u8def\u5f84", None))
-        self.btn_startFileOperation.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb", None))
         self.fileOperationType.setItemText(0, QCoreApplication.translate("MainWindow", u"\u8bfb\u53d6\u6587\u4ef6", None))
         self.fileOperationType.setItemText(1, QCoreApplication.translate("MainWindow", u"\u5199\u5165\u6587\u4ef6", None))
 
+        self.btn_startFileOperation.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb", None))
+        self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u64cd\u4f5c", None))
         self.btn_startCommand.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb", None))
         self.commandInput.setText("")
         self.commandInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u547d\u4ee4", None))
         self.echoResults.setText(QCoreApplication.translate("MainWindow", u"\u56de\u663e\u7ed3\u679c", None))
+        self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"\u547d\u4ee4\u6267\u884c", None))
         self.groupBox_32.setTitle(QCoreApplication.translate("MainWindow", u"\u6570\u636e\u5305\u53d1\u5305\u8bb0\u5f55", None))
         ___qtablewidgetitem42 = self.packetSendingRecord.horizontalHeaderItem(0)
         ___qtablewidgetitem42.setText(QCoreApplication.translate("MainWindow", u"0", None));

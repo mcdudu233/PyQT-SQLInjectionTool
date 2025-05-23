@@ -18,11 +18,13 @@ import sys
 import os
 import platform
 
+
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from controller.ui import *
 from .modules import *
 from .widgets import *
+from PySide6.QtCore import Qt
 
 # SET AS GLOBAL WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -79,6 +81,10 @@ class MainWindow(QMainWindow):
         # 设置界面功能绑定
         UIFunctions.uiDefinitions(self)
 
+        widgets.webPage.setAttribute(Qt.WA_TranslucentBackground, True)
+        widgets.webPage.setStyleSheet("background: transparent;")
+        widgets.webPage.page().setBackgroundColor(QColor(0, 0, 0, 0))
+
         # 菜单按钮信号槽绑定
         widgets.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
         widgets.btn_home.clicked.connect(self.menuButtonClick)
@@ -89,7 +95,7 @@ class MainWindow(QMainWindow):
         widgets.btn_logCenter.clicked.connect(self.menuButtonClick)
         widgets.btn_fileOperation.clicked.connect(self.menuButtonClick)
 
-        # 侧边
+        # 侧边栏
 
         def openCloseRightBox():
             UIFunctions.toggleRightBox(self, True)
@@ -122,6 +128,7 @@ class MainWindow(QMainWindow):
         widgets.url.textChanged.connect(self.widgetsFunctions.setURL)
         widgets.webPage.loadFinished.connect(self.widgetsFunctions.finishWebPage)
         self.ui.webPage.setZoomFactor(0.5)
+
 
         ### 数据中心界面信号槽 ###
         self.ui.databaseTreeModel = QStandardItemModel()
@@ -220,6 +227,7 @@ class MainWindow(QMainWindow):
     def mouseReleaseEvent(self, event):
         self.dragPos = None
         event.accept()
+
 
 
 def main():

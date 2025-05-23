@@ -956,7 +956,7 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/cil-file.png);</string>
                   </property>
                   <property name="text">
-                   <string>人工注入</string>
+                   <string>手动注入</string>
                   </property>
                  </widget>
                 </item>
@@ -1560,7 +1560,7 @@ Button */
                       <number>0</number>
                      </property>
                      <property name="currentIndex">
-                      <number>4</number>
+                      <number>2</number>
                      </property>
                      <widget class="QWidget" name="manualInjection">
                       <widget class="QWidget" name="gridWidget_2" native="true">
@@ -3103,62 +3103,11 @@ Button */
                         <rect>
                          <x>10</x>
                          <y>0</y>
-                         <width>811</width>
-                         <height>441</height>
+                         <width>801</width>
+                         <height>451</height>
                         </rect>
                        </property>
                        <layout class="QGridLayout" name="gridLayout">
-                        <property name="horizontalSpacing">
-                         <number>15</number>
-                        </property>
-                        <property name="verticalSpacing">
-                         <number>8</number>
-                        </property>
-                        <item row="1" column="0" colspan="4">
-                         <widget class="QWebEngineView" name="webPage">
-                          <property name="focusPolicy">
-                           <enum>Qt::FocusPolicy::WheelFocus</enum>
-                          </property>
-                          <property name="layoutDirection">
-                           <enum>Qt::LayoutDirection::LeftToRight</enum>
-                          </property>
-                          <property name="autoFillBackground">
-                           <bool>false</bool>
-                          </property>
-                          <property name="url">
-                           <url>
-                            <string>about:blank</string>
-                           </url>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="2">
-                         <widget class="QPushButton" name="detection">
-                          <property name="minimumSize">
-                           <size>
-                            <width>150</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>10</pointsize>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(52, 59, 72);</string>
-                          </property>
-                          <property name="text">
-                           <string>检测</string>
-                          </property>
-                         </widget>
-                        </item>
                         <item row="0" column="0">
                          <widget class="QLineEdit" name="url">
                           <property name="minimumSize">
@@ -3178,7 +3127,7 @@ Button */
                           </property>
                          </widget>
                         </item>
-                        <item row="0" column="1">
+                        <item row="0" column="2">
                          <widget class="QPushButton" name="browse">
                           <property name="minimumSize">
                            <size>
@@ -3205,57 +3154,8 @@ Button */
                           </property>
                          </widget>
                         </item>
-                       </layout>
-                      </widget>
-                     </widget>
-                     <widget class="QWidget" name="fileOperation">
-                      <widget class="QFrame" name="frame_2">
-                       <property name="geometry">
-                        <rect>
-                         <x>10</x>
-                         <y>0</y>
-                         <width>811</width>
-                         <height>441</height>
-                        </rect>
-                       </property>
-                       <layout class="QGridLayout" name="gridLayout_6">
-                        <item row="5" column="0" colspan="3">
-                         <widget class="QPlainTextEdit" name="fileOperationResults">
-                          <property name="minimumSize">
-                           <size>
-                            <width>200</width>
-                            <height>200</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="textInteractionFlags">
-                           <set>Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="0">
-                         <widget class="QLineEdit" name="path">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                          <property name="placeholderText">
-                           <string>路径</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="2">
-                         <widget class="QPushButton" name="btn_startFileOperation">
+                        <item row="0" column="3">
+                         <widget class="QPushButton" name="detection">
                           <property name="minimumSize">
                            <size>
                             <width>150</width>
@@ -3277,7 +3177,67 @@ Button */
                            <string notr="true">background-color: rgb(52, 59, 72);</string>
                           </property>
                           <property name="text">
-                           <string>开始</string>
+                           <string>检测</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="0" colspan="4">
+                         <widget class="QGroupBox" name="groupBox_7">
+                          <property name="title">
+                           <string>网页显示</string>
+                          </property>
+                          <layout class="QGridLayout" name="gridLayout_11">
+                           <item row="0" column="0">
+                            <widget class="QWebEngineView" name="webPage">
+                             <property name="focusPolicy">
+                              <enum>Qt::FocusPolicy::WheelFocus</enum>
+                             </property>
+                             <property name="layoutDirection">
+                              <enum>Qt::LayoutDirection::LeftToRight</enum>
+                             </property>
+                             <property name="autoFillBackground">
+                              <bool>false</bool>
+                             </property>
+                             <property name="url">
+                              <url>
+                               <string>about:blank</string>
+                              </url>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </widget>
+                     <widget class="QWidget" name="fileOperation">
+                      <widget class="QFrame" name="frame_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>10</x>
+                         <y>0</y>
+                         <width>801</width>
+                         <height>441</height>
+                        </rect>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_6">
+                        <item row="0" column="0">
+                         <widget class="QLineEdit" name="path">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="placeholderText">
+                           <string>路径</string>
                           </property>
                          </widget>
                         </item>
@@ -3318,92 +3278,52 @@ Button */
                           </item>
                          </widget>
                         </item>
-                       </layout>
-                      </widget>
-                     </widget>
-                     <widget class="QWidget" name="command">
-                      <widget class="QWidget" name="gridWidget" native="true">
-                       <property name="geometry">
-                        <rect>
-                         <x>10</x>
-                         <y>0</y>
-                         <width>811</width>
-                         <height>441</height>
-                        </rect>
-                       </property>
-                       <layout class="QGridLayout" name="gridLayout_5">
-                        <item row="1" column="0">
-                         <widget class="QPlainTextEdit" name="commandResults">
+                        <item row="0" column="2">
+                         <widget class="QPushButton" name="btn_startFileOperation">
                           <property name="minimumSize">
                            <size>
-                            <width>200</width>
-                            <height>200</height>
+                            <width>150</width>
+                            <height>30</height>
                            </size>
                           </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
                           <property name="styleSheet">
-                           <string notr="true">background-color: rgb(33, 37, 43);</string>
+                           <string notr="true">background-color: rgb(52, 59, 72);</string>
+                          </property>
+                          <property name="text">
+                           <string>开始</string>
                           </property>
                          </widget>
                         </item>
-                        <item row="0" column="0">
-                         <widget class="QFrame" name="frame_8">
-                          <layout class="QGridLayout" name="gridLayout_8">
-                           <item row="0" column="2">
-                            <widget class="QPushButton" name="btn_startCommand">
+                        <item row="1" column="0" colspan="3">
+                         <widget class="QGroupBox" name="groupBox_6">
+                          <property name="title">
+                           <string>文件操作</string>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_7">
+                           <item>
+                            <widget class="QPlainTextEdit" name="fileOperationResults">
                              <property name="minimumSize">
                               <size>
-                               <width>150</width>
-                               <height>30</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <family>Segoe UI</family>
-                               <pointsize>10</pointsize>
-                               <italic>false</italic>
-                               <bold>false</bold>
-                              </font>
-                             </property>
-                             <property name="cursor">
-                              <cursorShape>PointingHandCursor</cursorShape>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">background-color: rgb(52, 59, 72);</string>
-                             </property>
-                             <property name="text">
-                              <string>开始</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="0" column="0">
-                            <widget class="QLineEdit" name="commandInput">
-                             <property name="minimumSize">
-                              <size>
-                               <width>0</width>
-                               <height>30</height>
+                               <width>200</width>
+                               <height>200</height>
                               </size>
                              </property>
                              <property name="styleSheet">
                               <string notr="true">background-color: rgb(33, 37, 43);</string>
                              </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="placeholderText">
-                              <string>命令</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="0" column="1">
-                            <widget class="QCheckBox" name="echoResults">
-                             <property name="autoFillBackground">
-                              <bool>false</bool>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true"/>
-                             </property>
-                             <property name="text">
-                              <string>回显结果</string>
+                             <property name="textInteractionFlags">
+                              <set>Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
                              </property>
                             </widget>
                            </item>
@@ -3412,6 +3332,109 @@ Button */
                         </item>
                        </layout>
                       </widget>
+                     </widget>
+                     <widget class="QWidget" name="command">
+                      <layout class="QGridLayout" name="gridLayout_10">
+                       <item row="0" column="0">
+                        <widget class="QWidget" name="gridWidget" native="true">
+                         <layout class="QGridLayout" name="gridLayout_5">
+                          <item row="0" column="0">
+                           <widget class="QFrame" name="frame_8">
+                            <layout class="QGridLayout" name="gridLayout_8">
+                             <item row="0" column="2">
+                              <widget class="QPushButton" name="btn_startCommand">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>150</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>10</pointsize>
+                                 <italic>false</italic>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">background-color: rgb(52, 59, 72);</string>
+                               </property>
+                               <property name="text">
+                                <string>开始</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="0" column="0">
+                              <widget class="QLineEdit" name="commandInput">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">background-color: rgb(33, 37, 43);</string>
+                               </property>
+                               <property name="text">
+                                <string/>
+                               </property>
+                               <property name="placeholderText">
+                                <string>命令</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="0" column="1">
+                              <widget class="QCheckBox" name="echoResults">
+                               <property name="autoFillBackground">
+                                <bool>false</bool>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true"/>
+                               </property>
+                               <property name="text">
+                                <string>回显结果</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item row="1" column="0">
+                           <widget class="QGroupBox" name="groupBox_5">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="title">
+                             <string>命令执行</string>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_6">
+                             <item>
+                              <widget class="QPlainTextEdit" name="commandResults">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>200</width>
+                                 <height>200</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">background-color: rgb(33, 37, 43);</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
                      </widget>
                      <widget class="QWidget" name="logCenter">
                       <widget class="QWidget" name="widget_2" native="true">
