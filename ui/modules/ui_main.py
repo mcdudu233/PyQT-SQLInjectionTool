@@ -926,12 +926,6 @@ class Ui_MainWindow(object):
         self.stackedWidget.setAutoFillBackground(False)
         self.stackedWidget.setStyleSheet(u"background: transparent;")
         self.stackedWidget.setLineWidth(0)
-        self.home = QWidget()
-        self.home.setObjectName(u"home")
-        self.home.setStyleSheet(u"background-image: url(:/images/images/images/PyDracula_vertical.png);\n"
-"background-position: center;\n"
-"background-repeat: no-repeat;")
-        self.stackedWidget.addWidget(self.home)
         self.manualInjection = QWidget()
         self.manualInjection.setObjectName(u"manualInjection")
         self.gridWidget_2 = QWidget(self.manualInjection)
@@ -1805,7 +1799,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1813,7 +1807,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.titleLeftApp.setText(QCoreApplication.translate("MainWindow", u"SQL\u81ea\u52a8\u6ce8\u5165\u5de5\u5177", None))
+        self.titleLeftApp.setText(QCoreApplication.translate("MainWindow", u"SQL\u6ce8\u5165\u5de5\u5177", None))
         self.titleLeftDescription.setText("")
         self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"\u9690\u85cf\u83dc\u5355\u680f", None))
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"\u81ea\u52a8\u6ce8\u5165", None))
