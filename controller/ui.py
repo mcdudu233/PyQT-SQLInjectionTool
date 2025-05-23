@@ -1,7 +1,7 @@
 import datetime
 import html
 from time import sleep
-from urllib.parse import urlparse, urlunparse
+from urllib.parse import urlparse, urlunparse, parse_qsl
 
 from PySide6.QtCore import QTimer, Qt, QModelIndex, QUrl, QEventLoop
 from PySide6.QtGui import QStandardItem
@@ -277,10 +277,8 @@ class UIWidgetsFunctions:
             self.ui.autoUrl.setText(url)
 
             # 获取注入参数
-            if self.ui.paramList.count() == 0:
-                params = None
-            else:
-                params = []
+            params = []
+            if self.ui.paramList.count() != 0:
                 for i in range(self.ui.paramList.count()):
                     params.append(self.ui.paramList.item(i).text())
                 kwargs |= {"testParameter": ",".join(params)}
@@ -289,20 +287,25 @@ class UIWidgetsFunctions:
             if self.ui.requestMethod.currentText() == "GET":
                 # 去掉GET参数
                 parsed = urlparse(url)
-                clean_url = urlunparse((parsed.scheme, parsed.netloc, parsed.path,
-                                        '',  # 移除 params
-                                        '',  # 移除 query
-                                        ''  # 移除 fragment
-                                        ))
-                url = clean_url
-                if params is not None:
+                query = parse_qsl(parsed.query)
+                for key, value in query:
+                    if key not in params:
+                        params.append(key)
+                        self.ui.paramList.addItem(QListWidgetItem(key))
+                url = urlunparse((parsed.scheme, parsed.netloc, parsed.path,
+                                  '',  # 移除 params
+                                  '',  # 移除 query
+                                  ''  # 移除 fragment
+                                  ))
+                self.ui.autoUrl.setText(url)
+                if len(params) != 0:
                     url += "?"
                     for key in params:
                         url += key + "=xxx&"
                     url = url[:len(url) - 1]
                 kwargs |= {"method": "GET"}
             elif self.ui.requestMethod.currentText() == "POST":
-                if params is not None:
+                if len(params) != 0:
                     tmp = ""
                     for key in params:
                         tmp += key + "=xxx&"
