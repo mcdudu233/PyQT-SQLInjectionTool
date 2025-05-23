@@ -112,7 +112,6 @@ class MainWindow(QMainWindow):
         ### 手动注入界面信号槽 ###
         widgets.btn_startInjection.clicked.connect(self.widgetsFunctions.startInjection)
         widgets.autoUrl.textChanged.connect(self.widgetsFunctions.setAutoUrl)
-        widgets.inspectionInterval.textChanged.connect(self.widgetsFunctions.setInspectionInterval)
         widgets.injectionType.currentIndexChanged.connect(self.widgetsFunctions.setStyleSheetInjectionType)
         widgets.https.stateChanged.connect(self.widgetsFunctions.ifHttps)
         widgets.databaseType.currentIndexChanged.connect(self.widgetsFunctions.setDatabase)
